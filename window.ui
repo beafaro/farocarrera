@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>825</width>
-    <height>747</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>IMPORT-EXPORT TEIS</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="btnAceptar">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>290</y>
-      <width>75</width>
+      <x>100</x>
+      <y>160</y>
+      <width>81</width>
       <height>23</height>
      </rect>
     </property>
@@ -27,27 +27,83 @@
      <string>Aceptar</string>
     </property>
    </widget>
-   <widget class="QLabel" name="lblTitulo">
+   <widget class="QLabel" name="lblClientes">
     <property name="geometry">
      <rect>
-      <x>250</x>
-      <y>130</y>
-      <width>111</width>
+      <x>160</x>
+      <y>10</y>
+      <width>171</width>
       <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Verdana</family>
+      <pointsize>12</pointsize>
+      <weight>9</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+      <stylestrategy>PreferDefault</stylestrategy>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 170, 255);
+font: 75 12pt &quot;Verdana&quot;;
+background-color: rgb(224, 255, 255);
+align: center;
+</string>
+    </property>
+    <property name="text">
+     <string>XESTIÓN CLIENTES</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnSalir">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>160</y>
+      <width>75</width>
+      <height>23</height>
      </rect>
     </property>
     <property name="text">
-     <string>MI PRIMERA VENTANA</string>
+     <string>Salir</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="txtDatos">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>60</y>
+      <width>47</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>DNI</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lblDNI">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>60</y>
+      <width>120</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblValidoDNI">
     <property name="geometry">
      <rect>
       <x>210</x>
-      <y>250</y>
-      <width>221</width>
-      <height>20</height>
+      <y>60</y>
+      <width>47</width>
+      <height>13</height>
      </rect>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
   </widget>
@@ -56,7 +112,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>825</width>
+     <width>800</width>
      <height>21</height>
     </rect>
    </property>
@@ -64,31 +120,11 @@
     <property name="title">
      <string>Archivo</string>
     </property>
-    <widget class="QMenu" name="menuAbrir">
-     <property name="title">
-      <string>Abrir</string>
-     </property>
-     <addaction name="actionFichero"/>
-    </widget>
-    <addaction name="menuAbrir"/>
-    <addaction name="actionGuadar"/>
-    <addaction name="actionGuardar_Como"/>
-    <addaction name="separator"/>
     <addaction name="actionSalir"/>
    </widget>
    <addaction name="menuArchivo"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionGuadar">
-   <property name="text">
-    <string>Guadar</string>
-   </property>
-  </action>
-  <action name="actionGuardar_Como">
-   <property name="text">
-    <string>Guardar Como</string>
-   </property>
-  </action>
   <action name="actionFichero">
    <property name="text">
     <string>Fichero</string>
@@ -97,6 +133,9 @@
   <action name="actionSalir">
    <property name="text">
     <string>Salir</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+S</string>
    </property>
   </action>
  </widget>
