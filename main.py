@@ -1,11 +1,22 @@
 # This is a sample Python script.
-import events
 from window import *
-import sys, var
+from windowaviso import *
+import sys, var, events
 
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
+
+class DialogAviso(QtWidgets.QDialog):
+    def __init__(self):
+        '''
+
+        Clase que instancia la ventana de avisos
+
+        '''
+        super(DialogAviso, self).__init__()
+        var.dlgaviso = Ui_windowaviso()
+        var.dlgaviso.setupUi(self)
 
 class Main(QtWidgets.QMainWindow):
     def __init__(self):
@@ -21,9 +32,9 @@ class Main(QtWidgets.QMainWindow):
         '''
         var.ui.actionSalir.triggered.connect(events.Eventos.Salir)
 
-
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])
     window = Main()
+    var.dlgaviso = DialogAviso()
     window.show()
     sys.exit(app.exec())
