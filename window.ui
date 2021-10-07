@@ -17,8 +17,8 @@
    <widget class="QPushButton" name="btnAceptar">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>160</y>
+      <x>270</x>
+      <y>180</y>
       <width>81</width>
       <height>23</height>
      </rect>
@@ -30,8 +30,8 @@
    <widget class="QLabel" name="lblClientes">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>10</y>
+      <x>270</x>
+      <y>19</y>
       <width>171</width>
       <height>20</height>
      </rect>
@@ -60,8 +60,8 @@ align: center;
    <widget class="QPushButton" name="btnSalir">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>160</y>
+      <x>370</x>
+      <y>180</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -70,41 +70,85 @@ align: center;
      <string>Salir</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>60</y>
-      <width>47</width>
-      <height>13</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>DNI</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lblDNI">
+   <widget class="Line" name="line">
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>60</y>
-      <width>120</width>
-      <height>20</height>
+      <y>150</y>
+      <width>601</width>
+      <height>21</height>
      </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
     </property>
    </widget>
-   <widget class="QLabel" name="lblValidoDNI">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>60</y>
-      <width>47</width>
-      <height>13</height>
+      <x>70</x>
+      <y>50</y>
+      <width>201</width>
+      <height>22</height>
      </rect>
     </property>
-    <property name="text">
-     <string/>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="lblDNI">
+       <property name="text">
+        <string>DNI</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="txtDNI"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="lblValidoDNI">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>81</y>
+      <width>601</width>
+      <height>31</height>
+     </rect>
     </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLabel" name="lblApel">
+       <property name="text">
+        <string>Apellidos:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="txtApel"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="lblNome">
+       <property name="text">
+        <string>Nombre:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="txtNome"/>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

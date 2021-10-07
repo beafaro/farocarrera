@@ -32,8 +32,6 @@ class Ui_windowaviso(object):
         self.btnBoxAviso.setGeometry(QtCore.QRect(90, 140, 156, 23))
         self.btnBoxAviso.setStandardButtons(QtWidgets.QDialogButtonBox.No|QtWidgets.QDialogButtonBox.Yes)
         self.btnBoxAviso.setObjectName("btnBoxAviso")
-        self.btnBoxAviso.accepted.connect(windowaviso.accept)
-        self.btnBoxAviso.rejected.connect(windowaviso.reject)
 
         self.retranslateUi(windowaviso)
         QtCore.QMetaObject.connectSlotsByName(windowaviso)
