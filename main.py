@@ -31,6 +31,8 @@ class Main(QtWidgets.QMainWindow):
         Eventos de botón
         '''
         var.ui.btnSalir.clicked.connect(events.Eventos.Salir)
+        var.ui.rbtGroupSex.buttonClicked.connect(clients.Clientes.SelSexo)
+        var.ui.chkGroupPago.buttonClicked.connect(clients.Clientes.SelPago)
         '''
         Eventos de la barra de menús
         '''
