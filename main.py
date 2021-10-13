@@ -33,6 +33,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnSalir.clicked.connect(events.Eventos.Salir)
         var.ui.rbtGroupSex.buttonClicked.connect(clients.Clientes.SelSexo)
         var.ui.chkGroupPago.buttonClicked.connect(clients.Clientes.SelPago)
+
         '''
         Eventos de la barra de menús
         '''
@@ -42,6 +43,12 @@ class Main(QtWidgets.QMainWindow):
         Eventos caja de texto
         '''
         var.ui.txtDNI.editingFinished.connect(clients.Clientes.validarDNI)
+
+        '''
+        Eventos de comboBox
+        '''
+        clients.Clientes.CargarProv_(self)
+        var.ui.cmbProv.activated[str].connect(clients.Clientes.SelProv)
 
 
 if __name__ == '__main__':
