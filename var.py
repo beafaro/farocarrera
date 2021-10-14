@@ -9,3 +9,4 @@ variables de ventana
 '''
 global ui
 global dlgaviso
+global dlgcalendar
