@@ -21,7 +21,7 @@ class DialogCalendar(QtWidgets.QDialog):
         mesactual= datetime.now().month
         anoactual= datetime.now().year
         var.dlgcalendar.Calendar.setSelectedDate(QtCore.QDate(anoactual,mesactual,diaactual))
-    #    var.dlgcalendar.Calendar.clicked.connect(clients.Clientes.cargarFecha)
+     #   var.dlgcalendar.Calendar.clicked.connect(clients.Clientes.cargarFecha)
 
 
 class DialogAviso(QtWidgets.QDialog):
