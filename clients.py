@@ -38,16 +38,16 @@ class Clientes():
     def SelSexo(self):
         try:
             if var.ui.rbtFem.isChecked():
-                print("Marcado fememino")
+                print("Has marcado mujer")
             if var.ui.rbtHom.isChecked():
-                print("Marcado masculino")
+                print("Has marcado hombre")
         except Exception as error:
             print("Error en módulo seleccionar género:", error)
 
     def SelPago(self):
         try:
             if var.ui.chkEfectivo.isChecked():
-                print("has seleccionado efectivo")
+                print("Has seleccionado efectivo")
             if var.ui.chkTarjeta.isChecked():
                 print("Has seleccionado tarjeta")
             if var.ui.chkCargoCuenta.isChecked():
@@ -72,4 +72,26 @@ class Clientes():
             print("Has seleccionado la provincia de", prov)
             return prov
         except Exception as error:
-            print("Error selcción provincia, ", error)
+            print("Error en módulo seleccionar provincia, ", error)
+
+    def cargarFecha(qDate):
+        try:
+            data = ("{0}/{1}/{2}".format(qDate.day(), qDate.month(), qDate.year()))
+            var.ui.txtFechaAltaCli.setText(str(data))
+            var.dlgcalendar.hide()
+
+        except Exception as error:
+            print("Error cargar fecha de txtFecha", error)
+
+    def letraCapital():
+        try:
+            apellidos = var.ui.txtApel.text()
+            var.ui.txtApel.setText(apellidos.title())
+
+            nome = var.ui.txtNome.text()
+            var.ui.txtNome.setText(nome.title())
+
+            direccion = var.ui.txtDir.text()
+            var.ui.txtDir.setText(direccion.title())
+        except Exception as error:
+            print("Error al poner la primera letra en mayúscula", error)

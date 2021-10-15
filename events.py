@@ -20,4 +20,4 @@ class Eventos():
         try:
             var.dlgcalendar.show()
         except Exception as error:
-            print("Error al abrir el calnedario", error)
+            print("Error al abrir el calendario", error)

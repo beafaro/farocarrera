@@ -21,7 +21,7 @@ class DialogCalendar(QtWidgets.QDialog):
         mesactual= datetime.now().month
         anoactual= datetime.now().year
         var.dlgcalendar.Calendar.setSelectedDate(QtCore.QDate(anoactual,mesactual,diaactual))
-     #   var.dlgcalendar.Calendar.clicked.connect(clients.Clientes.cargarFecha)
+        var.dlgcalendar.Calendar.clicked.connect(clients.Clientes.cargarFecha)
 
 
 class DialogAviso(QtWidgets.QDialog):
@@ -60,6 +60,10 @@ class Main(QtWidgets.QMainWindow):
         Eventos caja de texto
         '''
         var.ui.txtDNI.editingFinished.connect(clients.Clientes.validarDNI)
+        #poner la primera letra de cada palabra en mayúscula
+        var.ui.txtApel.editingFinished.connect(clients.Clientes.letraCapital)
+        var.ui.txtNome.editingFinished.connect(clients.Clientes.letraCapital)
+        var.ui.txtDir.editingFinished.connect(clients.Clientes.letraCapital)
 
         '''
         Eventos de comboBox
