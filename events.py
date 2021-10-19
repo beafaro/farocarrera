@@ -4,6 +4,8 @@ Fichero de eventos generales
 
 '''
 import sys, var
+from window import *
+
 
 class Eventos():
     def Salir(self):
@@ -21,3 +23,13 @@ class Eventos():
             var.dlgcalendar.show()
         except Exception as error:
             print("Error al abrir el calendario", error)
+
+    def resizeTablaCli(self):
+        try:
+            header = var.ui.tabClientes.horizontalHeader()
+            for i in range(4):
+               header.setSectionResizeMode(i, QtWidgets.QHeaderView.Stretch)
+               if i == 2:
+                   header.setSectionResizeMode(i, QtWidgets.QHeaderView.ResizeToContents)
+        except Exception as error:
+            print("Error al redimensionar tabla clientes", error)

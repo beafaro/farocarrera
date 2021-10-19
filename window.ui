@@ -615,7 +615,7 @@ align: center;
       </item>
      </layout>
     </widget>
-    <widget class="QPushButton" name="btnAceptar">
+    <widget class="QPushButton" name="btnGrabaCli">
      <property name="geometry">
       <rect>
        <x>260</x>
@@ -634,7 +634,7 @@ align: center;
       </font>
      </property>
      <property name="text">
-      <string>Aceptar</string>
+      <string>Guardar</string>
      </property>
     </widget>
     <widget class="QPushButton" name="btnSalir">
@@ -659,8 +659,34 @@ align: center;
       <string>Salir</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="btnLimpiaCli">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>40</y>
+       <width>24</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777211</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>img/limpiaForm.png</normaloff>img/limpiaForm.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>16</width>
+       <height>16</height>
+      </size>
+     </property>
+    </widget>
    </widget>
-   <widget class="QTableWidget" name="tableWidget">
+   <widget class="QTableWidget" name="tabClientes">
     <property name="geometry">
      <rect>
       <x>140</x>
@@ -675,24 +701,59 @@ align: center;
       <height>600</height>
      </size>
     </property>
+    <property name="alternatingRowColors">
+     <bool>true</bool>
+    </property>
     <column>
      <property name="text">
       <string>Apellidos</string>
+     </property>
+     <property name="font">
+      <font>
+       <family>Verdana</family>
+       <pointsize>8</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
      </property>
     </column>
     <column>
      <property name="text">
       <string>Nombre</string>
      </property>
+     <property name="font">
+      <font>
+       <family>Verdana</family>
+       <pointsize>8</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
     </column>
     <column>
      <property name="text">
       <string>Fecha de alta</string>
      </property>
+     <property name="font">
+      <font>
+       <family>Verdana</family>
+       <pointsize>8</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
     </column>
     <column>
      <property name="text">
       <string>Forma de pago</string>
+     </property>
+     <property name="font">
+      <font>
+       <family>Verdana</family>
+       <pointsize>8</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
      </property>
     </column>
    </widget>
@@ -732,7 +793,11 @@ align: center;
  <resources/>
  <connections/>
  <buttongroups>
+  <buttongroup name="chkGroupPago">
+   <property name="exclusive">
+    <bool>false</bool>
+   </property>
+  </buttongroup>
   <buttongroup name="rbtGroupSex"/>
-  <buttongroup name="chkGroupPago"/>
  </buttongroups>
 </ui>

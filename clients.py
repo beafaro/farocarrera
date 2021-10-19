@@ -4,6 +4,7 @@ Funciones gestion clientes
 
 '''
 import var
+from window import *
 
 
 class Clientes():
@@ -95,3 +96,41 @@ class Clientes():
             var.ui.txtDir.setText(direccion.title())
         except Exception as error:
             print("Error al poner la primera letra en mayúscula", error)
+
+    def guardaCli(self):
+        try:
+            #preparamos el registro
+            newCli = []
+            client = [var.ui.txtApel, var.ui.txtNome, var.ui.txtFechaAltaCli]
+            for i in client:
+                newCli.append(i.text())
+
+            #cargamos en la tabla
+            row = 0
+            column = 0
+            var.ui.tabClientes.insertRow(row)
+            for campo in newCli:
+                cell = QtWidgets.QTableWidgetItem(campo)
+                var.ui.tabClientes.setItem(row, column, cell)
+                column += 1
+
+        except Exception as error:
+            print("Error en guardar clientes", error)
+
+    def limpiaFormCli(self):
+        try:
+            cajas = [var.ui.txtDNI, var.ui.txtApel, var.ui.txtNome, var.ui.txtFechaAltaCli, var.ui.txtDir]
+            for i in cajas:
+                i.setText("")
+            var.ui.rbtGroupSex.setExclusive(False)
+            var.ui.rbtFem.setChecked(False)
+            var.ui.rbtHom.setChecked(False)
+            var.ui.rbtGroupSex.setExclusive(True)
+            var.ui.chkTarjeta.setChecked(False)
+            var.ui.chkTransfe.setChecked(False)
+            var.ui.chkEfectivo.setChecked(False)
+            var.ui.chkCargoCuenta.setChecked(False)
+            var.ui.cmbProv.setCurrentIndex(0)
+            var.ui.cmbMuni.setCurrentIndex(0)
+        except Exception as error:
+            print("Error al limpiar formulario de clientes", error)
