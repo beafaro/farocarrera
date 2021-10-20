@@ -134,17 +134,14 @@ class Clientes():
                     var.ui.tabClientes.setItem(row, column, cell)
                     column += 1
             else:
-                print("DNI no válido")
-                #poner ventana con qtwidgtes.qmesasagebix
-
-            #código para cargar en la base de datos
-
-            while Clientes.validarDNI(False):
                 msg = QtWidgets.QMessageBox()
                 msg.setWindowTitle("Aviso")
                 msg.setIcon(QtWidgets.QMessageBox.Warning)
                 msg.setText("DNI no válido")
                 msg.exec()
+                #poner ventana con qtwidgtes.qmesasagebix
+
+            #código para cargar en la base de datos
 
 
         except Exception as error:
