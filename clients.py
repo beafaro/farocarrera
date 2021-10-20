@@ -5,11 +5,14 @@ Funciones gestion clientes
 '''
 import var
 from window import *
+from PyQt5.QtWidgets import QMessageBox
 
 
 class Clientes():
     def validarDNI():
         try:
+            global dniValido
+            dniValido = False
             dni = var.ui.txtDNI.text()
             var.ui.txtDNI.setText(dni.upper())
             tabla = "TRWAGMYFPDXBNJZSQVHLCKE" #LETRAS DNI
@@ -25,6 +28,7 @@ class Clientes():
                 if len(dni) == len([n for n in dni if n in numeros]) and tabla[int(dni) % 23] == dig_control:
                     var.ui.lblValidoDNI.setStyleSheet("QLabel {color: green;}")
                     var.ui.lblValidoDNI.setText("V")
+                    dniValido= True
                 else:
                     var.ui.lblValidoDNI.setStyleSheet("QLabel {color: red;}")
                     var.ui.lblValidoDNI.setText("X")
@@ -100,19 +104,48 @@ class Clientes():
     def guardaCli(self):
         try:
             #preparamos el registro
-            newCli = []
-            client = [var.ui.txtApel, var.ui.txtNome, var.ui.txtFechaAltaCli]
-            for i in client:
-                newCli.append(i.text())
+            newCli = []     #para la base de datos
+            tabCli = []     #para la tablewidget
+            client = [var.ui.txtDNI, var.ui.txtApel, var.ui.txtNome, var.ui.txtFechaAltaCli]
 
-            #cargamos en la tabla
-            row = 0
-            column = 0
-            var.ui.tabClientes.insertRow(row)
-            for campo in newCli:
-                cell = QtWidgets.QTableWidgetItem(campo)
-                var.ui.tabClientes.setItem(row, column, cell)
-                column += 1
+            # código para cargar en la tabla
+            for i in client:
+                tabCli.append(i.text())
+
+            pagos = []
+            if var.ui.chkCargoCuenta.isChecked():
+                pagos.append("Cargo cuenta")
+            if var.ui.chkEfectivo.isChecked():
+                pagos.append("Efectivo")
+            if var.ui.chkTransfe.isChecked():
+                pagos.append("Transferencia")
+            if var.ui.chkTarjeta.isChecked():
+                pagos.append("Tarjeta")
+            pagos = set(pagos) #evito duplicados
+            tabCli.append(", ".join(pagos))
+
+            #cargamos la tabla
+            if dniValido:
+                row = 0
+                column = 0
+                var.ui.tabClientes.insertRow(row)
+                for campo in tabCli:
+                    cell = QtWidgets.QTableWidgetItem(str(campo))
+                    var.ui.tabClientes.setItem(row, column, cell)
+                    column += 1
+            else:
+                print("DNI no válido")
+                #poner ventana con qtwidgtes.qmesasagebix
+
+            #código para cargar en la base de datos
+
+            while Clientes.validarDNI(False):
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle("Aviso")
+                msg.setIcon(QtWidgets.QMessageBox.Warning)
+                msg.setText("DNI no válido")
+                msg.exec()
+
 
         except Exception as error:
             print("Error en guardar clientes", error)
