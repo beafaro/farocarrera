@@ -77,6 +77,9 @@ class Main(QtWidgets.QMainWindow):
         Eventos QTabWidget
         '''
         events.Eventos.resizeTablaCli(self)
+        var.ui.tabClientes.clicked.connect(clients.Clientes.cargaCli)
+        var.ui.tabClientes.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
+
 
 
 if __name__ == '__main__':

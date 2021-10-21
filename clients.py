@@ -28,15 +28,16 @@ class Clientes():
                 if len(dni) == len([n for n in dni if n in numeros]) and tabla[int(dni) % 23] == dig_control:
                     var.ui.lblValidoDNI.setStyleSheet("QLabel {color: green;}")
                     var.ui.lblValidoDNI.setText("V")
+                    var.ui.txtDNI.setStyleSheet("background-color: white;")
                     dniValido= True
                 else:
                     var.ui.lblValidoDNI.setStyleSheet("QLabel {color: red;}")
                     var.ui.lblValidoDNI.setText("X")
-                    var.ui.txtDNI.setStyleSheet("background-color: pink;}")
+                    var.ui.txtDNI.setStyleSheet("background-color: pink;")
             else:
                 var.ui.lblValidoDNI.setStyleSheet("QLabel {color: red;}")
                 var.ui.lblValidoDNI.setText("X")
-                var.ui.txtDNI.setStyleSheet("background-color: pink;}")
+                var.ui.txtDNI.setStyleSheet("background-color: pink;")
         except Exception as error:
             print("Error en módulo validar DNI", error)
 
@@ -164,3 +165,18 @@ class Clientes():
             var.ui.cmbMuni.setCurrentIndex(0)
         except Exception as error:
             print("Error al limpiar formulario de clientes", error)
+
+    def cargaCli(self):
+        try:
+            fila = var.ui.tabClientes.selectedItems()
+            datos = [var.ui.txtDNI, var.ui.txtApel, var.ui.txtNome, var.ui.txtFechaAltaCli] # aqui faltarian las formas de pago
+            if fila:
+                row = [dato.text() for dato in fila]
+
+            for i, dato in enumerate(datos):
+                dato.setText(row[i])
+                if i == 5:
+                    pass
+
+        except Exception as error:
+            print("Error en cargar datos de un cliente", error)
