@@ -3,6 +3,7 @@
 Funciones gestion clientes
 
 '''
+import conexion
 import var
 from window import *
 from PyQt5.QtWidgets import QMessageBox
@@ -105,13 +106,24 @@ class Clientes():
     def guardaCli(self):
         try:
             #preparamos el registro
-            newCli = []     #para la base de datos
+            newCli = [] #para la base de datos
+            cliente = [var.ui.txtDNI, var.ui.txtFechaAltaCli, var.ui.txtApel, var.ui.txtNome, var.ui.txtDir]
             tabCli = []     #para la tablewidget
             client = [var.ui.txtDNI, var.ui.txtApel, var.ui.txtNome, var.ui.txtFechaAltaCli]
 
-            # código para cargar en la tabla
+            # código para cargar en la tabla el cliente y la forma de pago
+            for i in cliente:
+                newCli.append(i.text())
             for i in client:
                 tabCli.append(i.text())
+
+            newCli.append(var.ui.cmbProv.currentText())
+            newCli.append(var.ui.cmbMuni.currentText())
+
+            if var.ui.rbtHom.isChecked():
+                newCli.append("Hombre")
+            elif var.ui.rbtFem.isChecked:
+                newCli.append("Mujer")
 
             pagos = []
             if var.ui.chkCargoCuenta.isChecked():
@@ -123,6 +135,7 @@ class Clientes():
             if var.ui.chkTarjeta.isChecked():
                 pagos.append("Tarjeta")
             pagos = set(pagos) #evito duplicados
+            newCli.append(", ".join(pagos))
             tabCli.append(", ".join(pagos))
 
             #cargamos la tabla
@@ -134,6 +147,7 @@ class Clientes():
                     cell = QtWidgets.QTableWidgetItem(str(campo))
                     var.ui.tabClientes.setItem(row, column, cell)
                     column += 1
+                conexion.Conexion.altaCli(newCli)
             else:
                 msg = QtWidgets.QMessageBox()
                 msg.setWindowTitle("Aviso")
@@ -143,7 +157,6 @@ class Clientes():
                 #poner ventana con qtwidgtes.qmesasagebix
 
             #código para cargar en la base de datos
-
 
         except Exception as error:
             print("Error en guardar clientes", error)
@@ -169,7 +182,8 @@ class Clientes():
     def cargaCli(self):
         try:
             fila = var.ui.tabClientes.selectedItems()
-            datos = [var.ui.txtDNI, var.ui.txtApel, var.ui.txtNome, var.ui.txtFechaAltaCli] # aqui faltarian las formas de pago
+            formasPago = [var.ui.chkEfectivo, var.ui.chkTarjeta, var.ui.chkTransfe, var.ui.chkCargoCuenta]
+            datos = [var.ui.txtDNI, var.ui.txtApel, var.ui.txtNome, var.ui.txtFechaAltaCli, formasPago] #aqui faltarian las formas de pago
             if fila:
                 row = [dato.text() for dato in fila]
 
