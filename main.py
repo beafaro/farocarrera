@@ -28,9 +28,7 @@ class DialogCalendar(QtWidgets.QDialog):
 class DialogAviso(QtWidgets.QDialog):
     def __init__(self):
         '''
-
         Clase que instancia la ventana de avisos
-
         '''
         super(DialogAviso, self).__init__()
         var.dlgaviso = Ui_windowaviso()
@@ -49,8 +47,8 @@ class Main(QtWidgets.QMainWindow):
         '''
         var.ui.btnCalendar.clicked.connect(events.Eventos.abrircal)
         var.ui.btnSalir.clicked.connect(events.Eventos.Salir)
-        var.ui.rbtGroupSex.buttonClicked.connect(clients.Clientes.SelSexo)
-        var.ui.chkGroupPago.buttonClicked.connect(clients.Clientes.SelPago)
+        # var.ui.rbtGroupSex.buttonClicked.connect(clients.Clientes.SelSexo)
+        # var.ui.chkGroupPago.buttonClicked.connect(clients.Clientes.SelPago)
         var.ui.btnGrabaCli.clicked.connect(clients.Clientes.guardaCli)
         var.ui.btnLimpiaCli.clicked.connect(clients.Clientes.limpiaFormCli)
 
@@ -63,7 +61,7 @@ class Main(QtWidgets.QMainWindow):
         Eventos caja de texto
         '''
         var.ui.txtDNI.editingFinished.connect(clients.Clientes.validarDNI)
-        #poner la primera letra de cada palabra en mayúscula
+        # poner la primera letra de cada palabra en mayúscula
         var.ui.txtApel.editingFinished.connect(clients.Clientes.letraCapital)
         var.ui.txtNome.editingFinished.connect(clients.Clientes.letraCapital)
         var.ui.txtDir.editingFinished.connect(clients.Clientes.letraCapital)
@@ -72,7 +70,7 @@ class Main(QtWidgets.QMainWindow):
         Eventos de comboBox
         '''
         clients.Clientes.CargarProv_(self)
-        var.ui.cmbProv.activated[str].connect(clients.Clientes.SelProv)
+        # var.ui.cmbProv.activated[str].connect(clients.Clientes.SelProv)
 
         '''
         Eventos QTabWidget
@@ -85,7 +83,6 @@ class Main(QtWidgets.QMainWindow):
         Base de datos
         '''
         conexion.Conexion.db_connect(var.filedb)
-
 
 
 if __name__ == '__main__':

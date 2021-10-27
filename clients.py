@@ -1,8 +1,7 @@
 '''
-
 Funciones gestion clientes
-
 '''
+
 import conexion
 import var
 from window import *
@@ -42,27 +41,27 @@ class Clientes():
         except Exception as error:
             print("Error en módulo validar DNI", error)
 
-    def SelSexo(self):
-        try:
-            if var.ui.rbtFem.isChecked():
-                print("Has marcado mujer")
-            if var.ui.rbtHom.isChecked():
-                print("Has marcado hombre")
-        except Exception as error:
-            print("Error en módulo seleccionar género:", error)
+    # def SelSexo(self):
+    #     try:
+    #         if var.ui.rbtFem.isChecked():
+    #             print("Has marcado mujer")
+    #         if var.ui.rbtHom.isChecked():
+    #             print("Has marcado hombre")
+    #     except Exception as error:
+    #         print("Error en módulo seleccionar género:", error)
 
-    def SelPago(self):
-        try:
-            if var.ui.chkEfectivo.isChecked():
-                print("Has seleccionado efectivo")
-            if var.ui.chkTarjeta.isChecked():
-                print("Has seleccionado tarjeta")
-            if var.ui.chkCargoCuenta.isChecked():
-                print("Has seleccionado cargo cuenta")
-            if var.ui.chkTransfe.isChecked():
-                print("Has seleccionado transferencia")
-        except Exception as error:
-            print("Error en módulo seleccionar forma de pago:", error)
+    # def SelPago(self):
+    #     try:
+    #         if var.ui.chkEfectivo.isChecked():
+    #             print("Has seleccionado efectivo")
+    #         if var.ui.chkTarjeta.isChecked():
+    #             print("Has seleccionado tarjeta")
+    #         if var.ui.chkCargoCuenta.isChecked():
+    #             print("Has seleccionado cargo cuenta")
+    #         if var.ui.chkTransfe.isChecked():
+    #             print("Has seleccionado transferencia")
+    #     except Exception as error:
+    #         print("Error en módulo seleccionar forma de pago:", error)
 
     def CargarProv_(self):
         try:
@@ -74,12 +73,12 @@ class Clientes():
         except Exception as error:
             print("Error en módulo cargar provincias, ", error)
 
-    def SelProv(prov):
-        try:
-            print("Has seleccionado la provincia de", prov)
-            return prov
-        except Exception as error:
-            print("Error en módulo seleccionar provincia, ", error)
+    # def SelProv(prov):
+    #     try:
+    #         print("Has seleccionado la provincia de", prov)
+    #         return prov
+    #     except Exception as error:
+    #         print("Error en módulo seleccionar provincia, ", error)
 
     def cargarFecha(qDate):
         try:
@@ -105,7 +104,7 @@ class Clientes():
 
     def guardaCli(self):
         try:
-            #preparamos el registro
+            # preparamos el registro
             newCli = [] #para la base de datos
             cliente = [var.ui.txtDNI, var.ui.txtFechaAltaCli, var.ui.txtApel, var.ui.txtNome, var.ui.txtDir]
             tabCli = []     #para la tablewidget
@@ -138,7 +137,7 @@ class Clientes():
             newCli.append(", ".join(pagos))
             tabCli.append(", ".join(pagos))
 
-            #cargamos la tabla
+            # cargamos la tabla
             if dniValido:
                 row = 0
                 column = 0
@@ -156,7 +155,7 @@ class Clientes():
                 msg.exec()
                 #poner ventana con qtwidgtes.qmesasagebix
 
-            #código para cargar en la base de datos
+            # código para cargar en la base de datos
 
         except Exception as error:
             print("Error en guardar clientes", error)
@@ -180,17 +179,24 @@ class Clientes():
             print("Error al limpiar formulario de clientes", error)
 
     def cargaCli(self):
+        # carga datos de cliente al seleccionar en tabla
         try:
-            fila = var.ui.tabClientes.selectedItems()
-            formasPago = [var.ui.chkEfectivo, var.ui.chkTarjeta, var.ui.chkTransfe, var.ui.chkCargoCuenta]
-            datos = [var.ui.txtDNI, var.ui.txtApel, var.ui.txtNome, var.ui.txtFechaAltaCli, formasPago] #aqui faltarian las formas de pago
+            fila = var.ui.tabClientes.selectedItems() #seleccionamos fila
+            datos = [var.ui.txtDNI, var.ui.txtApel, var.ui.txtNome, var.ui.txtFechaAltaCli]
             if fila:
                 row = [dato.text() for dato in fila]
 
             for i, dato in enumerate(datos):
-                dato.setText(row[i])
-                if i == 5:
-                    pass
+                dato.setText(row[i]) #cargamos los datos en las cajas de texto
+
+            if "Efectivo" in row[4]:
+                var.ui.chkEfectivo.setChecked(True)
+            if "Transferencia" in row[4]:
+                var.ui.chkTransfe.setChecked(True)
+            if "Tarjeta" in row[4]:
+                var.ui.chkTarjeta.setChecked(True)
+            if "Cargo" in row[4]:
+                var.ui.chkCargoCuenta.setChecked(True)
 
         except Exception as error:
             print("Error en cargar datos de un cliente", error)

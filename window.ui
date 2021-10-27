@@ -50,9 +50,9 @@ align: center;
    <widget class="QTabWidget" name="TabPrograma">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>50</x>
       <y>40</y>
-      <width>761</width>
+      <width>921</width>
       <height>621</height>
      </rect>
     </property>
@@ -74,7 +74,7 @@ align: center;
      <widget class="QGroupBox" name="groupBox">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>90</x>
         <y>10</y>
         <width>731</width>
         <height>281</height>
@@ -581,50 +581,6 @@ align: center;
         </item>
        </layout>
       </widget>
-      <widget class="QPushButton" name="btnGrabaCli">
-       <property name="geometry">
-        <rect>
-         <x>260</x>
-         <y>230</y>
-         <width>81</width>
-         <height>23</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Verdana</family>
-         <pointsize>10</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-         <stylestrategy>PreferDefault</stylestrategy>
-        </font>
-       </property>
-       <property name="text">
-        <string>Guardar</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="btnSalir">
-       <property name="geometry">
-        <rect>
-         <x>360</x>
-         <y>230</y>
-         <width>75</width>
-         <height>23</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Verdana</family>
-         <pointsize>10</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-         <stylestrategy>PreferDefault</stylestrategy>
-        </font>
-       </property>
-       <property name="text">
-        <string>Salir</string>
-       </property>
-      </widget>
       <widget class="QPushButton" name="btnLimpiaCli">
        <property name="geometry">
         <rect>
@@ -712,11 +668,87 @@ align: center;
         </item>
        </layout>
       </widget>
+      <widget class="QWidget" name="">
+       <property name="geometry">
+        <rect>
+         <x>180</x>
+         <y>230</y>
+         <width>320</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_8">
+        <item>
+         <widget class="QPushButton" name="btnGrabaCli">
+          <property name="font">
+           <font>
+            <family>Verdana</family>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+            <stylestrategy>PreferDefault</stylestrategy>
+           </font>
+          </property>
+          <property name="text">
+           <string>Guardar</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnModifCli">
+          <property name="font">
+           <font>
+            <family>Verdana</family>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+            <stylestrategy>PreferDefault</stylestrategy>
+           </font>
+          </property>
+          <property name="text">
+           <string>Modificar</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnSalir">
+          <property name="font">
+           <font>
+            <family>Verdana</family>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+            <stylestrategy>PreferDefault</stylestrategy>
+           </font>
+          </property>
+          <property name="text">
+           <string>Salir</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnBajaCli">
+          <property name="font">
+           <font>
+            <family>Verdana</family>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+            <stylestrategy>PreferDefault</stylestrategy>
+           </font>
+          </property>
+          <property name="text">
+           <string>Eliminar</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </widget>
      <widget class="QTableWidget" name="tabClientes">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>90</x>
         <y>300</y>
         <width>731</width>
         <height>261</height>
@@ -727,6 +759,9 @@ align: center;
         <width>800</width>
         <height>600</height>
        </size>
+      </property>
+      <property name="sizeAdjustPolicy">
+       <enum>QAbstractScrollArea::AdjustIgnored</enum>
       </property>
       <property name="alternatingRowColors">
        <bool>true</bool>
@@ -870,11 +905,11 @@ align: center;
  <resources/>
  <connections/>
  <buttongroups>
+  <buttongroup name="rbtGroupSex"/>
   <buttongroup name="chkGroupPago">
    <property name="exclusive">
     <bool>false</bool>
    </property>
   </buttongroup>
-  <buttongroup name="rbtGroupSex"/>
  </buttongroups>
 </ui>

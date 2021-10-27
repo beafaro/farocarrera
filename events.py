@@ -1,7 +1,5 @@
 '''
-
 Fichero de eventos generales
-
 '''
 import sys, var
 from window import *
