@@ -48,3 +48,41 @@ class Conexion():
                 msg.exec()
         except Exception as error:
             print("Problemas en alta cliente ", error)
+
+    def cargarTabCli(self):
+        try:
+            index = 0
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT dni, apellidos, nombre, alta, pago FROM clientes")
+            if query.exec_():
+                while query.next():
+                    dni = query.value(0)
+                    apellidos = query.value(1)
+                    nombre = query.value(2)
+                    alta = query.value(3)
+                    pago = query.value(4)
+                    var.ui.tabClientes.setRowCount(index+1) #creamos la fila y luego cargamos datos
+                    var.ui.tabClientes.setItem(index,0,QtWidgets.QTableWidgetItem(dni))
+                    var.ui.tabClientes.setItem(index,1,QtWidgets.QTableWidgetItem(apellidos))
+                    var.ui.tabClientes.setItem(index,2,QtWidgets.QTableWidgetItem(nombre))
+                    var.ui.tabClientes.setItem(index,3,QtWidgets.QTableWidgetItem(alta))
+                    var.ui.tabClientes.setItem(index,4,QtWidgets.QTableWidgetItem(pago))
+                    index += 1
+
+        except Exception as error:
+            print("Problemas mostrar tabla clientes ", error)
+
+    def oneCli(dni):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT direccion, provincia, municipio, sexo FROM clientes WHERE dni = :dni")
+
+            query.bindValue(":dni", dni)
+            print(dni)
+            if query.exec_():
+                while query.next():
+                    direccion = query.value(0)
+            print()
+
+        except Exception as error:
+            print("Problemas mostrar tabla clientes ", error)

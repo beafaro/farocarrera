@@ -108,7 +108,7 @@ class Clientes():
             newCli = [] #para la base de datos
             cliente = [var.ui.txtDNI, var.ui.txtFechaAltaCli, var.ui.txtApel, var.ui.txtNome, var.ui.txtDir]
             tabCli = []     #para la tablewidget
-            client = [var.ui.txtDNI, var.ui.txtApel, var.ui.txtNome, var.ui.txtFechaAltaCli]
+            client = [var.ui.txtDNI, var.ui.txtApel, var.ui.txtNome, var.ui.txtFechaAltaCli, var.ui.txtDir]
 
             # código para cargar en la tabla el cliente y la forma de pago
             for i in cliente:
@@ -197,6 +197,7 @@ class Clientes():
                 var.ui.chkTarjeta.setChecked(True)
             if "Cargo" in row[4]:
                 var.ui.chkCargoCuenta.setChecked(True)
+
 
         except Exception as error:
             print("Error en cargar datos de un cliente", error)
