@@ -106,3 +106,39 @@ class Conexion():
                 msg.exec()
         except Exception as error:
             print('Error baja cliente en conexion ', error)
+
+
+    def cargarProv(self):
+        try:
+            var.ui.cmbProv.clear()
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT provincia FROM provincias")
+            if query.exec_():
+                var.ui.cmbProv.addItem('')
+                while query.next():
+                    var.ui.cmbProv.addItem(query.value(0))
+
+        except Exception as error:
+            print("Error al cargar combo provincias ", error)
+
+    def selMuni(self):
+        try:
+            var.ui.cmbMuni.claer()
+            prov = var.ui.cmbProv.currenText()
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT id FROM provincias WHERE provincia = :prov")
+            query.bindValue(":prov", str(prov))
+            if query.exec_():
+                while query.next():
+                    id = query.value(0)
+
+            query1 = QtSql.QSqlQuery()
+            query1.prepare("SELECT municipio FROM municipios WHERE provincia_id = :id")
+            query1.bindValue(":id", id)
+            if query1.exec_():
+                var.ui.cmbMuni.addItem('')
+                while query1.next():
+                    var.ui.cmbProv.addItem(query1.value(0))
+
+        except Exception as error:
+            print("Error al cargar combo municipios ", error)

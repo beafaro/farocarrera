@@ -70,8 +70,8 @@ class Main(QtWidgets.QMainWindow):
         '''
         Eventos de comboBox
         '''
-        clients.Clientes.CargarProv_(self)
-        # var.ui.cmbProv.activated[str].connect(clients.Clientes.SelProv)
+        conexion.Conexion.cargarProv(self)
+        var.ui.cmbProv.currentIndexChanged.connect(conexion.Conexion.selMuni)
 
         '''
         Eventos QTabWidget

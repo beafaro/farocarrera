@@ -64,29 +64,6 @@ class Clientes():
     #     except Exception as error:
     #         print("Error en módulo seleccionar forma de pago:", error)
 
-    def CargarProv_(self):
-        try:
-            var.ui.cmbProv.clear()
-            prov = ["", "A Coruña", "Lugo", "Ourense", "Pontevedra", "Vigo"]
-            for i in prov:
-                var.ui.cmbProv.addItem(i)
-
-        except Exception as error:
-            print("Error en módulo cargar provincias, ", error)
-
-    def cargarProv(self):
-        try:
-            index = 0
-            query = QtSql.QSqlQuery()
-            query.prepare("SELECT provincia FROM provincias")
-            if query.exec_():
-                while query.next():
-                    var.ui.cmbProv.addItem()
-
-
-        except Exception as error:
-            print("Error al cargar provincias ", error)
-
     # def SelProv(prov):
     #     try:
     #         print("Has seleccionado la provincia de", prov)
