@@ -1,6 +1,7 @@
 '''
 Funciones gestion clientes
 '''
+from PyQt5 import QtSql
 
 import conexion
 import var
@@ -72,6 +73,19 @@ class Clientes():
 
         except Exception as error:
             print("Error en módulo cargar provincias, ", error)
+
+    def cargarProv(self):
+        try:
+            index = 0
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT provincia FROM provincias")
+            if query.exec_():
+                while query.next():
+                    var.ui.cmbProv.addItem()
+
+
+        except Exception as error:
+            print("Error al cargar provincias ", error)
 
     # def SelProv(prov):
     #     try:
@@ -181,6 +195,7 @@ class Clientes():
     def cargaCli(self):
         # carga datos de cliente al seleccionar en tabla
         try:
+            Clientes.limpiaFormCli(self)
             fila = var.ui.tabClientes.selectedItems() #seleccionamos fila
             datos = [var.ui.txtDNI, var.ui.txtApel, var.ui.txtNome, var.ui.txtFechaAltaCli]
             if fila:
@@ -198,6 +213,23 @@ class Clientes():
             if "Cargo" in row[4]:
                 var.ui.chkCargoCuenta.setChecked(True)
 
+            registro = conexion.Conexion.oneCli(row[0])
+            var.ui.txtDir.setText(str(registro[0]))
+            var.ui.cmbProv.setCurrentText(str(registro[1]))
+            var.ui.cmbMuni.setCurrentText(str(registro[2]))
+            if str(registro[3]) == 'Hombre':
+                var.ui.rbtHom.setChecked(True)
+            else:
+                var.ui.rbtFem.setChecked(True)
 
         except Exception as error:
             print("Error en cargar datos de un cliente", error)
+
+    def bajaCli(self):
+        try:
+            dni = var.ui.txtDNI.text()
+            conexion.Conexion.bajaCli(dni)
+            conexion.Conexion.cargarTabCli(self)
+
+        except Exception as error:
+            print('Error en baja cliente ', error)

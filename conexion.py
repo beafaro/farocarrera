@@ -74,15 +74,35 @@ class Conexion():
 
     def oneCli(dni):
         try:
+            record = []
             query = QtSql.QSqlQuery()
-            query.prepare("SELECT direccion, provincia, municipio, sexo FROM clientes WHERE dni = :dni")
-
-            query.bindValue(":dni", dni)
-            print(dni)
+            query.prepare('select direccion, provincia, municipio, sexo from clientes where dni = :dni')
+            query.bindValue(':dni', dni)
             if query.exec_():
                 while query.next():
-                    direccion = query.value(0)
-            print()
-
+                    for i in range(4):
+                        record.append(query.value(i))
+            return record
         except Exception as error:
-            print("Problemas mostrar tabla clientes ", error)
+            print('Problemas cargar datos cliente', error)
+
+    def bajaCli(dni):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare('DELETE FROM clientes WHERE dni = :dni')
+            query.bindValue(':dni', str(dni))
+            if query.exec_():
+                print('Baja correcta')
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle('Aviso')
+                msg.setIcon(QtWidgets.QMessageBox.Information)
+                msg.setText('Cliente dado de baja')
+                msg.exec()
+            else:
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle('Aviso')
+                msg.setIcon(QtWidgets.QMessageBox.Warning)
+                msg.setText(query.lastError().text())
+                msg.exec()
+        except Exception as error:
+            print('Error baja cliente en conexion ', error)
