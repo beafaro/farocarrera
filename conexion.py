@@ -123,7 +123,7 @@ class Conexion():
 
     def selMuni(self):
         try:
-            var.ui.cmbMuni.claer()
+            var.ui.cmbMuni.clear()
             prov = var.ui.cmbProv.currenText()
             query = QtSql.QSqlQuery()
             query.prepare("SELECT id FROM provincias WHERE provincia = :prov")

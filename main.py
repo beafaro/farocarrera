@@ -86,6 +86,13 @@ class Main(QtWidgets.QMainWindow):
         conexion.Conexion.db_connect(var.filedb)
         conexion.Conexion.cargarTabCli(self)
 
+        '''
+        Eventos de comboBox
+        '''
+        conexion.Conexion.cargarProv(self)
+        var.ui.cmbProv.currentIndexChanged.connect(conexion.Conexion.selMuni)
+
+
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])
