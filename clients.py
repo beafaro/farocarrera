@@ -210,3 +210,35 @@ class Clientes():
 
         except Exception as error:
             print('Error en baja cliente ', error)
+
+    def modifCli(self):
+        try:
+            modCliente = []
+            cliente = [var.ui.txtDNI, var.ui.txtFechaAltaCli, var.ui.txtApel, var.ui.txtNome, var.ui.txtDir]
+            #cojo todas las celdas que hay en cliente y las voy metiendo en modCliente
+            for i in cliente:
+                modCliente.append(i.text())
+
+            modCliente.append(var.ui.cmbProv.currentText())
+            modCliente.append(var.ui.cmbMuni.currentText())
+
+            if var.ui.rbtHom.isChecked():
+                modCliente.append("Hombre")
+            elif var.ui.rbtFem.isChecked:
+                modCliente.append("Mujer")
+
+            pagos = []
+            if var.ui.chkCargoCuenta.isChecked():
+                pagos.append("Cargo cuenta")
+            if var.ui.chkEfectivo.isChecked():
+                pagos.append("Efectivo")
+            if var.ui.chkTransfe.isChecked():
+                pagos.append("Transferencia")
+            if var.ui.chkTarjeta.isChecked():
+                pagos.append("Tarjeta")
+            pagos = set(pagos) #evito duplicados
+            modCliente.append(", ".join(pagos))
+            conexion.Conexion.modifCli(modCliente)
+            conexion.Conexion.cargarTabCli(self) #recargo la tabla
+        except Exception as error:
+            print("Erro al moficiar cliente", error)

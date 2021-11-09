@@ -123,22 +123,55 @@ class Conexion():
 
     def selMuni(self):
         try:
+            #busco el código de la provincia
+            id = 0
             var.ui.cmbMuni.clear()
-            prov = var.ui.cmbProv.currenText()
+            prov = var.ui.cmbProv.currentText()
             query = QtSql.QSqlQuery()
-            query.prepare("SELECT id FROM provincias WHERE provincia = :prov")
-            query.bindValue(":prov", str(prov))
+            query.prepare('select id from provincias where provincia = :prov')
+            query.bindValue(':prov', str(prov))
             if query.exec_():
                 while query.next():
                     id = query.value(0)
-
+            #cargo los municipios con ese código
             query1 = QtSql.QSqlQuery()
-            query1.prepare("SELECT municipio FROM municipios WHERE provincia_id = :id")
-            query1.bindValue(":id", id)
+            query1.prepare('select municipio from municipios where provincia_id = :id')
+            query1.bindValue(':id', int(id))
             if query1.exec_():
                 var.ui.cmbMuni.addItem('')
                 while query1.next():
-                    var.ui.cmbProv.addItem(query1.value(0))
+                    var.ui.cmbMuni.addItem(query1.value(0))
 
         except Exception as error:
             print("Error al cargar combo municipios ", error)
+
+    def modifCli(modCliente):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare('UPDATE clientes SET alta = :alta, apellidos = :apellidos, nombre = :nombre, '
+                          'direccion = :direccion, provincia = :provincia, municipio = :municipio, '
+                          'sexo = :sexo, pago = :pago WHERE dni = :dni')
+            query.bindValue(':dni', str(modCliente[0]))
+            query.bindValue(":alta", str(modCliente[1]))
+            query.bindValue(":apellidos", str(modCliente[2]))
+            query.bindValue(":nombre", str(modCliente[3]))
+            query.bindValue(":direccion", str(modCliente[4]))
+            query.bindValue(":provincia", str(modCliente[5]))
+            query.bindValue(":municipio", str(modCliente[6]))
+            query.bindValue(":sexo", str(modCliente[7]))
+            query.bindValue(":pago", str(modCliente[8]))
+
+            if query.exec_():
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle('Aviso')
+                msg.setIcon(QtWidgets.QMessageBox.Information)
+                msg.setText('Datos modificados de Cliente')
+                msg.exec()
+            else:
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle('Aviso')
+                msg.setIcon(QtWidgets.QMessageBox.Warning)
+                msg.setText(query.lastError().text())
+                msg.exec()
+        except Exception as error:
+            print("Problemas al modificar cliente")

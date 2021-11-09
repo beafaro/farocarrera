@@ -4,8 +4,9 @@ import conexion
 from window import *
 from windowaviso import *
 from windowcal import *
-import sys, var, events
+import sys, var, events, locale
 from datetime import *
+locale.setlocale(locale.LC_ALL, "es-ES")
 
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
@@ -52,6 +53,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnGrabaCli.clicked.connect(clients.Clientes.guardaCli)
         var.ui.btnLimpiaCli.clicked.connect(clients.Clientes.limpiaFormCli)
         var.ui.btnBajaCli.clicked.connect(clients.Clientes.bajaCli)
+        var.ui.btnModifCli.clicked.connect(clients.Clientes.modifCli)
 
         '''
         Eventos de la barra de menús
@@ -92,6 +94,13 @@ class Main(QtWidgets.QMainWindow):
         conexion.Conexion.cargarProv(self)
         var.ui.cmbProv.currentIndexChanged.connect(conexion.Conexion.selMuni)
 
+        '''
+        bara de estado
+        '''
+        var.ui.statusbar.addPermanentWidget(var.ui.lblFecha, 1)
+        var.ui.lblFecha.setText("Import-Export Vigo")
+        day = datetime.now()
+        var.ui.lblFecha.setText(day.strftime("%A, %d de %B de %Y %H:%M").capitalize())
 
 
 if __name__ == '__main__':
