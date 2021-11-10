@@ -8,7 +8,7 @@ variables de ventana
 global ui
 global dlgaviso
 global dlgcalendar
-global dlgcli
+global dlgabrir
 
 ''' 
 otras variables

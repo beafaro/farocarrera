@@ -31,3 +31,9 @@ class Eventos():
                    header.setSectionResizeMode(i, QtWidgets.QHeaderView.ResizeToContents)
         except Exception as error:
             print("Error al redimensionar tabla clientes", error)
+
+    def Abrir(self):
+        try:
+            var.dlgabrir.show()
+        except Exception as error:
+            print("Error al abrir cuadro de diálogo", error)
