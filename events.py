@@ -8,6 +8,7 @@ import zipfile
 import conexion
 from window import *
 from datetime import date, datetime
+from PyQt5 import QtPrintSupport
 
 class Eventos():
     def Salir(self):
@@ -91,3 +92,11 @@ class Eventos():
 
         except Exception as error:
             print("Error al restaurar Backup ", error)
+
+    def imprimir(self):
+        try:
+            printDialog = QtPrintSupport.QPrintDialog()
+            if printDialog.exec_():
+                printDialog.show()
+        except Exception as error:
+            print("Error al Abrir ventana Impresora")

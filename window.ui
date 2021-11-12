@@ -954,6 +954,8 @@ align: center;
     </property>
     <addaction name="actionAbrir"/>
     <addaction name="separator"/>
+    <addaction name="actionImprimir"/>
+    <addaction name="separator"/>
     <addaction name="actionSalir"/>
    </widget>
    <widget class="QMenu" name="menuHerramientas">
@@ -979,10 +981,13 @@ align: center;
    </attribute>
    <addaction name="actionbarAbrirCarpeta"/>
    <addaction name="separator"/>
+   <addaction name="actionbarImprimir"/>
+   <addaction name="separator"/>
    <addaction name="actionbarCrearBackup"/>
    <addaction name="actionbarRestaurarBackup"/>
    <addaction name="separator"/>
    <addaction name="actionbarSalir"/>
+   <addaction name="separator"/>
   </widget>
   <action name="actionFichero">
    <property name="text">
@@ -1067,6 +1072,26 @@ align: center;
    </property>
    <property name="text">
     <string>Restaurar Backup</string>
+   </property>
+  </action>
+  <action name="actionbarImprimir">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>img/imprimir.png</normaloff>img/imprimir.png</iconset>
+   </property>
+   <property name="text">
+    <string>barImprimir</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
+   </property>
+  </action>
+  <action name="actionImprimir">
+   <property name="text">
+    <string>Imprimir</string>
    </property>
   </action>
  </widget>
