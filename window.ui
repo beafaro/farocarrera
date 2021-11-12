@@ -967,6 +967,23 @@ align: center;
    <addaction name="menuHerramientas"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actioncarAbrirCarpeta"/>
+   <addaction name="separator"/>
+   <addaction name="actioncrearBackup"/>
+   <addaction name="actionrestauraBackup"/>
+   <addaction name="separator"/>
+   <addaction name="actionactbarSalir"/>
+  </widget>
   <action name="actionFichero">
    <property name="text">
     <string>Fichero</string>
@@ -995,15 +1012,72 @@ align: center;
     <string>Restaurar Backup</string>
    </property>
   </action>
+  <action name="actionactbarSalir">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>img/salir.png</normaloff>img/salir.png</iconset>
+   </property>
+   <property name="text">
+    <string>Salir</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+S</string>
+   </property>
+  </action>
+  <action name="actioncarAbrirCarpeta">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>img/abrirCarpeta.png</normaloff>
+     <normalon>img/abrirCarpeta.png</normalon>img/abrirCarpeta.png</iconset>
+   </property>
+   <property name="text">
+    <string>Abrir carpeta</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+A</string>
+   </property>
+  </action>
+  <action name="actioncrearBackup">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normalon>img/crearBackup.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Crear Backup</string>
+   </property>
+  </action>
+  <action name="actionrestauraBackup">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normalon>img/restaurarBackup.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Restaurar Backup</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="rbtGroupSex"/>
   <buttongroup name="chkGroupPago">
    <property name="exclusive">
     <bool>false</bool>
    </property>
   </buttongroup>
+  <buttongroup name="rbtGroupSex"/>
  </buttongroups>
 </ui>

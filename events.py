@@ -65,24 +65,29 @@ class Eventos():
         except Exception as error:
             print("Error al crear Backup: ", error)
 
-    #restaurar backup
+
     def restaurarBackup(self):
         try:
-            dirpro = os.getcwd()
             option = QtWidgets.QFileDialog.Options()
-            filename = var.dlgabrir.getOpenFileName(None, "Restaurar backup",'', "*.zip;;ALL", options= option)
+            filename = var.dlgabrir.getOpenFileName(None, "Restaurar backup",'', "*.zip", options= option)
 
             if var.dlgabrir.Accepted and filename != "":
                 # extraer zip
                 file = filename[0]
+                print(file)
                 with zipfile.ZipFile(str(file), "r") as bbdd:
                     bbdd.extractall()
                 bbdd.close()
-                shutil.move("bbdd.sqlite", str(dirpro))
+
             conexion.Conexion.db_connect(var.filedb)
-            conexion.Conexion.cargarTabCli()
+            conexion.Conexion.cargarTabCli(self)
 
-
+            msg = QtWidgets.QMessageBox()
+            msg.setModal(True)
+            msg.setWindowTitle('Aviso')
+            msg.setIcon(QtWidgets.QMessageBox.Information)
+            msg.setText('Backup restaurada con éxito')
+            msg.exec()
 
         except Exception as error:
             print("Error al restaurar Backup ", error)
