@@ -113,6 +113,14 @@ class Main(QtWidgets.QMainWindow):
         day = datetime.now()
         var.ui.lblFecha.setText(day.strftime("%A, %d de %B de %Y %H:%M").capitalize())
 
+        '''
+        Barra de herramientas
+        '''
+        var.ui.actionbarSalir.triggered.connect(events.Eventos.Salir)
+        var.ui.actionbarAbrirCarpeta.triggered.connect(events.Eventos.Abrir)
+        var.ui.actionbarCrearBackup.triggered.connect(events.Eventos.crearBackup)
+        var.ui.actionbarRestaurarBackup.triggered.connect(events.Eventos.restaurarBackup)
+
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])

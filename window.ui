@@ -977,12 +977,12 @@ align: center;
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="actioncarAbrirCarpeta"/>
+   <addaction name="actionbarAbrirCarpeta"/>
    <addaction name="separator"/>
-   <addaction name="actioncrearBackup"/>
-   <addaction name="actionrestauraBackup"/>
+   <addaction name="actionbarCrearBackup"/>
+   <addaction name="actionbarRestaurarBackup"/>
    <addaction name="separator"/>
-   <addaction name="actionactbarSalir"/>
+   <addaction name="actionbarSalir"/>
   </widget>
   <action name="actionFichero">
    <property name="text">
@@ -1012,7 +1012,7 @@ align: center;
     <string>Restaurar Backup</string>
    </property>
   </action>
-  <action name="actionactbarSalir">
+  <action name="actionbarSalir">
    <property name="checkable">
     <bool>true</bool>
    </property>
@@ -1027,7 +1027,7 @@ align: center;
     <string>Alt+S</string>
    </property>
   </action>
-  <action name="actioncarAbrirCarpeta">
+  <action name="actionbarAbrirCarpeta">
    <property name="checkable">
     <bool>true</bool>
    </property>
@@ -1043,7 +1043,7 @@ align: center;
     <string>Alt+A</string>
    </property>
   </action>
-  <action name="actioncrearBackup">
+  <action name="actionbarCrearBackup">
    <property name="checkable">
     <bool>true</bool>
    </property>
@@ -1056,7 +1056,7 @@ align: center;
     <string>Crear Backup</string>
    </property>
   </action>
-  <action name="actionrestauraBackup">
+  <action name="actionbarRestaurarBackup">
    <property name="checkable">
     <bool>true</bool>
    </property>
