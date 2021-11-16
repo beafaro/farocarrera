@@ -4,6 +4,7 @@ Fichero de eventos generales
 import os.path
 import sys, var, shutil
 import zipfile
+import xlrd
 
 import conexion
 from window import *
@@ -98,5 +99,47 @@ class Eventos():
             printDialog = QtPrintSupport.QPrintDialog()
             if printDialog.exec_():
                 printDialog.show()
-        except Exception as error:
+        except Exception:
             print("Error al Abrir ventana Impresora")
+
+    def cargarDatosExcel(self):
+        try:
+            option = QtWidgets.QFileDialog.Options()
+            archivo = var.dlgabrir.getOpenFileName(None, "Importar datos",'', "*.xls", options= option)
+            #abrimos fichero excel
+            documento = xlrd.open_workbook(archivo)
+            clientes = documento.sheet_by_index(0)
+
+            baseDatos = conexion.Conexion.db_connect(var.filedb)
+            #cursor para recorrer BBDD
+            cursor = baseDatos.cursor()
+            query = "INSERT INTO clientes (dni, apellidos, nombre, direccion, provincia, sexo, pago) " \
+                    "VALUES (:dni, :alta, :apellidos, :nombre, :direccion, :provincia, :municipio, :sexo, :pago)"
+
+            for r in range(1, clientes.nrows):
+                dni = clientes.cell(r, 0).value
+                apellidos = clientes.cell(r, 1).value
+
+                values = (dni, apellidos)
+
+                # Ejecutar instrucción SQL
+                cursor.execute(query, values)
+
+            # Cerrar cursor
+            cursor.close()
+
+            # Enviar
+            baseDatos.commit()
+
+            # Cerrar la conexión de la base de datos
+            baseDatos.close()
+
+            msg = QtWidgets.QMessageBox()
+            msg.setModal(True)
+            msg.setWindowTitle('Aviso')
+            msg.setIcon(QtWidgets.QMessageBox.Information)
+            msg.setText('Importación efectuada con éxito')
+            msg.exec()
+
+        except Exception as error:
+            print("Error al cargar los datos desde el excel", error)

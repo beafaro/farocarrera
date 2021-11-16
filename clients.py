@@ -144,7 +144,7 @@ class Clientes():
                 msg.setIcon(QtWidgets.QMessageBox.Warning)
                 msg.setText("DNI no válido")
                 msg.exec()
-                #poner ventana con qtwidgtes.qmesasagebix
+                #poner ventana con qtwidgtes.qmesasagebox
 
             # código para cargar en la base de datos
 
@@ -241,4 +241,4 @@ class Clientes():
             conexion.Conexion.modifCli(modCliente)
             conexion.Conexion.cargarTabCli(self) #recargo la tabla
         except Exception as error:
-            print("Erro al moficiar cliente", error)
+            print("Error al moficiar cliente", error)

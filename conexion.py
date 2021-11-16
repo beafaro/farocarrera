@@ -76,7 +76,7 @@ class Conexion():
         try:
             record = []
             query = QtSql.QSqlQuery()
-            query.prepare('select direccion, provincia, municipio, sexo from clientes where dni = :dni')
+            query.prepare('SELECT direccion, provincia, municipio, sexo from clientes WHERE dni = :dni')
             query.bindValue(':dni', dni)
             if query.exec_():
                 while query.next():
@@ -128,14 +128,14 @@ class Conexion():
             var.ui.cmbMuni.clear()
             prov = var.ui.cmbProv.currentText()
             query = QtSql.QSqlQuery()
-            query.prepare('select id from provincias where provincia = :prov')
+            query.prepare('SELECT id FROM provincias WHERE provincia = :prov')
             query.bindValue(':prov', str(prov))
             if query.exec_():
                 while query.next():
                     id = query.value(0)
             #cargo los municipios con ese código
             query1 = QtSql.QSqlQuery()
-            query1.prepare('select municipio from municipios where provincia_id = :id')
+            query1.prepare('SELECT municipio FROM municipios WHERE provincia_id = :id')
             query1.bindValue(':id', int(id))
             if query1.exec_():
                 var.ui.cmbMuni.addItem('')

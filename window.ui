@@ -954,6 +954,9 @@ align: center;
     </property>
     <addaction name="actionAbrir"/>
     <addaction name="separator"/>
+    <addaction name="actionImportar_datos"/>
+    <addaction name="actionExportar_datos"/>
+    <addaction name="separator"/>
     <addaction name="actionImprimir"/>
     <addaction name="separator"/>
     <addaction name="actionSalir"/>
@@ -1092,6 +1095,16 @@ align: center;
   <action name="actionImprimir">
    <property name="text">
     <string>Imprimir</string>
+   </property>
+  </action>
+  <action name="actionImportar_datos">
+   <property name="text">
+    <string>Importar datos</string>
+   </property>
+  </action>
+  <action name="actionExportar_datos">
+   <property name="text">
+    <string>Exportar datos</string>
    </property>
   </action>
  </widget>
