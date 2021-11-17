@@ -71,7 +71,7 @@ class Eventos():
     def restaurarBackup(self):
         try:
             option = QtWidgets.QFileDialog.Options()
-            filename = var.dlgabrir.getOpenFileName(None, "Restaurar backup",'', "*.zip", options= option)
+            filename = var.dlgabrir.getOpenFileName(None, "Restaurar backup",'', "*.zip;;ALL Files", options= option)
 
             if var.dlgabrir.Accepted and filename != "":
                 # extraer zip
@@ -102,44 +102,40 @@ class Eventos():
         except Exception:
             print("Error al Abrir ventana Impresora")
 
-    def cargarDatosExcel(self):
+    def importarDatos(self):
         try:
             option = QtWidgets.QFileDialog.Options()
-            archivo = var.dlgabrir.getOpenFileName(None, "Importar datos",'', "*.xls", options= option)
-            #abrimos fichero excel
-            documento = xlrd.open_workbook(archivo)
-            clientes = documento.sheet_by_index(0)
+            archivo = var.dlgabrir.getOpenFileName(None, "Importar datos",'', "*.xls;;ALL Files", options= option)
 
-            baseDatos = conexion.Conexion.db_connect(var.filedb)
-            #cursor para recorrer BBDD
-            cursor = baseDatos.cursor()
-            query = "INSERT INTO clientes (dni, apellidos, nombre, direccion, provincia, sexo, pago) " \
-                    "VALUES (:dni, :alta, :apellidos, :nombre, :direccion, :provincia, :municipio, :sexo, :pago)"
+            if var.dlgabrir.Accepted and archivo != "":
+                # abrimos fichero excel
+                documento = xlrd.open_workbook(archivo)
+                clientes = documento.sheet_by_index(0)
+                filas= clientes.nrows
+                newClients = []
 
-            for r in range(1, clientes.nrows):
-                dni = clientes.cell(r, 0).value
-                apellidos = clientes.cell(r, 1).value
+                for i in range(filas):
+                    if i == 0:
+                        pass
+                    else:
+                        print(str(clientes.cell_value(i, 1)))
+                        for j in range(9):
+                            newClients.append(i, j)
 
-                values = (dni, apellidos)
-
-                # Ejecutar instrucción SQL
-                cursor.execute(query, values)
-
-            # Cerrar cursor
-            cursor.close()
-
-            # Enviar
-            baseDatos.commit()
-
-            # Cerrar la conexión de la base de datos
-            baseDatos.close()
+            conexion.Conexion.db_connect(var.filedb)
+            conexion.Conexion.cargarTabCli(self)
 
             msg = QtWidgets.QMessageBox()
             msg.setModal(True)
             msg.setWindowTitle('Aviso')
             msg.setIcon(QtWidgets.QMessageBox.Information)
-            msg.setText('Importación efectuada con éxito')
+            msg.setText('Importación de datos efectuada con éxito')
             msg.exec()
-
         except Exception as error:
-            print("Error al cargar los datos desde el excel", error)
+            print("Error al importar los datos", error)
+
+    def exportarDatos(self):
+        try:
+            p
+        except Exception as error:
+            print("Error al exportar los datos", error)
