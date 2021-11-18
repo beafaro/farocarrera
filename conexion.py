@@ -22,8 +22,8 @@ class Conexion():
     def altaCli(newCli):
         try:
             query = QtSql.QSqlQuery()
-            query.prepare("INSERT INTO clientes (dni, alta, apellidos, nombre, direccion, provincia, municipio, sexo, pago) "
-                          "VALUES (:dni, :alta, :apellidos, :nombre, :direccion, :provincia, :municipio, :sexo, :pago)")
+            query.prepare("INSERT INTO clientes (dni, alta, apellidos, nombre, direccion, provincia, municipio, sexo, pago, envio) "
+                          "VALUES (:dni, :alta, :apellidos, :nombre, :direccion, :provincia, :municipio, :sexo, :pago, :envio)")
             query.bindValue(":dni", str(newCli[0]))
             query.bindValue(":alta", str(newCli[1]))
             query.bindValue(":apellidos", str(newCli[2]))
@@ -33,6 +33,7 @@ class Conexion():
             query.bindValue(":municipio", str(newCli[6]))
             query.bindValue(":sexo", str(newCli[7]))
             query.bindValue(":pago", str(newCli[8]))
+            query.bindValue(":envio", str(newCli[9]))
 
             if query.exec_():
                 msg= QtWidgets.QMessageBox()
@@ -150,7 +151,7 @@ class Conexion():
             query = QtSql.QSqlQuery()
             query.prepare('UPDATE clientes SET alta = :alta, apellidos = :apellidos, nombre = :nombre, '
                           'direccion = :direccion, provincia = :provincia, municipio = :municipio, '
-                          'sexo = :sexo, pago = :pago WHERE dni = :dni')
+                          'sexo = :sexo, pago = :pago, envio = :envio WHERE dni = :dni')
             query.bindValue(':dni', str(modCliente[0]))
             query.bindValue(":alta", str(modCliente[1]))
             query.bindValue(":apellidos", str(modCliente[2]))
@@ -160,6 +161,7 @@ class Conexion():
             query.bindValue(":municipio", str(modCliente[6]))
             query.bindValue(":sexo", str(modCliente[7]))
             query.bindValue(":pago", str(modCliente[8]))
+            query.bindValue(":envio", str(modCliente[9]))
 
             if query.exec_():
                 msg = QtWidgets.QMessageBox()

@@ -100,6 +100,8 @@ class Clientes():
             cliente = [var.ui.txtDNI, var.ui.txtFechaAltaCli, var.ui.txtApel, var.ui.txtNome, var.ui.txtDir]
             tabCli = []     #para la tablewidget
             client = [var.ui.txtDNI, var.ui.txtApel, var.ui.txtNome, var.ui.txtFechaAltaCli, var.ui.txtDir]
+            valor = var.ui.spinEnvio.value()#recoger valor spinbox
+            newCli.append(valor)
 
             # código para cargar en la tabla el cliente y la forma de pago
             for i in cliente:
@@ -144,9 +146,6 @@ class Clientes():
                 msg.setIcon(QtWidgets.QMessageBox.Warning)
                 msg.setText("DNI no válido")
                 msg.exec()
-                #poner ventana con qtwidgtes.qmesasagebox
-
-            # código para cargar en la base de datos
 
         except Exception as error:
             print("Error en guardar clientes", error)
@@ -241,4 +240,20 @@ class Clientes():
             conexion.Conexion.modifCli(modCliente)
             conexion.Conexion.cargarTabCli(self) #recargo la tabla
         except Exception as error:
-            print("Error al moficiar cliente", error)
+            print("Error al modificar cliente", error)
+
+    def recogerValorSpinbox(self):
+        try:
+            valores = []
+            valor = var.ui.spinEnvio.value()  # recoger valor spinbox
+
+            if valor == 0:
+                valores.append("Recogida por cliente")
+            if valor == 1:
+                print("Envío Nacional Paquetería Express Urgente")
+            if valor == 2:
+                print("Envío Nacional Paquetería Normal")
+            if valor == 3:
+                print("Envío Internacional")
+        except Exception as error:
+            print("Error al recoger valor desde spinbox", error)

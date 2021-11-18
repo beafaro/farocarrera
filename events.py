@@ -1,15 +1,20 @@
 '''
 Fichero de eventos generales
 '''
+import csv
 import os.path
-import sys, var, shutil
+import shutil
+import sys
+import var
 import zipfile
+from datetime import datetime
+
 import xlrd
+from PyQt5 import QtPrintSupport
 
 import conexion
 from window import *
-from datetime import date, datetime
-from PyQt5 import QtPrintSupport
+
 
 class Eventos():
     def Salir(self):
@@ -118,9 +123,9 @@ class Eventos():
                     if i == 0:
                         pass
                     else:
-                        print(str(clientes.cell_value(i, 1)))
+                        newClients = []
                         for j in range(9):
-                            newClients.append(i, j)
+                            newClients.append(str(clientes.cell_value(i, j)))
 
             conexion.Conexion.db_connect(var.filedb)
             conexion.Conexion.cargarTabCli(self)
@@ -136,6 +141,7 @@ class Eventos():
 
     def exportarDatos(self):
         try:
-            p
+            writer = csv.writer("clientes.csv", "w", newline= "")
+
         except Exception as error:
             print("Error al exportar los datos", error)

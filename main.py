@@ -83,12 +83,6 @@ class Main(QtWidgets.QMainWindow):
         var.ui.txtDir.editingFinished.connect(clients.Clientes.letraCapital)
 
         '''
-        Eventos de comboBox
-        '''
-        conexion.Conexion.cargarProv(self)
-        var.ui.cmbProv.currentIndexChanged.connect(conexion.Conexion.selMuni)
-
-        '''
         Eventos QTabWidget
         '''
         events.Eventos.resizeTablaCli(self)
@@ -108,7 +102,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.cmbProv.currentIndexChanged.connect(conexion.Conexion.selMuni)
 
         '''
-        bara de estado
+        Barra de estado
         '''
         var.ui.statusbar.addPermanentWidget(var.ui.lblFecha, 1)
         var.ui.lblFecha.setText("Import-Export Vigo")
@@ -116,13 +110,14 @@ class Main(QtWidgets.QMainWindow):
         var.ui.lblFecha.setText(day.strftime("%A, %d de %B de %Y %H:%M").capitalize())
 
         '''
-        Barra de herramientas
+        Eventos de la barra de menús y de herramientas
         '''
         var.ui.actionbarSalir.triggered.connect(events.Eventos.Salir)
         var.ui.actionbarAbrirCarpeta.triggered.connect(events.Eventos.Abrir)
         var.ui.actionbarCrearBackup.triggered.connect(events.Eventos.crearBackup)
         var.ui.actionbarRestaurarBackup.triggered.connect(events.Eventos.restaurarBackup)
         var.ui.actionbarImprimir.triggered.connect(events.Eventos.imprimir)
+        var.ui.actionImportar_datos.triggered.connect(events.Eventos.importarDatos)
 
 
 if __name__ == '__main__':
