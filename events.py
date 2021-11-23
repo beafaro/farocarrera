@@ -108,40 +108,42 @@ class Eventos():
             print("Error al Abrir ventana Impresora")
 
     def importarDatos(self):
-        try:
-            option = QtWidgets.QFileDialog.Options()
-            archivo = var.dlgabrir.getOpenFileName(None, "Importar datos",'', "*.xls;;ALL Files", options= option)
+            try:
+                newcli = []
+                contador = 0
+                option = QtWidgets.QFileDialog.Options()
+                ruta_excel = var.dlgabrir.getOpenFileName(None, 'Importar Excel', '', '*.xls;;ALL Files', options=option)
 
-            if var.dlgabrir.Accepted and archivo != "":
-                # abrimos fichero excel
-                documento = xlrd.open_workbook(archivo)
-                clientes = documento.sheet_by_index(0)
-                filas= clientes.nrows
-                newClients = []
-
-                for i in range(filas):
-                    if i == 0:
-                        pass
-                    else:
-                        newClients = []
-                        for j in range(9):
-                            newClients.append(str(clientes.cell_value(i, j)))
-
-            conexion.Conexion.db_connect(var.filedb)
-            conexion.Conexion.cargarTabCli(self)
-
-            msg = QtWidgets.QMessageBox()
-            msg.setModal(True)
-            msg.setWindowTitle('Aviso')
-            msg.setIcon(QtWidgets.QMessageBox.Information)
-            msg.setText('Importación de datos efectuada con éxito')
-            msg.exec()
-        except Exception as error:
-            print("Error al importar los datos", error)
+                if var.dlgabrir.Accepted and ruta_excel != '':
+                    fichero = ruta_excel[0]
+                workbook = xlrd.open_workbook(fichero)
+                hoja = workbook.sheet_by_index(0)
+                while contador < hoja.nrows:
+                    for i in range(6):
+                        # if i==1:
+                        #     newcli.append((str)(date.today()))
+                        # if i==5:
+                        #     newcli.append('')
+                        newcli.append(hoja.cell_value(contador + 1, i))
+                    # newcli.append('Efectivo')
+                    conexion.Conexion.altaCli2(newcli)
+                    conexion.Conexion.cargarTabCli(newcli)
+                    newcli.clear()
+                    contador = contador + 1
+            except Exception as error:
+                print('Error al importar ', error)
 
     def exportarDatos(self):
         try:
-            writer = csv.writer("clientes.csv", "w", newline= "")
-
+            conexion.Conexion.exportExcel(self)
+            try:
+                msgBox = QtWidgets.QMessageBox()
+                msgBox.setIcon(QtWidgets.QMessageBox.Information)
+                msgBox.setText("Datos exportados con éxito.")
+                msgBox.setWindowTitle("Operación completada")
+                msgBox.setStandardButtons(QtWidgets.QMessageBox.Ok)
+                msgBox.exec()
+            except Exception as error:
+                print('Error en mensaje generado exportar datos ', error)
         except Exception as error:
-            print("Error al exportar los datos", error)
+            print('Error en evento exportar datos ', error)

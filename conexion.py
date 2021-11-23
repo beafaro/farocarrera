@@ -1,3 +1,6 @@
+from datetime import datetime
+
+import xlwt as xlwt
 from PyQt5 import QtSql, QtWidgets
 
 import var
@@ -177,3 +180,65 @@ class Conexion():
                 msg.exec()
         except Exception as error:
             print("Problemas al modificar cliente")
+
+    def altaCli2(newcli):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare('insert into clientes (dni, apellidos, nombre, direccion, provincia, sexo) VALUES '
+                          '(:dni, :apellidos, :nombre, :direccion, :provincia, :sexo)')
+            query.bindValue(':dni', str(newcli[0]))
+            query.bindValue(':apellidos', str(newcli[1]))
+            query.bindValue(':nombre', str(newcli[2]))
+            query.bindValue(':direccion', str(newcli[3]))
+            query.bindValue(':provincia', str(newcli[4]))
+            query.bindValue(':sexo', str(newcli[5]))
+
+            if query.exec_():
+                print('Inserción correcta')
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle('Aviso')
+                msg.setIcon(QtWidgets.QMessageBox.Information)
+                msg.setText('Cliente dado de alta')
+                msg.exec()
+            else:
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle('Aviso')
+                msg.setIcon(QtWidgets.QMessageBox.Warning)
+                msg.setText(query.lastError().text())
+                msg.exec()
+        except Exception as error:
+            print('Problemas alta cliente', error)
+
+    def exportExcel(self):
+        try:
+            fecha = datetime.today()
+            fecha = fecha.strftime('%Y.%m.%d.%H.%M.%S')
+            var.copia = (str(fecha) + '_dataExport.xls')
+            option = QtWidgets.QFileDialog.Options()
+            directorio, filename = var.dlgabrir.getSaveFileName(None, 'Exportar datos', var.copia, '.xls',
+                                                                options=option)
+            wb = xlwt.Workbook()
+            sheet1 = wb.add_sheet('Hoja 1')
+
+            # Cabeceras
+            sheet1.write(0, 0, 'DNI')
+            sheet1.write(0, 1, 'ALTA')
+            sheet1.write(0, 2, 'APELIDOS')
+            sheet1.write(0, 3, 'NOME')
+            sheet1.write(0, 4, 'DIRECCION')
+            sheet1.write(0, 5, 'PROVINCIA')
+            sheet1.write(0, 6, 'MUNICIPIO')
+            sheet1.write(0, 7, 'SEXO')
+            sheet1.write(0, 8, 'PAGO')
+            f = 1
+            query = QtSql.QSqlQuery()
+            query.prepare('SELECT *  FROM clientes')
+            if query.exec_():
+                while query.next():
+                    for c in range(8):
+                        sheet1.write(f, c, query.value(c))
+                    f += 1
+            wb.save(directorio)
+
+        except Exception as error:
+            print('Error en conexion para exportar excel ', error)
