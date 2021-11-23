@@ -184,7 +184,7 @@ class Conexion():
     def altaCli2(newcli):
         try:
             query = QtSql.QSqlQuery()
-            query.prepare('insert into clientes (dni, apellidos, nombre, direccion, provincia, sexo) VALUES '
+            query.prepare('INSERT INTO clientes (dni, apellidos, nombre, direccion, provincia, sexo) VALUES '
                           '(:dni, :apellidos, :nombre, :direccion, :provincia, :sexo)')
             query.bindValue(':dni', str(newcli[0]))
             query.bindValue(':apellidos', str(newcli[1]))
@@ -194,11 +194,11 @@ class Conexion():
             query.bindValue(':sexo', str(newcli[5]))
 
             if query.exec_():
-                print('Inserción correcta')
+                print('Insercción correcta')
                 msg = QtWidgets.QMessageBox()
                 msg.setWindowTitle('Aviso')
                 msg.setIcon(QtWidgets.QMessageBox.Information)
-                msg.setText('Cliente dado de alta')
+                msg.setText('Cliente dado de alta correctamente')
                 msg.exec()
             else:
                 msg = QtWidgets.QMessageBox()
@@ -223,8 +223,8 @@ class Conexion():
             # Cabeceras
             sheet1.write(0, 0, 'DNI')
             sheet1.write(0, 1, 'ALTA')
-            sheet1.write(0, 2, 'APELIDOS')
-            sheet1.write(0, 3, 'NOME')
+            sheet1.write(0, 2, 'APELLIDOS')
+            sheet1.write(0, 3, 'NOMBRE')
             sheet1.write(0, 4, 'DIRECCION')
             sheet1.write(0, 5, 'PROVINCIA')
             sheet1.write(0, 6, 'MUNICIPIO')
@@ -241,4 +241,4 @@ class Conexion():
             wb.save(directorio)
 
         except Exception as error:
-            print('Error en conexion para exportar excel ', error)
+            print('Error en conexión para exportar excel ', error)

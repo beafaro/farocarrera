@@ -1,7 +1,6 @@
 '''
 Fichero de eventos generales
 '''
-import csv
 import os.path
 import shutil
 import sys
