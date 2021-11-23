@@ -84,6 +84,11 @@ class Main(QtWidgets.QMainWindow):
         var.ui.txtDir.editingFinished.connect(clients.Clientes.letraCapital)
 
         '''
+        Eventos spinbox
+        '''
+        var.ui.spinEnvio.valueChanged.connect(clients.Clientes.recogerValorSpinbox)
+
+        '''
         Eventos QTabWidget
         '''
         events.Eventos.resizeTablaCli(self)

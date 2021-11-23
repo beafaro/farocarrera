@@ -249,11 +249,15 @@ class Clientes():
 
             if valor == 0:
                 valores.append("Recogida por cliente")
+                var.ui.lblEnvio.setText("Recogida por cliente")
             if valor == 1:
                 print("Envío Nacional Paquetería Express Urgente")
+                var.ui.lblEnvio.setText("Envío Nacional Paquetería Express Urgente")
             if valor == 2:
                 print("Envío Nacional Paquetería Normal")
+                var.ui.lblEnvio.setText("Envío Nacional Paquetería Normal")
             if valor == 3:
                 print("Envío Internacional")
+                var.ui.lblEnvio.setText("Envío Internacional")
         except Exception as error:
             print("Error al recoger valor desde spinbox", error)
