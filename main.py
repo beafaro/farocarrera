@@ -75,6 +75,15 @@ class Main(QtWidgets.QMainWindow):
         var.ui.actionExportar_datos.triggered.connect(events.Eventos.exportarDatos)
 
         '''
+        Eventos de la barra de herramientas
+        '''
+        var.ui.actionbarSalir.triggered.connect(events.Eventos.Salir)
+        var.ui.actionbarAbrirCarpeta.triggered.connect(events.Eventos.Abrir)
+        var.ui.actionbarCrearBackup.triggered.connect(events.Eventos.crearBackup)
+        var.ui.actionbarRestaurarBackup.triggered.connect(events.Eventos.restaurarBackup)
+        var.ui.actionbarImprimir.triggered.connect(events.Eventos.imprimir)
+
+        '''
         Eventos caja de texto
         '''
         var.ui.txtDNI.editingFinished.connect(clients.Clientes.validarDNI)
@@ -82,11 +91,6 @@ class Main(QtWidgets.QMainWindow):
         var.ui.txtApel.editingFinished.connect(clients.Clientes.letraCapital)
         var.ui.txtNome.editingFinished.connect(clients.Clientes.letraCapital)
         var.ui.txtDir.editingFinished.connect(clients.Clientes.letraCapital)
-
-        '''
-        Eventos spinbox
-        '''
-        var.ui.spinEnvio.valueChanged.connect(clients.Clientes.recogerValorSpinbox)
 
         '''
         Eventos QTabWidget
@@ -116,14 +120,9 @@ class Main(QtWidgets.QMainWindow):
         var.ui.lblFecha.setText(day.strftime("%A, %d de %B de %Y %H:%M").capitalize())
 
         '''
-        Eventos de la barra de menús y de herramientas
+        Eventos spinbox
         '''
-        var.ui.actionbarSalir.triggered.connect(events.Eventos.Salir)
-        var.ui.actionbarAbrirCarpeta.triggered.connect(events.Eventos.Abrir)
-        var.ui.actionbarCrearBackup.triggered.connect(events.Eventos.crearBackup)
-        var.ui.actionbarRestaurarBackup.triggered.connect(events.Eventos.restaurarBackup)
-        var.ui.actionbarImprimir.triggered.connect(events.Eventos.imprimir)
-        var.ui.actionImportar_datos.triggered.connect(events.Eventos.importarDatos)
+        var.ui.spinEnvio.valueChanged.connect(clients.Clientes.recogerValorSpinbox)
 
 
 if __name__ == '__main__':
