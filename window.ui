@@ -1029,8 +1029,21 @@ color: rgb(255, 0, 0);</string>
     <addaction name="actionCrear_Backup"/>
     <addaction name="actionRestaurar_Backup"/>
    </widget>
+   <widget class="QMenu" name="menuInformes">
+    <property name="title">
+     <string>Informes</string>
+    </property>
+    <addaction name="actionListado_clientes"/>
+   </widget>
+   <widget class="QMenu" name="menuAcer_de">
+    <property name="title">
+     <string>Acerca de</string>
+    </property>
+   </widget>
    <addaction name="menuArchivo"/>
    <addaction name="menuHerramientas"/>
+   <addaction name="menuInformes"/>
+   <addaction name="menuAcer_de"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="toolBar">
@@ -1166,6 +1179,11 @@ color: rgb(255, 0, 0);</string>
   <action name="actionExportar_datos">
    <property name="text">
     <string>Exportar datos</string>
+   </property>
+  </action>
+  <action name="actionListado_clientes">
+   <property name="text">
+    <string>Listado clientes</string>
    </property>
   </action>
  </widget>

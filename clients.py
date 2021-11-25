@@ -218,6 +218,8 @@ class Clientes():
             for i in cliente:
                 modCliente.append(i.text())
 
+
+
             modCliente.append(var.ui.cmbProv.currentText())
             modCliente.append(var.ui.cmbMuni.currentText())
 

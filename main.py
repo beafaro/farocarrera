@@ -4,7 +4,7 @@ import conexion
 from window import *
 from windowaviso import *
 from windowcal import *
-import sys, var, events, locale
+import sys, var, events, locale, informes
 from datetime import *
 locale.setlocale(locale.LC_ALL, "es-ES")
 
@@ -124,6 +124,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.actionbarRestaurarBackup.triggered.connect(events.Eventos.restaurarBackup)
         var.ui.actionbarImprimir.triggered.connect(events.Eventos.imprimir)
         var.ui.actionImportar_datos.triggered.connect(events.Eventos.importarDatos)
+        var.ui.actionListado_clientes.triggered.connect(informes.Informes.listadoClientes)
 
 
 if __name__ == '__main__':
