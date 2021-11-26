@@ -15,4 +15,5 @@ global cv
 ''' 
 otras variables
 '''
+
 filedb = "bbdd.sqlite"
