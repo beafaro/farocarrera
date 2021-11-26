@@ -4,11 +4,13 @@ Fichero de eventos generales
 import os.path
 import shutil
 import sys
+
+import xlrd as xlrd
+
 import var
 import zipfile
 from datetime import datetime
 
-import xlrd
 from PyQt5 import QtPrintSupport
 
 import conexion

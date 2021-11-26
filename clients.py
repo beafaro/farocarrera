@@ -100,8 +100,6 @@ class Clientes():
             cliente = [var.ui.txtDNI, var.ui.txtFechaAltaCli, var.ui.txtApel, var.ui.txtNome, var.ui.txtDir]
             tabCli = []     #para la tablewidget
             client = [var.ui.txtDNI, var.ui.txtApel, var.ui.txtNome, var.ui.txtFechaAltaCli, var.ui.txtDir]
-            valor = var.ui.spinEnvio.value()#recoger valor spinbox
-            newCli.append(valor)
 
             # código para cargar en la tabla el cliente y la forma de pago
             for i in cliente:
