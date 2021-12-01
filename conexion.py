@@ -239,3 +239,105 @@ class Conexion():
 
         except Exception as error:
             print('Error en conexión para exportar excel ', error)
+
+
+    '''
+    Módulos gestión base datos productos
+    '''
+    def altaProd(newProd):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare('INSERT INTO productos (nombre, precio_unidad) VALUES (:nombre, :precio_unidad)')
+            query.bindValue(":nombre", str(newProd[0]))
+            query.bindValue(":precio_unidad", str(newProd[1]))
+
+            if query.exec_():
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle("Aviso")
+                msg.setIcon(QtWidgets.QMessageBox.Information)
+                msg.setText("Producto dado de alta correctamente!")
+                msg.exec()
+            else:
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle("Aviso")
+                msg.setIcon(QtWidgets.QMessageBox.Information)
+                msg.setText(query.lastError().text())
+                msg.exec()
+        except Exception as error:
+            print("Problemas en alta producto ", error)
+
+    def cargarTabProd(self):
+        try:
+            index = 0
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT codigo, nombre, precio_unidad FROM productos")
+            if query.exec_():
+                while query.next():
+                    codigo = query.value(0)
+                    nombre = query.value(1)
+                    precio_unidad = query.value(2)
+                    var.ui.tabProductos.setRowCount(index + 1)
+                    var.ui.tabProductos.setItem(index, 0, QtWidgets.QTableWidgetItem(codigo))
+                    var.ui.tabProductos.setItem(index, 1, QtWidgets.QTableWidgetItem(nombre))
+                    var.ui.tabProductos.setItem(index, 2, QtWidgets.QTableWidgetItem(precio_unidad))
+                    index += 1
+        except Exception as error:
+            print("Problemas mostrar tabla productos ", error)
+
+    def oneCodigo(codigo):
+        try:
+            record = []
+            query = QtSql.QSqlQuery()
+            query.prepare('SELECT nombre, precio_unidad FROM productos WHERE codigo = :codigo')
+            query.bindValue(':codigo', codigo)
+            if query.exec_():
+                while query.next():
+                    for i in range(2):
+                        record.append(query.value(i))
+            return record
+        except Exception as error:
+            print('Problemas cargar datos producto', error)
+
+    def bajaProd(codigo):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare('DELETE FROM productos WHERE codigo = :codigo')
+            query.bindValue(':codigo', str(codigo))
+            if query.exec_():
+                print('Baja correcta')
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle('Aviso')
+                msg.setIcon(QtWidgets.QMessageBox.Information)
+                msg.setText('Producto dado de baja')
+                msg.exec()
+            else:
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle('Aviso')
+                msg.setIcon(QtWidgets.QMessageBox.Warning)
+                msg.setText(query.lastError().text())
+                msg.exec()
+        except Exception as error:
+            print('Error baja producto en conexion ', error)
+
+    def modifProd(modProducto):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare('UPDATE productos SET nombre = :nombre, precio_unidad = :precio_unidad WHERE codigo = :codigo')
+            query.bindValue(':codigo', str(modProducto[0]))
+            query.bindValue(':nombre', str(modProducto[1]))
+            query.bindValue(':precio_unidad', str(modProducto[2]))
+
+            if query.exec_():
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle('Aviso')
+                msg.setIcon(QtWidgets.QMessageBox.Information)
+                msg.setText('Datos modificados de producto')
+                msg.exec()
+            else:
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle('Aviso')
+                msg.setIcon(QtWidgets.QMessageBox.Warning)
+                msg.setText(query.lastError().text())
+                msg.exec()
+        except Exception as error:
+            print("Problemas al modificar producto")

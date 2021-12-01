@@ -11,6 +11,7 @@ global dlgcalendar
 global dlgabrir
 global copia
 global cv
+global dniValido
 
 ''' 
 otras variables

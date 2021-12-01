@@ -148,3 +148,13 @@ class Eventos():
                 print('Error en mensaje generado exportar datos ', error)
         except Exception as error:
             print('Error en evento exportar datos ', error)
+
+
+    '''Eventos produtos'''
+    def resizeTablaProd(self):
+        try:
+            header = var.ui.tabProductos.horizontalHeader()
+            for i in range(3):
+               header.setSectionResizeMode(i, QtWidgets.QHeaderView.Stretch)
+        except Exception as error:
+            print("Error al redimensionar tabla productos", error)

@@ -1,6 +1,7 @@
 # This is a sample Python script.
 import clients
 import conexion
+import products
 from window import *
 from windowaviso import *
 from windowcal import *
@@ -63,6 +64,13 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnBajaCli.clicked.connect(clients.Clientes.bajaCli)
         var.ui.btnModifCli.clicked.connect(clients.Clientes.modifCli)
 
+        #Eventos botón de Productos
+        var.ui.btnSalirProd.clicked.connect(events.Eventos.Salir)
+        var.ui.btnGuardaProd.clicked.connect(products.Productos.guardaProd)
+        var.ui.btnLimpiaProd.clicked.connect(products.Productos.limpiaFormProd)
+        var.ui.btnBajaProd.clicked.connect(products.Productos.bajaProd)
+        var.ui.btnModifProd.clicked.connect(products.Productos.modifProd)
+
         '''
         Eventos de la barra de menús y de herramientas
         '''
@@ -74,6 +82,17 @@ class Main(QtWidgets.QMainWindow):
         var.ui.actionImportar_datos.triggered.connect(events.Eventos.importarDatos)
         var.ui.actionExportar_datos.triggered.connect(events.Eventos.exportarDatos)
 
+
+        '''
+        Eventos de la barra de herramientas
+        '''
+        var.ui.actionbarSalir.triggered.connect(events.Eventos.Salir)
+        var.ui.actionbarAbrirCarpeta.triggered.connect(events.Eventos.Abrir)
+        var.ui.actionbarCrearBackup.triggered.connect(events.Eventos.crearBackup)
+        var.ui.actionbarRestaurarBackup.triggered.connect(events.Eventos.restaurarBackup)
+        var.ui.actionbarImprimir.triggered.connect(events.Eventos.imprimir)
+
+
         '''
         Eventos caja de texto
         '''
@@ -84,22 +103,23 @@ class Main(QtWidgets.QMainWindow):
         var.ui.txtDir.editingFinished.connect(clients.Clientes.letraCapital)
 
         '''
-        Eventos spinbox
-        '''
-        var.ui.spinEnvio.valueChanged.connect(clients.Clientes.recogerValorSpinbox)
-
-        '''
         Eventos QTabWidget
         '''
         events.Eventos.resizeTablaCli(self)
         var.ui.tabClientes.clicked.connect(clients.Clientes.cargaCli)
         var.ui.tabClientes.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
 
+        #Eventos QTabWidget productos
+        events.Eventos.resizeTablaProd(self)
+        var.ui.tabProductos.clicked.connect(products.Productos.cargaProd)
+        var.ui.tabProductos.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
+
         '''
         Base de datos
         '''
         conexion.Conexion.db_connect(var.filedb)
         conexion.Conexion.cargarTabCli(self)
+        conexion.Conexion.cargarTabProd(self)
 
         '''
         Eventos de comboBox
@@ -116,15 +136,9 @@ class Main(QtWidgets.QMainWindow):
         var.ui.lblFecha.setText(day.strftime("%A, %d de %B de %Y %H:%M").capitalize())
 
         '''
-        Eventos de la barra de menús y de herramientas
+        Eventos spinbox
         '''
-        var.ui.actionbarSalir.triggered.connect(events.Eventos.Salir)
-        var.ui.actionbarAbrirCarpeta.triggered.connect(events.Eventos.Abrir)
-        var.ui.actionbarCrearBackup.triggered.connect(events.Eventos.crearBackup)
-        var.ui.actionbarRestaurarBackup.triggered.connect(events.Eventos.restaurarBackup)
-        var.ui.actionbarImprimir.triggered.connect(events.Eventos.imprimir)
-        var.ui.actionImportar_datos.triggered.connect(events.Eventos.importarDatos)
-        var.ui.actionListado_clientes.triggered.connect(informes.Informes.listadoClientes)
+        var.ui.spinEnvio.valueChanged.connect(clients.Clientes.recogerValorSpinbox)
 
 
 if __name__ == '__main__':
