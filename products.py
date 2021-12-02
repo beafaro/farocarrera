@@ -1,32 +1,29 @@
 '''
 Funciones gestión productos
 '''
+import locale
 
 import conexion
 import var
 from window import *
+import locale
+locale.setlocale(locale.LC_ALL, '')
 
 class Productos():
     def guardaProd(self):
         try:
             newProd = []
-            producto = [var.ui.txtCodigo, var.ui.txtNomProd, var.ui.txtPrecio]
-            tabProd = []
-            product = [var.ui.txtCodigo, var.ui.txtNomProd, var.ui.txtPrecio]
+            producto = var.ui.txtNomProd.text()
+            producto = producto.title()
+            newProd.append(producto)
 
-            for i in producto:
-                newProd.append(i.text())
-            for i in product:
-                tabProd.append(i.text())
+            precio = var.ui.txtPrecio.text()
+            precio = precio.replace (',','.')
+            precio = locale.currency(float(precio))
+            newProd.append(precio)
 
-            row = 0
-            column = 0
-            var.ui.tabProductos.insertRow(row)
-            for campo in tabProd:
-                cell = QtWidgets.QTableWidgetItem(str(campo))
-                var.ui.tabProductos.setItem(row, column, cell)
-                column += 1
             conexion.Conexion.altaProd(newProd)
+            conexion.Conexion.cargarTabProd(self)
         except Exception as error:
             print("Error en guardar productos", error)
 

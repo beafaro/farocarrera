@@ -1,7 +1,9 @@
+import locale
 from datetime import datetime
 
 import xlwt as xlwt
 from PyQt5 import QtSql, QtWidgets
+from PyQt5.uic.properties import QtCore
 
 import var
 
@@ -270,16 +272,18 @@ class Conexion():
         try:
             index = 0
             query = QtSql.QSqlQuery()
-            query.prepare("SELECT codigo, nombre, precio_unidad FROM productos")
+            query.prepare("SELECT codigo, nombre, precio_unidad FROM productos order by nombre")
             if query.exec_():
                 while query.next():
                     codigo = query.value(0)
                     nombre = query.value(1)
                     precio_unidad = query.value(2)
                     var.ui.tabProductos.setRowCount(index + 1)
-                    var.ui.tabProductos.setItem(index, 0, QtWidgets.QTableWidgetItem(codigo))
+                    var.ui.tabProductos.setItem(index, 0, QtWidgets.QTableWidgetItem(str(codigo)))
                     var.ui.tabProductos.setItem(index, 1, QtWidgets.QTableWidgetItem(nombre))
                     var.ui.tabProductos.setItem(index, 2, QtWidgets.QTableWidgetItem(precio_unidad))
+                    var.ui.tabProductos.item(index,2).setTextAlignment(QtCore.Qt.AlignRight)
+                    var.ui.tabProductos.item(index, 0).setTextAlignment(QtCore.Qt.AlignCenter)
                     index += 1
         except Exception as error:
             print("Problemas mostrar tabla productos ", error)
@@ -323,8 +327,15 @@ class Conexion():
         try:
             query = QtSql.QSqlQuery()
             query.prepare('UPDATE productos SET nombre = :nombre, precio_unidad = :precio_unidad WHERE codigo = :codigo')
-            query.bindValue(':codigo', str(modProducto[0]))
+            query.bindValue(':codigo', int(modProducto[0]))
             query.bindValue(':nombre', str(modProducto[1]))
+            '''codigo juan carlos'''
+            modProducto[2] = modProducto[2].replace('€', '')
+            modProducto[2] = modProducto[2].replace(',', '.')
+            modProducto[2] = float(modProducto[2])
+            modProducto[2] = round(modProducto[2], 2)
+            modProducto[2] = str(modProducto[2])
+            modProducto[2] = locale.currency(float(modProducto[2]))
             query.bindValue(':precio_unidad', str(modProducto[2]))
 
             if query.exec_():

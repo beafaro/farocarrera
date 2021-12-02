@@ -428,22 +428,6 @@ align: center;
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="btnSalir">
-          <property name="font">
-           <font>
-            <family>Verdana</family>
-            <pointsize>10</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-            <stylestrategy>PreferDefault</stylestrategy>
-           </font>
-          </property>
-          <property name="text">
-           <string>Salir</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QPushButton" name="btnBajaCli">
           <property name="font">
            <font>
@@ -1189,22 +1173,6 @@ color: rgb(255, 0, 0);</string>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="btnSalirProd">
-          <property name="font">
-           <font>
-            <family>Verdana</family>
-            <pointsize>10</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-            <stylestrategy>PreferDefault</stylestrategy>
-           </font>
-          </property>
-          <property name="text">
-           <string>Salir</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QPushButton" name="btnBajaProd">
           <property name="font">
            <font>
@@ -1217,22 +1185,6 @@ color: rgb(255, 0, 0);</string>
           </property>
           <property name="text">
            <string>Eliminar</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btnBuscarProd">
-          <property name="font">
-           <font>
-            <family>Verdana</family>
-            <pointsize>10</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-            <stylestrategy>PreferDefault</stylestrategy>
-           </font>
-          </property>
-          <property name="text">
-           <string>Buscar</string>
           </property>
          </widget>
         </item>
@@ -1463,11 +1415,11 @@ color: rgb(255, 0, 0);</string>
  <resources/>
  <connections/>
  <buttongroups>
+  <buttongroup name="rbtGroupSex"/>
   <buttongroup name="chkGroupPago">
    <property name="exclusive">
     <bool>false</bool>
    </property>
   </buttongroup>
-  <buttongroup name="rbtGroupSex"/>
  </buttongroups>
 </ui>

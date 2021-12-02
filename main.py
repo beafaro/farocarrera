@@ -56,7 +56,6 @@ class Main(QtWidgets.QMainWindow):
         Eventos de botón
         '''
         var.ui.btnCalendar.clicked.connect(events.Eventos.abrircal)
-        var.ui.btnSalir.clicked.connect(events.Eventos.Salir)
         # var.ui.rbtGroupSex.buttonClicked.connect(clients.Clientes.SelSexo)
         # var.ui.chkGroupPago.buttonClicked.connect(clients.Clientes.SelPago)
         var.ui.btnGrabaCli.clicked.connect(clients.Clientes.guardaCli)
@@ -65,7 +64,6 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnModifCli.clicked.connect(clients.Clientes.modifCli)
 
         #Eventos botón de Productos
-        var.ui.btnSalirProd.clicked.connect(events.Eventos.Salir)
         var.ui.btnGuardaProd.clicked.connect(products.Productos.guardaProd)
         var.ui.btnLimpiaProd.clicked.connect(products.Productos.limpiaFormProd)
         var.ui.btnBajaProd.clicked.connect(products.Productos.bajaProd)
