@@ -1,0 +1,4 @@
+clientes -> poner icono lupa para buscar al lado de limpiaForm
+articulos -> hacer lo de la busqueda
+		poner la label del código de un color diferente
+		
