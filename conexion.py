@@ -375,13 +375,12 @@ class Conexion():
 
     def altaFac(registro):
         try:
-            registro = []
             query = QtSql.QSqlQuery()
-            query.prepare("INSERT INTO facturas dni, fecha VALUES (:dni, :fecha)")
-            if query.exec_():
-                query.bindValue(":dni", str(registro[0]))
-                query.bindValue(":fecha", str(registro[1]))
+            query.prepare("INSERT INTO facturas (dni, fechafac) VALUES (:dni, :fecha)")
+            query.bindValue(":dni", str(registro[0]))
+            query.bindValue(":fecha", str(registro[1]))
 
+            if query.exec_():
                 msg = QtWidgets.QMessageBox()
                 msg.setWindowTitle('Aviso')
                 msg.setIcon(QtWidgets.QMessageBox.Information)
