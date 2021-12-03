@@ -352,3 +352,47 @@ class Conexion():
                 msg.exec()
         except Exception as error:
             print("Problemas al modificar producto")
+
+
+    '''
+    Módulos gestión facturas
+    '''
+    def buscaClifac(dni):
+        try:
+            registro = []
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT dni, apellidos, nombre FROM clientes WHERE dni = :dni")
+            query.bindValue(":dni", str(dni))
+
+            if query.exec_():
+                while query.next():
+                    registro.append(query.value(1))
+                    registro.append(query.value(2))
+            return registro
+
+        except Exception as error:
+            print("Error en conexión buscar cliente", error)
+
+    def altaFac(registro):
+        try:
+            registro = []
+            query = QtSql.QSqlQuery()
+            query.prepare("INSERT INTO facturas dni, fecha VALUES (:dni, :fecha)")
+            if query.exec_():
+                query.bindValue(":dni", str(registro[0]))
+                query.bindValue(":fecha", str(registro[1]))
+
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle('Aviso')
+                msg.setIcon(QtWidgets.QMessageBox.Information)
+                msg.setText('Factura dada de alta')
+                msg.exec()
+            else:
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle('Aviso')
+                msg.setIcon(QtWidgets.QMessageBox.Warning)
+                msg.setText(query.lastError().text())
+                msg.exec()
+
+        except Exception as error:
+            print("Error en conexión alta fac", error)

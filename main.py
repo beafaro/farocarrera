@@ -1,6 +1,7 @@
 # This is a sample Python script.
 import clients
 import conexion
+import invoice
 import products
 from window import *
 from windowaviso import *
@@ -68,6 +69,13 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnLimpiaProd.clicked.connect(products.Productos.limpiaFormProd)
         var.ui.btnBajaProd.clicked.connect(products.Productos.bajaProd)
         var.ui.btnModifProd.clicked.connect(products.Productos.modifProd)
+
+        '''
+        Eventos botón de Facturas
+        '''
+        var.ui.btnBuscaClifac.clicked.connect(invoice.Facturas.buscaCli)
+        var.ui.btnFechafac.clicked.connect(events.Eventos.abrircal)
+        var.ui.btnFacturar.clicked.connect(invoice.Facturas.facturar)
 
         '''
         Eventos de la barra de menús y de herramientas
