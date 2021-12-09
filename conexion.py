@@ -395,3 +395,21 @@ class Conexion():
 
         except Exception as error:
             print("Error en conexión alta fac", error)
+
+    def cargarTabFacturas(self):
+        try:
+            index = 0
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT codfac, fechafac FROM facturas order by fechafac DESC")
+            if query.exec_():
+                while query.next():
+                    codigo = query.value(0)
+                    fechafac = query.value(1)
+                    var.ui.tabFacturas.setRowCount(index + 1)
+                    var.ui.tabProductos.setItem(index, 0, QtWidgets.QTableWidgetItem(str(codigo)))
+                    var.ui.tabProductos.setItem(index, 1, QtWidgets.QTableWidgetItem(fechafac))
+                    var.ui.tabProductos.item(index, 0).setTextAlignment(QtCore.Qt.AlignRight)
+                    var.ui.tabProductos.item(index, 1).setTextAlignment(QtCore.Qt.AlignCenter)
+                    index += 1
+        except Exception as error:
+            print("Problemas al cargar listado de facturas ", error)

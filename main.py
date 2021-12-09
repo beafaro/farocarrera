@@ -120,12 +120,17 @@ class Main(QtWidgets.QMainWindow):
         var.ui.tabProductos.clicked.connect(products.Productos.cargaProd)
         var.ui.tabProductos.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
 
+        #tabla facturas
+        var.ui.tabFacturas.clicked.connect(invoice.Facturas.cargaFac)
+        var.ui.tabFacturas.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
+
         '''
         Base de datos
         '''
         conexion.Conexion.db_connect(var.filedb)
         conexion.Conexion.cargarTabCli(self)
         conexion.Conexion.cargarTabProd(self)
+        conexion.Conexion.cargarTabFacturas(self)
 
         '''
         Eventos de comboBox
