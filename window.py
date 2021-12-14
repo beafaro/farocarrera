@@ -775,6 +775,12 @@ class Ui_MainWindow(object):
         self.btnBajaProd.setFont(font)
         self.btnBajaProd.setObjectName("btnBajaProd")
         self.horizontalLayout_13.addWidget(self.btnBajaProd)
+        self.btnVisualizaProd = QtWidgets.QPushButton(self.groupBox_2)
+        self.btnVisualizaProd.setGeometry(QtCore.QRect(650, 170, 30, 30))
+        self.btnVisualizaProd.setText("")
+        self.btnVisualizaProd.setIcon(icon4)
+        self.btnVisualizaProd.setIconSize(QtCore.QSize(30, 30))
+        self.btnVisualizaProd.setObjectName("btnVisualizaProd")
         self.tabProductos = QtWidgets.QTableWidget(self.tab_3)
         self.tabProductos.setGeometry(QtCore.QRect(30, 280, 861, 331))
         self.tabProductos.setObjectName("tabProductos")
@@ -888,7 +894,7 @@ class Ui_MainWindow(object):
         self.toolBar.addSeparator()
 
         self.retranslateUi(MainWindow)
-        self.TabPrograma.setCurrentIndex(0)
+        self.TabPrograma.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):

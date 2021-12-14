@@ -2,8 +2,7 @@ import locale
 from datetime import datetime
 
 import xlwt as xlwt
-from PyQt5 import QtSql, QtWidgets
-from PyQt5.uic.properties import QtCore
+from PyQt5 import QtSql, QtWidgets, QtCore
 
 import var
 
@@ -249,9 +248,9 @@ class Conexion():
     def altaProd(newProd):
         try:
             query = QtSql.QSqlQuery()
-            query.prepare('INSERT INTO productos (nombre, precio_unidad) VALUES (:nombre, :precio_unidad)')
+            query.prepare('INSERT INTO productos (nombre, precio) VALUES (:nombre, :precio)')
             query.bindValue(":nombre", str(newProd[0]))
-            query.bindValue(":precio_unidad", str(newProd[1]))
+            query.bindValue(":precio", str(newProd[1]))
 
             if query.exec_():
                 msg = QtWidgets.QMessageBox()
@@ -272,16 +271,16 @@ class Conexion():
         try:
             index = 0
             query = QtSql.QSqlQuery()
-            query.prepare("SELECT codigo, nombre, precio_unidad FROM productos order by nombre")
+            query.prepare("SELECT codigo, nombre, precio FROM productos order by nombre")
             if query.exec_():
                 while query.next():
                     codigo = query.value(0)
                     nombre = query.value(1)
-                    precio_unidad = query.value(2)
+                    precio = query.value(2)
                     var.ui.tabProductos.setRowCount(index + 1)
                     var.ui.tabProductos.setItem(index, 0, QtWidgets.QTableWidgetItem(str(codigo)))
                     var.ui.tabProductos.setItem(index, 1, QtWidgets.QTableWidgetItem(nombre))
-                    var.ui.tabProductos.setItem(index, 2, QtWidgets.QTableWidgetItem(precio_unidad))
+                    var.ui.tabProductos.setItem(index, 2, QtWidgets.QTableWidgetItem(precio))
                     var.ui.tabProductos.item(index,2).setTextAlignment(QtCore.Qt.AlignRight)
                     var.ui.tabProductos.item(index, 0).setTextAlignment(QtCore.Qt.AlignCenter)
                     index += 1
@@ -292,7 +291,7 @@ class Conexion():
         try:
             record = []
             query = QtSql.QSqlQuery()
-            query.prepare('SELECT nombre, precio_unidad FROM productos WHERE codigo = :codigo')
+            query.prepare('SELECT nombre, precio FROM productos WHERE codigo = :codigo')
             query.bindValue(':codigo', codigo)
             if query.exec_():
                 while query.next():
@@ -326,7 +325,7 @@ class Conexion():
     def modifProd(modProducto):
         try:
             query = QtSql.QSqlQuery()
-            query.prepare('UPDATE productos SET nombre = :nombre, precio_unidad = :precio_unidad WHERE codigo = :codigo')
+            query.prepare('UPDATE productos SET nombre =:nombre, precio =:precio WHERE codigo =:codigo')
             query.bindValue(':codigo', int(modProducto[0]))
             query.bindValue(':nombre', str(modProducto[1]))
             '''codigo juan carlos'''
@@ -336,7 +335,7 @@ class Conexion():
             modProducto[2] = round(modProducto[2], 2)
             modProducto[2] = str(modProducto[2])
             modProducto[2] = locale.currency(float(modProducto[2]))
-            query.bindValue(':precio_unidad', str(modProducto[2]))
+            query.bindValue(':precio', str(modProducto[2]))
 
             if query.exec_():
                 msg = QtWidgets.QMessageBox()
@@ -361,7 +360,7 @@ class Conexion():
         try:
             registro = []
             query = QtSql.QSqlQuery()
-            query.prepare("SELECT dni, apellidos, nombre FROM clientes WHERE dni = :dni")
+            query.prepare("SELECT dni, apellidos, nombre FROM clientes WHERE dni =:dni")
             query.bindValue(":dni", str(dni))
 
             if query.exec_():
@@ -369,16 +368,15 @@ class Conexion():
                     registro.append(query.value(1))
                     registro.append(query.value(2))
             return registro
-
         except Exception as error:
             print("Error en conexión buscar cliente", error)
 
     def altaFac(registro):
         try:
             query = QtSql.QSqlQuery()
-            query.prepare("INSERT INTO facturas (dni, fechafac) VALUES (:dni, :fecha)")
+            query.prepare("INSERT INTO facturas (dni, fechafac) VALUES (:dni, :fechafac)")
             query.bindValue(":dni", str(registro[0]))
-            query.bindValue(":fecha", str(registro[1]))
+            query.bindValue(":fechafac", str(registro[1]))
 
             if query.exec_():
                 msg = QtWidgets.QMessageBox()
@@ -406,10 +404,23 @@ class Conexion():
                     codigo = query.value(0)
                     fechafac = query.value(1)
                     var.ui.tabFacturas.setRowCount(index + 1)
-                    var.ui.tabProductos.setItem(index, 0, QtWidgets.QTableWidgetItem(str(codigo)))
-                    var.ui.tabProductos.setItem(index, 1, QtWidgets.QTableWidgetItem(fechafac))
-                    var.ui.tabProductos.item(index, 0).setTextAlignment(QtCore.Qt.AlignRight)
-                    var.ui.tabProductos.item(index, 1).setTextAlignment(QtCore.Qt.AlignCenter)
+                    var.ui.tabFacturas.setItem(index, 0, QtWidgets.QTableWidgetItem(str(codigo)))
+                    var.ui.tabFacturas.setItem(index, 1, QtWidgets.QTableWidgetItem(fechafac))
+                    var.ui.tabFacturas.item(index, 0).setTextAlignment(QtCore.Qt.AlignRight)
+                    var.ui.tabFacturas.item(index, 1).setTextAlignment(QtCore.Qt.AlignCenter)
+
                     index += 1
         except Exception as error:
             print("Problemas al cargar listado de facturas ", error)
+
+    def buscaDNIFac(numfac):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT dni FROM facturas WHERE codigo = :codfac")
+            query.bindValue(":codfac", int(numfac))
+            if query.exec_():
+                while query.next():
+                    dni = query.value(0)
+            return dni
+        except Exception as error:
+            print("Problemas al buscar cliente ", error)

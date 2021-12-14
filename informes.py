@@ -11,6 +11,7 @@ class Informes():
             var.cv = canvas.Canvas("informes/listadoClientes.pdf")
             var.cv.setTitle("Listado Clientes")
             var.cv.setAuthor("Departamento de Administración")
+
             rootPath = ".\\informes"
             var.cv.setFont("Helvetica-Bold", size= 10)
             textoTitulo = "LISTADO CLIENTES"
@@ -57,7 +58,7 @@ class Informes():
             var.cv.save()
             cont = 0
             for file in os.listdir(rootPath):
-                if file.endswith(".pdf"):
+                if file.endswith("clientes.pdf"):
                     os.startfile("%s/%s" % (rootPath, file))
                 cont = cont + 1
         except Exception as error:
@@ -89,7 +90,63 @@ class Informes():
             var.cv.drawString(70,40, str(fecha))
             var.cv.drawString(255,40,str(texto))
             var.cv.drawString(500,40,str("Página %s " %var.cv.getPageNumber()))
-
-
         except Exception as error:
             print("Error creación de pie de informe clientes", error)
+
+    def listadoProductos(self):
+        try:
+            var.cv = canvas.Canvas("informes/listadoProductos.pdf")
+            var.cv.setTitle("Listado Productos")
+            var.cv.setAuthor("Departamento de Administración")
+
+            rootPath = ".\\informes"
+            var.cv.setFont("Helvetica-Bold", size= 10)
+            textoTitulo = "LISTADO ARTICULOS"
+            Informes.cabecera(self)
+            Informes.pie(textoTitulo)
+
+            var.cv.drawString(255,690, textoTitulo)
+            var.cv.line(40,685,530,685)
+            items = ["Código", "Artículo", "Precio-unidad"]
+            var.cv.drawString(65,675,items[0])
+            var.cv.drawString(210,675,items[1])
+            var.cv.drawString(400,675,items[2])
+            var.cv.line(40,670,530,670)
+
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT codigo, nombre, precio FROM productos order by nombre")
+            var.cv.setFont("Helvetica", size= 8)
+
+            if query.exec_():
+                i = 50
+                j = 655
+                while query.next():
+                    if j <= 80:
+                        var.cv.drawString(440,30, "Página siguiente...")
+                        var.cv.showPage()
+                        Informes.cabecera(self)
+                        Informes.pie(textoTitulo)
+                        var.cv.drawString(255, 690, textoTitulo)
+                        var.cv.line(40, 685, 530, 685)
+                        items = ["Código", "Artículo", "Precio-unidad"]
+                        var.cv.drawString(65, 675, items[0])
+                        var.cv.drawString(210, 675, items[1])
+                        var.cv.drawString(400, 675, items[2])
+                        var.cv.line(40, 670, 530, 670)
+                        i = 50
+                        j = 655
+
+                    var.cv.setFont("Helvetica", size=8)
+                    var.cv.drawString(i,j, str(query.value(0)))
+                    var.cv.drawString(i+140, j, str(query.value(1)+", " + query.value(2)))
+                    var.cv.drawString(i+310, j, str(query.value(3)))
+                    j = j - 20
+
+            var.cv.save()
+            cont = 0
+            for file in os.listdir(rootPath):
+                if file.endswith(".pdf"): #"productos.pdf
+                    os.startfile("%s/%s" % (rootPath, file))
+                cont = cont + 1
+        except Exception as error:
+            print("Error en informes productos, ", error)

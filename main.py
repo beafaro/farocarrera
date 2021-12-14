@@ -63,12 +63,14 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnLimpiaCli.clicked.connect(clients.Clientes.limpiaFormCli)
         var.ui.btnBajaCli.clicked.connect(clients.Clientes.bajaCli)
         var.ui.btnModifCli.clicked.connect(clients.Clientes.modifCli)
+        var.ui.btnVisualiza.clicked.connect(informes.Informes.listadoClientes)
 
         #Eventos botón de Productos
         var.ui.btnGuardaProd.clicked.connect(products.Productos.guardaProd)
         var.ui.btnLimpiaProd.clicked.connect(products.Productos.limpiaFormProd)
         var.ui.btnBajaProd.clicked.connect(products.Productos.bajaProd)
         var.ui.btnModifProd.clicked.connect(products.Productos.modifProd)
+        var.ui.btnVisualizaProd.clicked.connect(informes.Informes.listadoProductos)
 
         '''
         Eventos botón de Facturas
@@ -76,7 +78,6 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnBuscaClifac.clicked.connect(invoice.Facturas.buscaCli)
         var.ui.btnFechafac.clicked.connect(events.Eventos.abrircal)
         var.ui.btnFacturar.clicked.connect(invoice.Facturas.facturar)
-        var.ui.btnVisualiza.clicked.connect(informes.Informes.listadoClientes)
 
         '''
         Eventos de la barra de menús y de herramientas
