@@ -3,6 +3,7 @@ from datetime import datetime
 
 import xlwt as xlwt
 from PyQt5 import QtSql, QtWidgets, QtCore
+from PyQt5.uic.properties import QtGui
 
 import var
 
@@ -398,14 +399,28 @@ class Conexion():
         try:
             index = 0
             query = QtSql.QSqlQuery()
-            query.prepare("SELECT codfac, fechafac FROM facturas order by fechafac DESC")
+            query.prepare("SELECT codfac, fechafac FROM facturas order by date(fechafac) DESC ")
             if query.exec_():
                 while query.next():
                     codigo = query.value(0)
                     fechafac = query.value(1)
+                    var.btnfacdel = QtWidgets.QPushButton()
+                    iconoPapelera = QtGui.QPixmap("img/papelera.png")
+                    var.btnfacdel.setFixedSize(24,24)
+                    var.btnfacdel.setIcon(QtGui.QIcon(iconoPapelera))
+
+
                     var.ui.tabFacturas.setRowCount(index + 1)
                     var.ui.tabFacturas.setItem(index, 0, QtWidgets.QTableWidgetItem(str(codigo)))
                     var.ui.tabFacturas.setItem(index, 1, QtWidgets.QTableWidgetItem(fechafac))
+
+                    cell_widget = QtWidgets.QWidget()
+                    lay_out = QtWidgets.QHBoxLayout(cell_widget)
+                    lay_out.addWidget(var.btnfacdel)
+                    var.btnfacdel.clicked.connect(Conexion.bajaFac)
+                    lay_out.setAlignment(QtCore.Qt.AlignVCenter)
+                    var.ui.tabFacturas.setCellWidget(index, 2, cell_widget)
+
                     var.ui.tabFacturas.item(index, 0).setTextAlignment(QtCore.Qt.AlignRight)
                     var.ui.tabFacturas.item(index, 1).setTextAlignment(QtCore.Qt.AlignCenter)
 
@@ -424,3 +439,21 @@ class Conexion():
             return dni
         except Exception as error:
             print("Problemas al buscar cliente ", error)
+
+    def bajaFac(self):
+        try:
+            numfac = var.ui.lblNumfac.text()
+            query = QtSql.QSqlQuery()
+            query.prepare("delete from facturas where codigo = :numfac")
+            query.bindValue(":numfac", int(numfac))
+
+            if query.exec_():
+                msg1 = QtWidgets.QMessageBox()
+                msg1.setWindowTitle("Aviso")
+                msg1.setIcon(QtWidgets.QMessageBox.Information)
+                msg1.setText("Factura dada de baja")
+                msg1.exec()
+                Conexion.cargarTabFacturas(self)
+
+        except Exception as error:
+            print("Problemas al dar de baja factura ", error)

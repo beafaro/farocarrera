@@ -25,7 +25,6 @@ class Ui_MainWindow(object):
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(9)
-        font.setStyleStrategy(QtGui.QFont.PreferDefault)
         self.lblClientes.setFont(font)
         self.lblClientes.setStyleSheet("color: rgb(0, 170, 255);\n"
 "font: 75 12pt \"Verdana\";\n"
@@ -649,11 +648,11 @@ class Ui_MainWindow(object):
         self.line_5.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_5.setObjectName("line_5")
         self.tabFacturas = QtWidgets.QTableWidget(self.tab_2)
-        self.tabFacturas.setGeometry(QtCore.QRect(30, 170, 256, 461))
+        self.tabFacturas.setGeometry(QtCore.QRect(30, 170, 201, 461))
         self.tabFacturas.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustToContents)
         self.tabFacturas.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
+        self.tabFacturas.setColumnCount(3)
         self.tabFacturas.setObjectName("tabFacturas")
-        self.tabFacturas.setColumnCount(2)
         self.tabFacturas.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()
         font = QtGui.QFont()
@@ -894,7 +893,7 @@ class Ui_MainWindow(object):
         self.toolBar.addSeparator()
 
         self.retranslateUi(MainWindow)
-        self.TabPrograma.setCurrentIndex(2)
+        self.TabPrograma.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -940,7 +939,7 @@ class Ui_MainWindow(object):
         self.label_4.setText(_translate("MainWindow", "CLIENTE:"))
         self.label_6.setText(_translate("MainWindow", "Número factura:"))
         item = self.tabFacturas.horizontalHeaderItem(0)
-        item.setText(_translate("MainWindow", "Num. factura"))
+        item.setText(_translate("MainWindow", "Factura"))
         item = self.tabFacturas.horizontalHeaderItem(1)
         item.setText(_translate("MainWindow", "Fecha"))
         self.TabPrograma.setTabText(self.TabPrograma.indexOf(self.tab_2), _translate("MainWindow", "Facturación"))

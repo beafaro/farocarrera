@@ -30,7 +30,6 @@
       <weight>9</weight>
       <italic>false</italic>
       <bold>false</bold>
-      <stylestrategy>PreferDefault</stylestrategy>
      </font>
     </property>
     <property name="styleSheet">
@@ -65,7 +64,7 @@ align: center;
      </font>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -1276,7 +1275,7 @@ color: rgb(255, 0, 0);</string>
        <rect>
         <x>30</x>
         <y>170</y>
-        <width>256</width>
+        <width>201</width>
         <height>461</height>
        </rect>
       </property>
@@ -1286,9 +1285,12 @@ color: rgb(255, 0, 0);</string>
       <property name="selectionBehavior">
        <enum>QAbstractItemView::SelectRows</enum>
       </property>
+      <property name="columnCount">
+       <number>3</number>
+      </property>
       <column>
        <property name="text">
-        <string>Num. factura</string>
+        <string>Factura</string>
        </property>
        <property name="font">
         <font>
@@ -1310,6 +1312,7 @@ color: rgb(255, 0, 0);</string>
         </font>
        </property>
       </column>
+      <column/>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_3">
@@ -1786,11 +1789,11 @@ color: rgb(255, 0, 0);</string>
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="rbtGroupSex"/>
   <buttongroup name="chkGroupPago">
    <property name="exclusive">
     <bool>false</bool>
    </property>
   </buttongroup>
+  <buttongroup name="rbtGroupSex"/>
  </buttongroups>
 </ui>
