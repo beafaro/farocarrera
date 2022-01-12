@@ -1,11 +1,10 @@
 import locale
 from datetime import datetime
-
 import xlwt as xlwt
 from PyQt5 import QtSql, QtWidgets, QtCore
 from PyQt5.uic.properties import QtGui
-
 import var
+from window import *
 
 class Conexion():
     def db_connect(filedb):
@@ -406,23 +405,21 @@ class Conexion():
                     fechafac = query.value(1)
                     var.btnfacdel = QtWidgets.QPushButton()
                     iconoPapelera = QtGui.QPixmap("img/papelera.png")
-                    var.btnfacdel.setFixedSize(24,24)
+                    var.btnfacdel.setFixedSize(22,22)
                     var.btnfacdel.setIcon(QtGui.QIcon(iconoPapelera))
 
+                    print(codigo, fechafac)
                     var.ui.tabFacturas.setRowCount(index + 1)
                     var.ui.tabFacturas.setItem(index, 0, QtWidgets.QTableWidgetItem(str(codigo)))
                     var.ui.tabFacturas.setItem(index, 1, QtWidgets.QTableWidgetItem(fechafac))
-
                     cell_widget = QtWidgets.QWidget()
                     lay_out = QtWidgets.QHBoxLayout(cell_widget)
                     lay_out.addWidget(var.btnfacdel)
                     var.btnfacdel.clicked.connect(Conexion.bajaFac)
                     lay_out.setAlignment(QtCore.Qt.AlignVCenter)
                     var.ui.tabFacturas.setCellWidget(index, 2, cell_widget)
-
-                    var.ui.tabFacturas.item(index, 0).setTextAlignment(QtCore.Qt.AlignRight)
+                    var.ui.tabFacturas.item(index, 0).setTextAlignment(QtCore.Qt.AlignCenter)
                     var.ui.tabFacturas.item(index, 1).setTextAlignment(QtCore.Qt.AlignCenter)
-
                     index += 1
         except Exception as error:
             print("Problemas al cargar listado de facturas ", error)
@@ -430,12 +427,12 @@ class Conexion():
     def buscaDNIFac(numfac):
         try:
             query = QtSql.QSqlQuery()
-            query.prepare("SELECT dni FROM facturas WHERE codigo = :codfac")
+            query.prepare("SELECT dni FROM facturas WHERE codfac = :codfac")
             query.bindValue(":codfac", int(numfac))
             if query.exec_():
                 while query.next():
                     dni = query.value(0)
-            return dni
+                return dni
         except Exception as error:
             print("Problemas al buscar cliente ", error)
 
@@ -443,15 +440,15 @@ class Conexion():
         try:
             numfac = var.ui.lblNumfac.text()
             query = QtSql.QSqlQuery()
-            query.prepare("delete from facturas where codigo = :numfac")
+            query.prepare("delete from facturas where codfac = :numfac")
             query.bindValue(":numfac", int(numfac))
 
             if query.exec_():
-                msg1 = QtWidgets.QMessageBox()
-                msg1.setWindowTitle("Aviso")
-                msg1.setIcon(QtWidgets.QMessageBox.Information)
-                msg1.setText("Factura dada de baja")
-                msg1.exec()
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle("Aviso")
+                msg.setIcon(QtWidgets.QMessageBox.Information)
+                msg.setText("Factura dada de baja")
+                msg.exec()
                 Conexion.cargarTabFacturas(self)
 
         except Exception as error:

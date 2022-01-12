@@ -1252,6 +1252,9 @@ color: rgb(255, 0, 0);</string>
           <property name="scaledContents">
            <bool>false</bool>
           </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
          </widget>
         </item>
        </layout>
@@ -1275,9 +1278,21 @@ color: rgb(255, 0, 0);</string>
        <rect>
         <x>30</x>
         <y>170</y>
-        <width>201</width>
-        <height>461</height>
+        <width>180</width>
+        <height>460</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>180</width>
+        <height>450</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>180</width>
+        <height>460</height>
+       </size>
       </property>
       <property name="sizeAdjustPolicy">
        <enum>QAbstractScrollArea::AdjustToContents</enum>
@@ -1288,6 +1303,12 @@ color: rgb(255, 0, 0);</string>
       <property name="columnCount">
        <number>3</number>
       </property>
+      <attribute name="horizontalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
       <column>
        <property name="text">
         <string>Factura</string>
@@ -1295,9 +1316,13 @@ color: rgb(255, 0, 0);</string>
        <property name="font">
         <font>
          <family>Verdana</family>
+         <pointsize>7</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
+       </property>
+       <property name="textAlignment">
+        <set>AlignCenter</set>
        </property>
       </column>
       <column>
@@ -1307,9 +1332,13 @@ color: rgb(255, 0, 0);</string>
        <property name="font">
         <font>
          <family>Verdana</family>
+         <pointsize>7</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
+       </property>
+       <property name="textAlignment">
+        <set>AlignCenter</set>
        </property>
       </column>
       <column/>

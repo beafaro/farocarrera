@@ -72,6 +72,8 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnModifProd.clicked.connect(products.Productos.modifProd)
         var.ui.btnVisualizaProd.clicked.connect(informes.Informes.listadoProductos)
 
+        # conexion.Conexion.bajaFac(self)
+
         '''
         Eventos botón de Facturas
         '''
@@ -123,6 +125,8 @@ class Main(QtWidgets.QMainWindow):
         var.ui.tabProductos.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
 
         #tabla facturas
+
+        events.Eventos.resizeTablaFac(self)
         var.ui.tabFacturas.clicked.connect(invoice.Facturas.cargaFac)
         var.ui.tabFacturas.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
 
