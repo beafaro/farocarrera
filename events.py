@@ -168,3 +168,11 @@ class Eventos():
 
         except Exception as error:
             print("Error al redimensionar tabla productos", error)
+
+    def resizeTablaVen(self):
+        try:
+            header = var.ui.tabVentas.horizontalHeader()
+            for i in range(5):
+                header.setSectionResizeMode(i, QtWidgets.QHeaderView.ResizeToContents)
+        except Exception as error:
+            print("Error al redimensionar tabla clientes", error)

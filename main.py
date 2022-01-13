@@ -125,6 +125,7 @@ class Main(QtWidgets.QMainWindow):
 
         #tabla facturas
         events.Eventos.resizeTablaFac(self)
+        events.Eventos.resizeTablaVen(self)
         var.ui.tabFacturas.clicked.connect(invoice.Facturas.cargaFac)
         var.ui.tabFacturas.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
         var.ui.tabClientes.clicked.connect(invoice.Facturas.cargaCliFac)

@@ -408,7 +408,6 @@ class Conexion():
                     var.btnfacdel.setFixedSize(22,22)
                     var.btnfacdel.setIcon(QtGui.QIcon(iconoPapelera))
 
-                    print(codigo, fechafac)
                     var.ui.tabFacturas.setRowCount(index + 1)
                     var.ui.tabFacturas.setItem(index, 0, QtWidgets.QTableWidgetItem(str(codigo)))
                     var.ui.tabFacturas.setItem(index, 1, QtWidgets.QTableWidgetItem(fechafac))

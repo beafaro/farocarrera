@@ -53,6 +53,8 @@ class Facturas():
             if registro:
                 nombre = registro[0] + ", " + registro[1]
                 var.ui.lblNomfac.setText(nombre)
+
+            Facturas.cargaVenta1(self)
         except Exception as error:
             print("Error en cargar facturas", error)
 
@@ -67,6 +69,5 @@ class Facturas():
                 dato.setText(row[i]) #cargamos los datos en las cajas de texto
 
             '''carga el dni y los apellidos, falta nombre'''
-
         except Exception as error:
             print("Error en cargar datos de un cliente en Facturación", error)
