@@ -129,6 +129,9 @@ class Main(QtWidgets.QMainWindow):
         var.ui.tabFacturas.clicked.connect(invoice.Facturas.cargaFac)
         var.ui.tabFacturas.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
         var.ui.tabClientes.clicked.connect(invoice.Facturas.cargaCliFac)
+        var.ui.tabVentas.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
+        #invoice.Facturas.prepararTabFac(self)
+        invoice.Facturas.cargarLineaVenta(self)
 
         '''
         Base de datos
