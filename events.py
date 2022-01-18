@@ -173,6 +173,9 @@ class Eventos():
         try:
             header = var.ui.tabVentas.horizontalHeader()
             for i in range(5):
-                header.setSectionResizeMode(i, QtWidgets.QHeaderView.ResizeToContents)
+                header.setSectionResizeMode(i, QtWidgets.QHeaderView.Stretch)
+                if i == 1 or i ==3:
+                    header.setSectionResizeMode(i, QtWidgets.QHeaderView.ResizeToContents)
+
         except Exception as error:
             print("Error al redimensionar tabla clientes", error)

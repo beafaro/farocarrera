@@ -92,12 +92,12 @@ class Facturas():
 
     def procesoVenta(self):
         try:
+            row = var.ui.tabVentas.currentRow()
             articulo= var.cmbProducto.currentText()
             dato = conexion.Conexion.obtenerCodPrecio(articulo)
+            var.ui.tabVentas.setItem(row, 2, QtWidgets.QTableWidgetItem(str(dato[1])))
+            var.ui.tabVentas.item(row, 2).setTextAlignment(QtCore.Qt.AlignCenter)
             print(dato)
-
-
-
 
         except Exception as error:
             print("Error en proceso venta: ", error)

@@ -56,6 +56,7 @@ class Main(QtWidgets.QMainWindow):
         '''
         Eventos de botón
         '''
+        #Eventos de botón de Clientes
         var.ui.btnCalendar.clicked.connect(events.Eventos.abrircal)
         # var.ui.rbtGroupSex.buttonClicked.connect(clients.Clientes.SelSexo)
         # var.ui.chkGroupPago.buttonClicked.connect(clients.Clientes.SelPago)
@@ -72,13 +73,11 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnModifProd.clicked.connect(products.Productos.modifProd)
         var.ui.btnVisualizaProd.clicked.connect(informes.Informes.listadoProductos)
 
-
-        '''
-        Eventos botón de Facturas
-        '''
+        #Eventos botón de Facturas
         var.ui.btnBuscaClifac.clicked.connect(invoice.Facturas.buscaCli)
         var.ui.btnFechafac.clicked.connect(events.Eventos.abrircal)
         var.ui.btnFacturar.clicked.connect(invoice.Facturas.facturar)
+
 
         '''
         Eventos de la barra de menús y de herramientas
@@ -111,6 +110,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.txtNome.editingFinished.connect(clients.Clientes.letraCapital)
         var.ui.txtDir.editingFinished.connect(clients.Clientes.letraCapital)
 
+
         '''
         Eventos QTabWidget
         '''
@@ -118,7 +118,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.tabClientes.clicked.connect(clients.Clientes.cargaCli)
         var.ui.tabClientes.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
 
-        #Eventos QTabWidget productos
+        #tabla productos
         events.Eventos.resizeTablaProd(self)
         var.ui.tabProductos.clicked.connect(products.Productos.cargaProd)
         var.ui.tabProductos.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
@@ -133,6 +133,7 @@ class Main(QtWidgets.QMainWindow):
         #invoice.Facturas.prepararTabFac(self)
         invoice.Facturas.cargarLineaVenta(self)
 
+
         '''
         Base de datos
         '''
@@ -140,6 +141,7 @@ class Main(QtWidgets.QMainWindow):
         conexion.Conexion.cargarTabCli(self)
         conexion.Conexion.cargarTabProd(self)
         conexion.Conexion.cargarTabFacturas(self)
+
 
         '''
         Eventos de comboBox
@@ -149,6 +151,7 @@ class Main(QtWidgets.QMainWindow):
         conexion.Conexion.cargarCmbProducto(self)
         var.cmbProducto.currentIndexChanged.connect(invoice.Facturas.procesoVenta)
 
+
         '''
         Barra de estado
         '''
@@ -156,6 +159,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.lblFecha.setText("Import-Export Vigo")
         day = datetime.now()
         var.ui.lblFecha.setText(day.strftime("%A, %d de %B de %Y %H:%M").capitalize())
+
 
         '''
         Eventos spinbox

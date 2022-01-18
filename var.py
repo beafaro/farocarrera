@@ -15,8 +15,8 @@ global msg
 global dniValido
 global btnfacdel
 global cmbProducto
+
 ''' 
 otras variables
 '''
-
 filedb = "bbdd.sqlite"

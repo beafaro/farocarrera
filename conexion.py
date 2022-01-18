@@ -439,7 +439,7 @@ class Conexion():
         try:
             numfac = var.ui.lblNumfac.text()
             query = QtSql.QSqlQuery()
-            query.prepare("delete from facturas where codfac = :numfac")
+            query.prepare("DELETE FROM facturas WHERE codfac = :numfac")
             query.bindValue(":numfac", int(numfac))
 
             if query.exec_():
@@ -481,32 +481,3 @@ class Conexion():
         except Exception as error:
             print("Error al obtener código y precio del artículo en Conexion ", error)
 
-    '''cargar precio en tabla ventas cuando selecciono en combo'''
-    def cargarTabVentas(self):
-        try:
-            index = 0
-            query = QtSql.QSqlQuery()
-            query.prepare("SELECT codfac, fechafac FROM facturas order by date(fechafac) DESC ")
-            if query.exec_():
-                while query.next():
-                    codigo = query.value(0)
-                    fechafac = query.value(1)
-                    var.btnfacdel = QtWidgets.QPushButton()
-                    iconoPapelera = QtGui.QPixmap("img/papelera.png")
-                    var.btnfacdel.setFixedSize(22, 22)
-                    var.btnfacdel.setIcon(QtGui.QIcon(iconoPapelera))
-
-                    var.ui.tabFacturas.setRowCount(index + 1)
-                    var.ui.tabFacturas.setItem(index, 0, QtWidgets.QTableWidgetItem(str(codigo)))
-                    var.ui.tabFacturas.setItem(index, 1, QtWidgets.QTableWidgetItem(fechafac))
-                    cell_widget = QtWidgets.QWidget()
-                    lay_out = QtWidgets.QHBoxLayout(cell_widget)
-                    lay_out.setContentsMargins(0, 0, 0, 0)
-                    lay_out.addWidget(var.btnfacdel)
-                    var.btnfacdel.clicked.connect(Conexion.bajaFac)
-                    var.ui.tabFacturas.setCellWidget(index, 2, cell_widget)
-                    var.ui.tabFacturas.item(index, 0).setTextAlignment(QtCore.Qt.AlignCenter)
-                    var.ui.tabFacturas.item(index, 1).setTextAlignment(QtCore.Qt.AlignCenter)
-                    index += 1
-        except Exception as error:
-            print("Problemas al cargar listado de facturas ", error)
