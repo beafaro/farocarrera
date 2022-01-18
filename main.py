@@ -150,6 +150,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.cmbProv.currentIndexChanged.connect(conexion.Conexion.selMuni)
         conexion.Conexion.cargarCmbProducto(self)
         var.cmbProducto.currentIndexChanged.connect(invoice.Facturas.procesoVenta)
+        #f
 
 
         '''
