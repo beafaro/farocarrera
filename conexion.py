@@ -1,7 +1,7 @@
 import locale
 from datetime import datetime
 import xlwt as xlwt
-from PyQt5 import QtSql, QtWidgets, QtCore
+from PyQt5 import QtSql
 from PyQt5.uic.properties import QtGui
 import var
 from window import *
@@ -452,3 +452,61 @@ class Conexion():
 
         except Exception as error:
             print("Problemas al dar de baja factura ", error)
+
+    def cargarCmbProducto(self):
+        try:
+            var.cmbProducto.clear()
+            query = QtSql.QSqlQuery()
+            var.cmbProducto.addItem('') #para que la primera línea del código esté en blanco
+            query.prepare("SELECT nombre FROM productos ORDER BY nombre")
+            if query.exec_():
+                while query.next():
+                    var.cmbProducto.addItem(str(query.value(0)))
+        except Exception as error:
+            print("Error al cargar combo de productos ", error)
+
+    def obtenerCodPrecio(articulo):
+        try:
+            dato = []
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT codigo, precio FROM productos WHERE nombre =:nombre")
+            query.bindValue(":nombre", str(articulo))
+
+            if query.exec_():
+                while query.next():
+                    dato.append(int(query.value(0)))
+                    dato.append(str(query.value(1)))
+            return dato
+
+        except Exception as error:
+            print("Error al obtener código y precio del artículo en Conexion ", error)
+
+    '''cargar precio en tabla ventas cuando selecciono en combo'''
+    def cargarTabVentas(self):
+        try:
+            index = 0
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT codfac, fechafac FROM facturas order by date(fechafac) DESC ")
+            if query.exec_():
+                while query.next():
+                    codigo = query.value(0)
+                    fechafac = query.value(1)
+                    var.btnfacdel = QtWidgets.QPushButton()
+                    iconoPapelera = QtGui.QPixmap("img/papelera.png")
+                    var.btnfacdel.setFixedSize(22, 22)
+                    var.btnfacdel.setIcon(QtGui.QIcon(iconoPapelera))
+
+                    var.ui.tabFacturas.setRowCount(index + 1)
+                    var.ui.tabFacturas.setItem(index, 0, QtWidgets.QTableWidgetItem(str(codigo)))
+                    var.ui.tabFacturas.setItem(index, 1, QtWidgets.QTableWidgetItem(fechafac))
+                    cell_widget = QtWidgets.QWidget()
+                    lay_out = QtWidgets.QHBoxLayout(cell_widget)
+                    lay_out.setContentsMargins(0, 0, 0, 0)
+                    lay_out.addWidget(var.btnfacdel)
+                    var.btnfacdel.clicked.connect(Conexion.bajaFac)
+                    var.ui.tabFacturas.setCellWidget(index, 2, cell_widget)
+                    var.ui.tabFacturas.item(index, 0).setTextAlignment(QtCore.Qt.AlignCenter)
+                    var.ui.tabFacturas.item(index, 1).setTextAlignment(QtCore.Qt.AlignCenter)
+                    index += 1
+        except Exception as error:
+            print("Problemas al cargar listado de facturas ", error)

@@ -159,7 +159,7 @@ class Eventos():
         except Exception as error:
             print("Error al redimensionar tabla productos", error)
 
-
+    '''Eventos facturas'''
     def resizeTablaFac(self):
         try:
             header = var.ui.tabFacturas.horizontalHeader()

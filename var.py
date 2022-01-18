@@ -11,8 +11,10 @@ global dlgcalendar
 global dlgabrir
 global copia
 global cv
+global msg
 global dniValido
-
+global btnfacdel
+global cmbProducto
 ''' 
 otras variables
 '''

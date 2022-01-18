@@ -1,11 +1,9 @@
 '''
 Funciones gestión productos
 '''
-import locale
 
 import conexion
 import var
-from window import *
 import locale
 locale.setlocale(locale.LC_ALL, '')
 

@@ -1,10 +1,9 @@
 '''
-Funciones gestion clientes
+Funciones gestion facturas
 '''
 from PyQt5 import QtWidgets, QtCore
 
 import conexion
-import window
 import var
 
 class Facturas():
@@ -78,6 +77,7 @@ class Facturas():
             var.cmbProducto = QtWidgets.QComboBox()
             var.cmbProducto.setFixedSize(180,25)
             #cargar el combo
+            conexion.Conexion.cargarCmbProducto(self)
 
             var.txtCantidad = QtWidgets.QLineEdit()
             var.txtCantidad.setFixedSize(70,25)
@@ -89,3 +89,15 @@ class Facturas():
 
         except Exception as error:
             print("Error al cargar linea venta", error)
+
+    def procesoVenta(self):
+        try:
+            articulo= var.cmbProducto.currentText()
+            dato = conexion.Conexion.obtenerCodPrecio(articulo)
+            print(dato)
+
+
+
+
+        except Exception as error:
+            print("Error en proceso venta: ", error)

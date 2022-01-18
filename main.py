@@ -146,6 +146,8 @@ class Main(QtWidgets.QMainWindow):
         '''
         conexion.Conexion.cargarProv(self)
         var.ui.cmbProv.currentIndexChanged.connect(conexion.Conexion.selMuni)
+        conexion.Conexion.cargarCmbProducto(self)
+        var.cmbProducto.currentIndexChanged.connect(invoice.Facturas.procesoVenta)
 
         '''
         Barra de estado
