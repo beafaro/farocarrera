@@ -22,11 +22,14 @@ class Productos():
 
             conexion.Conexion.altaProd(newProd)
             conexion.Conexion.cargarTabProd(self)
+            conexion.Conexion.cargarCmbProducto(self)
+
         except Exception as error:
             print("Error en guardar productos", error)
 
     def limpiaFormProd(self):
         try:
+            #file = var.ui.tabProd.selectItems()
             cajas = [var.ui.txtCodigo, var.ui.txtNomProd, var.ui.txtPrecio]
             for i in cajas:
                 i.setText("")
