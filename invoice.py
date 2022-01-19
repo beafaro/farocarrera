@@ -79,7 +79,7 @@ class Facturas():
             #cargar el combo
             conexion.Conexion.cargarCmbProducto(self)
 
-            var.txtCantidad = QtWidgets.QLineEdit()
+            #var.txtCantidad = QtWidgets.QLineEdit()
             var.txtCantidad.setFixedSize(70,25)
             var.txtCantidad.setAlignment(QtCore.Qt.AlignCenter)
 
@@ -97,7 +97,19 @@ class Facturas():
             dato = conexion.Conexion.obtenerCodPrecio(articulo)
             var.ui.tabVentas.setItem(row, 2, QtWidgets.QTableWidgetItem(str(dato[1])))
             var.ui.tabVentas.item(row, 2).setTextAlignment(QtCore.Qt.AlignCenter)
-            print(dato)
+            precio = dato[1].replace('€', '')
+            var.precio = precio.replace(',', '.')
 
         except Exception as error:
-            print("Error en proceso venta: ", error)
+            print("Error en proceso venta", error)
+
+    def totalLineaVenta(self=None):
+        try:
+            row = var.ui.tabVentas.currentRow()
+            cantidad = round(float(var.txtCantidad.text().replace(',', '.')),2)
+            total_linea = round(float(var.precio) * float(cantidad),2)
+            var.ui.tabVentas.setItem(row, 4, QtWidgets.QTableWidgetItem(str(total_linea) +" €"))
+            var.ui.tabVentas.item(row, 4).setTextAlignment(QtCore.Qt.AlignRight)
+
+        except Exception as error:
+            print("Error en total linea venta", error)

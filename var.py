@@ -15,6 +15,8 @@ global msg
 global dniValido
 global btnfacdel
 global cmbProducto
+global txtCantidad
+global precio
 
 ''' 
 otras variables
