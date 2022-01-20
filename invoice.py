@@ -5,6 +5,8 @@ from PyQt5 import QtWidgets, QtCore
 
 import conexion
 import var
+import locale
+locale.setlocale(locale.LC_ALL, '')
 
 class Facturas():
     def buscaCli(self):
@@ -34,6 +36,11 @@ class Facturas():
             registro.append(str(fechaFac))
 
             conexion.Conexion.altaFac(registro)
+            conexion.Conexion.cargarTabFacturas(self)
+
+            codFac = conexion.Conexion.buscaCodFac(self)
+            var.ui.lblNumfac.setText(str(codFac))
+
         except Exception as error:
             print("Error al facturar cliente en Facturas", error)
 
@@ -95,6 +102,7 @@ class Facturas():
             row = var.ui.tabVentas.currentRow()
             articulo= var.cmbProducto.currentText()
             dato = conexion.Conexion.obtenerCodPrecio(articulo)
+            var.codpro = dato[0]
             var.ui.tabVentas.setItem(row, 2, QtWidgets.QTableWidgetItem(str(dato[1])))
             var.ui.tabVentas.item(row, 2).setTextAlignment(QtCore.Qt.AlignCenter)
             precio = dato[1].replace('€', '')
@@ -105,11 +113,20 @@ class Facturas():
 
     def totalLineaVenta(self=None):
         try:
+            venta = []
             row = var.ui.tabVentas.currentRow()
             cantidad = round(float(var.txtCantidad.text().replace(',', '.')),2)
             total_linea = round(float(var.precio) * float(cantidad),2)
             var.ui.tabVentas.setItem(row, 4, QtWidgets.QTableWidgetItem(str(total_linea) +" €"))
             var.ui.tabVentas.item(row, 4).setTextAlignment(QtCore.Qt.AlignRight)
+
+            codfac= var.ui.lblNumfac.text()
+            venta.append(int(codfac))
+            venta.append(int(var.codpro))
+            venta.append(float(var.precio))
+            venta.append(float(cantidad))
+            conexion.Conexion.cargarVenta(venta)
+            var.txtCantidad.clearFocus()
 
         except Exception as error:
             print("Error en total linea venta", error)

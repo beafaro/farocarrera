@@ -1,10 +1,12 @@
-import locale
-from datetime import datetime
+
 import xlwt as xlwt
 from PyQt5 import QtSql
 from PyQt5.uic.properties import QtGui
 import var
 from window import *
+from datetime import datetime
+import locale
+locale.setlocale(locale.LC_ALL, '')
 
 class Conexion():
     def db_connect(filedb):
@@ -396,6 +398,7 @@ class Conexion():
 
     def cargarTabFacturas(self):
         try:
+            var.ui.tabFacturas.clear()
             index = 0
             query = QtSql.QSqlQuery()
             query.prepare("SELECT codfac, fechafac FROM facturas order by date(fechafac) DESC ")
@@ -481,3 +484,35 @@ class Conexion():
         except Exception as error:
             print("Error al obtener código y precio del artículo en Conexion ", error)
 
+    def cargarVenta(venta):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare("INSERT INTO ventas (codfacf, codprodf, precio, cantidad) VALUES (:codfacf, :codprodf, :precio, :cantidad)")
+            query.bindValue(":codfacf", int(venta[0]))
+            query.bindValue(":codprodf", int(venta[1]))
+            query.bindValue(":precio", float(venta[2]))
+            query.bindValue(":cantidad", float(venta[3]))
+
+            if query.exec_():
+                var.ui.lblVenta.setStyleSheet("QLabel {color: black;}")
+                var.ui.lblVenta.setText("Venta realizada!")
+            else:
+                var.ui.lblVenta.setStyleSheet("QLabel {color: red;}")
+                var.ui.lblVenta.setText("Error en venta!")
+
+        except Exception as error:
+            print("Error al cargar venta en conexión", error)
+
+    def buscaCodFac(self):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT codfac FROM facturas order by codfac desc limit 1")
+
+            if query.exec_():
+                while query.next():
+                    dato = query.value(0)
+
+            return dato
+
+        except Exception as error:
+            print("Error al obtener código factura en conexión", error)

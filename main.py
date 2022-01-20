@@ -110,7 +110,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.txtNome.editingFinished.connect(clients.Clientes.letraCapital)
         var.ui.txtDir.editingFinished.connect(clients.Clientes.letraCapital)
         var.txtCantidad = QtWidgets.QLineEdit()
-        var.txtCantidad.editingFinished.connect(invoice.Facturas.totalLineaVenta)
+        var.txtCantidad.returnPressed.connect(invoice.Facturas.totalLineaVenta)
 
 
         '''
