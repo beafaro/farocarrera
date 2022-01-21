@@ -138,8 +138,8 @@ class Informes():
 
                     var.cv.setFont("Helvetica", size=8)
                     var.cv.drawString(i,j, str(query.value(0)))
-                    var.cv.drawString(i+140, j, str(query.value(1)+", " + query.value(2)))
-                    var.cv.drawString(i+310, j, str(query.value(3)))
+                    var.cv.drawString(i+140, j, str(query.value(1)))
+                    var.cv.drawString(i+310, j, str(query.value(2)))
                     j = j - 20
 
             var.cv.save()
