@@ -516,3 +516,5 @@ class Conexion():
 
         except Exception as error:
             print("Error al obtener código factura en conexión", error)
+
+            SELECT nombre FROM ventas INNER JOIN productos on codprodf = codigo
