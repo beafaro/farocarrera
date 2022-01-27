@@ -159,6 +159,7 @@ class Informes():
             var.cv = canvas.Canvas('informes/factura.pdf')
             var.cv.setTitle('Listado Facturas')
             var.cv.setAuthor('Departamento de Administración')
+
             rootPath = '.\\informes'
             var.cv.setFont('Helvetica-Bold', size=10)
             textotitulo = 'FACTURA'
