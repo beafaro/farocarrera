@@ -162,9 +162,10 @@ class Informes():
 
             rootPath = '.\\informes'
             var.cv.setFont('Helvetica-Bold', size=10)
-            textotitulo = 'FACTURA'
+            textotitulo = 'LISTADO FACTURA'
             Informes.cabecera(self)
             Informes.pie(textotitulo)
+
             codfac = var.ui.lblNumfac.text()
             var.cv.drawString(260, 694, textotitulo + ': ' + (str(codfac)))
             var.cv.line(30, 685, 550, 685)
@@ -174,6 +175,7 @@ class Informes():
             var.cv.drawString(270, 673, items[2])
             var.cv.drawString(380, 673, items[3])
             var.cv.drawString(490, 673, items[4])
+
             suma = 0.0
             query = QtSql.QSqlQuery()
             query.prepare('select codven, precio, cantidad, codprodf from ventas where codfacf = :codfacf')
@@ -188,7 +190,7 @@ class Informes():
                     nombre = conexion.Conexion.buscaArt(int(query.value(3)))
                     total = round(precio * cantidad, 2)
                     suma += total
-                    var.cv.setFont('Helvetica', size=9)
+                    var.cv.setFont('Helvetica', size=8)
                     var.cv.drawString(i + 20, j, str(codventa))
                     var.cv.drawString(i + 100, j, str(nombre))
                     var.cv.drawString(i + 219, j, str(precio) + '€/kg')
