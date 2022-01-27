@@ -90,7 +90,7 @@ class Facturas():
             var.txtCantidad.editingFinished.connect(Facturas.totalLineaVenta)
             var.txtCantidad.setFixedSize(80,25)
             var.txtCantidad.setAlignment(QtCore.Qt.AlignCenter)
-            var.ui.tabVentas.setRowCount(index+1)
+            var.ui.tabVentas.setRowCount(index + 1)
             var.ui.tabVentas.setCellWidget(index,1,var.cmbProducto)
             var.ui.tabVentas.setCellWidget(index,3,var.txtCantidad)
 

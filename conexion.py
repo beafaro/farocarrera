@@ -529,8 +529,8 @@ class Conexion():
             if query.exec_():
                 while query.next():
                     codven = query.value(0)
-                    precio = query.value(1)  #str('{:.2f}'.format(round(query.value(1), 2))) + '€'
-                    cantidad = query.value(2)   #str('{:.2f}'.format(round(query.value(2), 2)))
+                    precio = query.value(1)
+                    cantidad = query.value(2)
                     nombre = Conexion.buscaArt(int(query.value(3)))
                     total = round(precio * cantidad, 2)
                     suma += total
