@@ -85,7 +85,7 @@ class Facturas():
             var.cmbProducto = QtWidgets.QComboBox()
             var.cmbProducto.currentIndexChanged.connect(Facturas.procesoVenta)
             var.cmbProducto.setFixedSize(170,25)
-            conexion.Conexion.cargarCmbproducto(self=None)
+            conexion.Conexion.cargarCmbProducto(self=None)
 
             var.txtCantidad = QtWidgets.QLineEdit()
             var.txtCantidad.editingFinished.connect(Facturas.totalLineaVenta)

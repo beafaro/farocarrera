@@ -523,7 +523,7 @@ class Conexion():
             var.ui.tabVentas.clearContents()
             index = 0
             query = QtSql.QSqlQuery()
-            query.prepare('SELECT codven, precio, cantidad FROM ventas WHERE codfacf = :codfacf')
+            query.prepare('SELECT codven, precio, cantidad, codprodf FROM ventas WHERE codfacf = :codfacf')
             query.bindValue(':codfacf', int(codfac))
 
             if query.exec_():
@@ -548,7 +548,7 @@ class Conexion():
                 invoice.Facturas.cargaLineaVenta(index)
             iva = suma * 0.21
             total = suma + iva
-            var.ui.lblSubtotal.setText(str(suma)+' €')
+            var.ui.lblSubTotal.setText(str(suma)+' €')
             var.ui.lblIVA.setText(str(round(iva,2))+' €')
             var.ui.lblTotal.setText(str(round(total,2))+ ' €')
 
@@ -566,9 +566,3 @@ class Conexion():
         except Exception as error:
             print('Error en la búsqueda de articulo')
 
-    def cargarCmbproducto(self):
-        try:
-            var.cmbProducto.clear()
-
-        except Exception as error:
-            print('Error en cargar combo productos')
