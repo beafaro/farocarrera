@@ -135,7 +135,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.tabClientes.clicked.connect(invoice.Facturas.cargaCliFac)
         var.ui.tabVentas.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
         #invoice.Facturas.prepararTabFac(self)
-        invoice.Facturas.cargarLineaVenta(self)
+        invoice.Facturas.cargaLineaVenta(self)
 
 
         '''

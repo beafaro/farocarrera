@@ -79,9 +79,8 @@ class Facturas():
         except Exception as error:
             print("Error en cargar datos de un cliente en Facturación", error)
 
-    def cargarLineaVenta(index):
+    def cargaLineaVenta(index):
         try:
-            index = 0
             var.cmbProducto = QtWidgets.QComboBox()
             var.cmbProducto.currentIndexChanged.connect(Facturas.procesoVenta)
             var.cmbProducto.setFixedSize(170,25)
