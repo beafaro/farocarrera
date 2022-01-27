@@ -2,6 +2,8 @@
 import xlwt as xlwt
 from PyQt5 import QtSql
 from PyQt5.uic.properties import QtGui
+
+import invoice
 import var
 from window import *
 from datetime import datetime
@@ -507,14 +509,66 @@ class Conexion():
         try:
             query = QtSql.QSqlQuery()
             query.prepare("SELECT codfac FROM facturas order by codfac desc limit 1")
-
             if query.exec_():
                 while query.next():
                     dato = query.value(0)
-
             return dato
 
         except Exception as error:
             print("Error al obtener código factura en conexión", error)
 
-            SELECT nombre FROM ventas INNER JOIN productos on codprodf = codigo
+    def cargarLineasVenta(codfac):
+        try:
+            suma = 0.0
+            var.ui.tabVentas.clearContents()
+            index = 0
+            query = QtSql.QSqlQuery()
+            query.prepare('SELECT codven, precio, cantidad FROM ventas WHERE codfacf = :codfacf')
+            query.bindValue(':codfacf', int(codfac))
+
+            if query.exec_():
+                while query.next():
+                    codven = query.value(0)
+                    precio = query.value(1)
+                    cantidad = query.value(2)
+                    nombre = Conexion.buscaArt(int(query.value(3)))
+                    total = round(precio * cantidad, 2)
+                    suma += total
+                    var.ui.tabVentas.setRowCount(index + 1)
+                    var.ui.tabVentas.setItem(index, 0, QtWidgets.QTableWidgetItem(str(codven)))
+                    var.ui.tabVentas.setItem(index, 1, QtWidgets.QTableWidgetItem(str(nombre)))
+                    var.ui.tabVentas.setItem(index, 2, QtWidgets.QTableWidgetItem(str(precio)+' €'))
+                    var.ui.tabVentas.setItem(index, 3, QtWidgets.QTableWidgetItem(str(cantidad)))
+                    var.ui.tabVentas.setItem(index, 4, QtWidgets.QTableWidgetItem(str(total)+' €'))
+                    var.ui.tabVentas.item(index, 0).setTextAlignment(QtCore.Qt.AlignCenter)
+                    var.ui.tabVentas.item(index, 2).setTextAlignment(QtCore.Qt.AlignCenter)
+                    var.ui.tabVentas.item(index, 3).setTextAlignment(QtCore.Qt.AlignCenter)
+                    var.ui.tabVentas.item(index, 4).setTextAlignment(QtCore.Qt.AlignCenter)
+                    index = index + 1
+                invoice.Facturas.cargaLineaVenta(index)
+            iva = suma * 0.21
+            total = suma + iva
+            var.ui.lblSubtotal.setText(str(suma)+' €')
+            var.ui.lblIVA.setText(str(round(iva,2))+' €')
+            var.ui.lblTotal.setText(str(round(total,2))+ ' €')
+
+        except Exception as error:
+            print("Error al cargar líneas de factura", error)
+
+    def buscaArt(codpro):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare('select nombre from productos where codigo = :codpro')
+            query.bindValue(':codpro', str(codpro))
+            if query.exec_():
+                while query.next():
+                    return (query.value(0))
+        except Exception as error:
+            print('Error en la búsqueda de articulo')
+
+    def cargarCmbproducto(self):
+        try:
+            var.cmbProducto.clear()
+
+        except Exception as error:
+            print('Error en cargar combo productos')
