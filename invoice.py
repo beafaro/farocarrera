@@ -73,7 +73,6 @@ class Facturas():
                 row = [dato.text() for dato in fila]
             for i, dato in enumerate(datos):
                 dato.setText(row[i]) #cargamos los datos en las cajas de texto
-
             '''carga el dni y los apellidos, falta nombre'''
 
         except Exception as error:
@@ -85,14 +84,16 @@ class Facturas():
             var.cmbProducto.currentIndexChanged.connect(Facturas.procesoVenta)
             var.cmbProducto.setFixedSize(170,25)
             conexion.Conexion.cargarCmbProducto(self=None)
-
             var.txtCantidad = QtWidgets.QLineEdit()
             var.txtCantidad.editingFinished.connect(Facturas.totalLineaVenta)
             var.txtCantidad.setFixedSize(80,25)
             var.txtCantidad.setAlignment(QtCore.Qt.AlignCenter)
-            var.ui.tabVentas.setRowCount(index + 1)
-            var.ui.tabVentas.setCellWidget(index,1,var.cmbProducto)
-            var.ui.tabVentas.setCellWidget(index,3,var.txtCantidad)
+
+            print("hola2")
+            var.ui.tabVentas.setRowCount(index +1)
+            print("hola3")
+            var.ui.tabVentas.setCellWidget(index, 1, var.cmbProducto)
+            var.ui.tabVentas.setCellWidget(index, 3, var.txtCantidad)
 
         except Exception as error:
             print("Error al cargar linea venta", error)
@@ -105,6 +106,7 @@ class Facturas():
             var.codpro = dato[0]
             var.ui.tabVentas.setItem(row, 2, QtWidgets.QTableWidgetItem(str(dato[1])))
             var.ui.tabVentas.item(row, 2).setTextAlignment(QtCore.Qt.AlignCenter)
+
             precio = dato[1].replace('€', '')
             var.precio = precio.replace(',', '.')
 
