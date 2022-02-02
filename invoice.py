@@ -89,9 +89,7 @@ class Facturas():
             var.txtCantidad.setFixedSize(80,25)
             var.txtCantidad.setAlignment(QtCore.Qt.AlignCenter)
 
-            print("hola2")
             var.ui.tabVentas.setRowCount(index +1)
-            print("hola3")
             var.ui.tabVentas.setCellWidget(index, 1, var.cmbProducto)
             var.ui.tabVentas.setCellWidget(index, 3, var.txtCantidad)
 

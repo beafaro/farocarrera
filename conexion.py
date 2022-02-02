@@ -566,3 +566,22 @@ class Conexion():
         except Exception as error:
             print('Error en la búsqueda de articulo')
 
+    def borraVenta(self):
+        try:
+            row = var.ui.tabVentas.currentRow()
+            codventa = var.ui.tabVentas.item(row, 0).text()
+            query = QtSql.QSqlQuery()
+            query.prepare('DELETE FROM ventas WHERE codven = :codven')
+            query.bindValue(':codven', str(codventa))
+            if query.exec_():
+                msg1 = QtWidgets.QMessageBox()
+                msg1.setWindowTitle("Aviso")
+                msg1.setIcon(QtWidgets.QMessageBox.Information)
+                msg1.setText("Venta eliminada")
+                msg1.exec()
+                codfac = var.ui.lblNumfac.text()
+                Conexion.cargarLineasVenta(codfac)
+
+        except Exception as error:
+            print("Error en baja venta", error)
+

@@ -179,3 +179,33 @@ class Eventos():
 
         except Exception as error:
             print("Error al redimensionar tabla clientes", error)
+
+'''
+    def modoEnvio(self):
+        try:
+            reg = var.ui.spinEnvio.value()
+            if reg == 1:
+                var.ui.lblEnvio.setText("Recogida cliente")
+            elif reg == 2:
+                var.ui.lblEnvio.setText("Envío nacional ordinario")
+            elif reg == 3:
+                var.ui.lblEnvio.setText("Envío nacional ordinario")
+            elif reg == 4:
+                var.ui.lblEnvio.setText("Envío nacional ordinario")
+        except Exception as error:
+            print("Error en spinbox envio", error)
+            
+
+    def limpiaDatosFac(self):
+        try:
+            reg = var.ui.spinEnvio.value()
+            if reg == 1:
+                var.ui.lblEnvio.setText("Recogida cliente")
+            elif reg == 2:
+                var.ui.lblEnvio.setText("Envío nacional ordinario")
+            elif reg == 3:
+                var.ui.lblEnvio.setText("Envío nacional ordinario")
+            elif reg == 4:
+                var.ui.lblEnvio.setText("Envío nacional ordinario")
+        except Exception as error:
+            print("Error en spinbos envio", error)'''

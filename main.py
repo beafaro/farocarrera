@@ -78,6 +78,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnFechafac.clicked.connect(events.Eventos.abrircal)
         var.ui.btnFacturar.clicked.connect(invoice.Facturas.facturar)
         var.ui.btnVisualizaVentas.clicked.connect(informes.Informes.listadoFacturas)
+        var.ui.btnBorrarVenta.clicked.connect(conexion.Conexion.borraVenta)
 
 
         '''
@@ -111,7 +112,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.txtNome.editingFinished.connect(clients.Clientes.letraCapital)
         var.ui.txtDir.editingFinished.connect(clients.Clientes.letraCapital)
         var.txtCantidad = QtWidgets.QLineEdit()
-        #var.txtCantidad.returnPressed.connect(invoice.Facturas.totalLineaVenta)  --> evita doble inserccion con intro en tabla ventas
+        var.txtCantidad.returnPressed.connect(invoice.Facturas.totalLineaVenta)
         var.txtCantidad.editingFinished.connect(invoice.Facturas.totalLineaVenta)
 
 
