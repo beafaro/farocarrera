@@ -454,6 +454,7 @@ class Conexion():
                 msg.setText("Factura dada de baja")
                 msg.exec()
                 Conexion.cargarTabFacturas(self)
+                Conexion.delVenFac()
 
         except Exception as error:
             print("Problemas al dar de baja factura ", error)
@@ -545,12 +546,15 @@ class Conexion():
                     var.ui.tabVentas.item(index, 3).setTextAlignment(QtCore.Qt.AlignCenter)
                     var.ui.tabVentas.item(index, 4).setTextAlignment(QtCore.Qt.AlignCenter)
                     index = index + 1
-                invoice.Facturas.cargaLineaVenta(index)
+
             iva = suma * 0.21
             total = suma + iva
-            var.ui.lblSubTotal.setText(str(suma)+' €')
+            var.ui.lblSubTotal.setText(str(round(suma,2))+' €')
             var.ui.lblIVA.setText(str(round(iva,2))+' €')
             var.ui.lblTotal.setText(str(round(total,2))+ ' €')
+
+            invoice.Facturas.cargaLineaVenta(index)
+            var.ui.tabVentas.scrollToBottom()
 
         except Exception as error:
             print("Error al cargar líneas de factura", error)
@@ -584,4 +588,8 @@ class Conexion():
 
         except Exception as error:
             print("Error en baja venta", error)
+
+   # def delVenFac(numfac):
+
+
 
