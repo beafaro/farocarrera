@@ -64,7 +64,7 @@ align: center;
      </font>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -616,8 +616,8 @@ align: center;
            <string/>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>img/calendario.jpg</normaloff>img/calendario.jpg</iconset>
+           <iconset resource="img/calendario.qrc">
+            <normaloff>:/newPrefix/calendario.jpg</normaloff>:/newPrefix/calendario.jpg</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -712,8 +712,8 @@ align: center;
            </size>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>img/limpiaForm.png</normaloff>img/limpiaForm.png</iconset>
+           <iconset resource="img/limpiar.qrc">
+            <normaloff>:/newPrefix/limpiaForm.png</normaloff>:/newPrefix/limpiaForm.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -868,8 +868,8 @@ color: rgb(255, 0, 0);</string>
         <string/>
        </property>
        <property name="icon">
-        <iconset>
-         <normaloff>img/buscar.jpg</normaloff>img/buscar.jpg</iconset>
+        <iconset resource="img/lupa.qrc">
+         <normaloff>:/newPrefix/buscar.jpg</normaloff>:/newPrefix/buscar.jpg</iconset>
        </property>
       </widget>
       <widget class="QPushButton" name="btnReportCli">
@@ -891,8 +891,8 @@ color: rgb(255, 0, 0);</string>
         <string/>
        </property>
        <property name="icon">
-        <iconset>
-         <normaloff>img/imprimir.png</normaloff>img/imprimir.png</iconset>
+        <iconset resource="img/imprimir.qrc">
+         <normaloff>:/newPrefix/imprimir.png</normaloff>:/newPrefix/imprimir.png</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -914,8 +914,8 @@ color: rgb(255, 0, 0);</string>
         <string/>
        </property>
        <property name="icon">
-        <iconset>
-         <normaloff>img/visualizar.png</normaloff>img/visualizar.png</iconset>
+        <iconset resource="img/ver.qrc">
+         <normaloff>:/newPrefix/visualizar.png</normaloff>:/newPrefix/visualizar.png</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -1075,8 +1075,8 @@ color: rgb(255, 0, 0);</string>
         <string/>
        </property>
        <property name="icon">
-        <iconset>
-         <normaloff>img/facturar.jpg</normaloff>img/facturar.jpg</iconset>
+        <iconset resource="img/facturar.qrc">
+         <normaloff>:/newPrefix/facturar.jpg</normaloff>:/newPrefix/facturar.jpg</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -1165,8 +1165,8 @@ color: rgb(255, 0, 0);</string>
            <string/>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>img/buscar.jpg</normaloff>img/buscar.jpg</iconset>
+           <iconset resource="img/lupa.qrc">
+            <normaloff>:/newPrefix/buscar.jpg</normaloff>:/newPrefix/buscar.jpg</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -1242,8 +1242,8 @@ color: rgb(255, 0, 0);</string>
            <string/>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>img/calendario.jpg</normaloff>img/calendario.jpg</iconset>
+           <iconset resource="img/calendario.qrc">
+            <normaloff>:/newPrefix/calendario.jpg</normaloff>:/newPrefix/calendario.jpg</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -1339,8 +1339,8 @@ color: rgb(255, 0, 0);</string>
         <rect>
          <x>820</x>
          <y>80</y>
-         <width>30</width>
-         <height>30</height>
+         <width>26</width>
+         <height>26</height>
         </rect>
        </property>
        <property name="minimumSize">
@@ -1362,8 +1362,8 @@ color: rgb(255, 0, 0);</string>
         <string/>
        </property>
        <property name="icon">
-        <iconset>
-         <normaloff>img/papelera.png</normaloff>img/papelera.png</iconset>
+        <iconset resource="img/papelera.qrc">
+         <normaloff>:/newPrefix/papelera.png</normaloff>:/newPrefix/papelera.png</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -1388,8 +1388,8 @@ color: rgb(255, 0, 0);</string>
         <string/>
        </property>
        <property name="icon">
-        <iconset>
-         <normaloff>img/visualizar.png</normaloff>img/visualizar.png</iconset>
+        <iconset resource="img/ver.qrc">
+         <normaloff>:/newPrefix/visualizar.png</normaloff>:/newPrefix/visualizar.png</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -2024,8 +2024,8 @@ color: rgb(255, 0, 0);</string>
            </size>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>img/limpiaForm.png</normaloff>img/limpiaForm.png</iconset>
+           <iconset resource="img/limpiar.qrc">
+            <normaloff>:/newPrefix/limpiaForm.png</normaloff>:/newPrefix/limpiaForm.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -2132,8 +2132,8 @@ color: rgb(255, 0, 0);</string>
         <string/>
        </property>
        <property name="icon">
-        <iconset>
-         <normaloff>img/visualizar.png</normaloff>img/visualizar.png</iconset>
+        <iconset resource="img/ver.qrc">
+         <normaloff>:/newPrefix/visualizar.png</normaloff>:/newPrefix/visualizar.png</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -2281,8 +2281,8 @@ color: rgb(255, 0, 0);</string>
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>img/salir.png</normaloff>img/salir.png</iconset>
+    <iconset resource="img/salir.qrc">
+     <normaloff>:/newPrefix/salir.png</normaloff>:/newPrefix/salir.png</iconset>
    </property>
    <property name="text">
     <string>Salir</string>
@@ -2296,9 +2296,8 @@ color: rgb(255, 0, 0);</string>
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>img/abrirCarpeta.png</normaloff>
-     <normalon>img/abrirCarpeta.png</normalon>img/abrirCarpeta.png</iconset>
+    <iconset resource="img/abirCarpeta.qrc">
+     <normaloff>:/newPrefix/abrirCarpeta.png</normaloff>:/newPrefix/abrirCarpeta.png</iconset>
    </property>
    <property name="text">
     <string>Abrir carpeta</string>
@@ -2312,9 +2311,8 @@ color: rgb(255, 0, 0);</string>
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normalon>img/crearBackup.png</normalon>
-    </iconset>
+    <iconset resource="img/crearBackup.qrc">
+     <normaloff>:/newPrefix/crearBackup.png</normaloff>:/newPrefix/crearBackup.png</iconset>
    </property>
    <property name="text">
     <string>Crear Backup</string>
@@ -2325,9 +2323,8 @@ color: rgb(255, 0, 0);</string>
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normalon>img/restaurarBackup.png</normalon>
-    </iconset>
+    <iconset resource="img/restaurarBackup.qrc">
+     <normaloff>:/newPrefix/restaurarBackup.png</normaloff>:/newPrefix/restaurarBackup.png</iconset>
    </property>
    <property name="text">
     <string>Restaurar Backup</string>
@@ -2338,8 +2335,8 @@ color: rgb(255, 0, 0);</string>
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>img/imprimir.png</normaloff>img/imprimir.png</iconset>
+    <iconset resource="img/imprimir.qrc">
+     <normaloff>:/newPrefix/imprimir.png</normaloff>:/newPrefix/imprimir.png</iconset>
    </property>
    <property name="text">
     <string>barImprimir</string>
@@ -2364,7 +2361,19 @@ color: rgb(255, 0, 0);</string>
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="img/limpiar.qrc"/>
+  <include location="img/papelera.qrc"/>
+  <include location="img/facturar.qrc"/>
+  <include location="img/salir.qrc"/>
+  <include location="img/restaurarBackup.qrc"/>
+  <include location="img/crearBackup.qrc"/>
+  <include location="img/abirCarpeta.qrc"/>
+  <include location="img/imprimir.qrc"/>
+  <include location="img/ver.qrc"/>
+  <include location="img/calendario.qrc"/>
+  <include location="img/lupa.qrc"/>
+ </resources>
  <connections/>
  <buttongroups>
   <buttongroup name="rbtGroupSex"/>
