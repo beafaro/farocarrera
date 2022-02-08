@@ -73,7 +73,7 @@ class Facturas():
                 row = [dato.text() for dato in fila]
             for i, dato in enumerate(datos):
                 dato.setText(row[i]) #cargamos los datos en las cajas de texto
-            '''carga el dni y los apellidos, falta nombre'''
+
 
         except Exception as error:
             print("Error en cargar datos de un cliente en Facturación", error)

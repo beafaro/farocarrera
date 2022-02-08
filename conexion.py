@@ -1,4 +1,3 @@
-
 import xlwt as xlwt
 from PyQt5 import QtSql
 from PyQt5.uic.properties import QtGui
@@ -8,7 +7,9 @@ import var
 from window import *
 from datetime import datetime
 import locale
+
 locale.setlocale(locale.LC_ALL, '')
+
 
 class Conexion():
     def db_connect(filedb):
@@ -16,7 +17,8 @@ class Conexion():
             db = QtSql.QSqlDatabase.addDatabase("QSQLITE")
             db.setDatabaseName(filedb)
             if not db.open():
-                QtWidgets.QMessageBox.critical(None, "No se puede abrir la base de datos.\n" "Haz click para continuar", QtWidgets.QMessageBox.Cancel)
+                QtWidgets.QMessageBox.critical(None, "No se puede abrir la base de datos.\n" "Haz click para continuar",
+                                               QtWidgets.QMessageBox.Cancel)
                 return False
             else:
                 print("Conexión establecida")
@@ -27,11 +29,13 @@ class Conexion():
     '''
     Módulos gestión base datos cliente
     '''
+
     def altaCli(newCli):
         try:
             query = QtSql.QSqlQuery()
-            query.prepare('INSERT INTO clientes (dni, alta, apellidos, nombre, direccion, provincia, municipio, sexo, pago) '
-                          'VALUES (:dni, :alta, :apellidos, :nombre, :direccion, :provincia, :municipio, :sexo, :pago)')
+            query.prepare(
+                'INSERT INTO clientes (dni, alta, apellidos, nombre, direccion, provincia, municipio, sexo, pago) '
+                'VALUES (:dni, :alta, :apellidos, :nombre, :direccion, :provincia, :municipio, :sexo, :pago)')
             query.bindValue(":dni", str(newCli[0]))
             query.bindValue(":alta", str(newCli[1]))
             query.bindValue(":apellidos", str(newCli[2]))
@@ -43,13 +47,13 @@ class Conexion():
             query.bindValue(":pago", str(newCli[8]))
 
             if query.exec_():
-                msg= QtWidgets.QMessageBox()
+                msg = QtWidgets.QMessageBox()
                 msg.setWindowTitle("Aviso")
                 msg.setIcon(QtWidgets.QMessageBox.Information)
                 msg.setText("Cliente dado de alta correctamente!")
                 msg.exec()
             else:
-                msg= QtWidgets.QMessageBox()
+                msg = QtWidgets.QMessageBox()
                 msg.setWindowTitle("Aviso")
                 msg.setIcon(QtWidgets.QMessageBox.Information)
                 msg.setText(query.lastError().text())
@@ -69,12 +73,12 @@ class Conexion():
                     nombre = query.value(2)
                     alta = query.value(3)
                     pago = query.value(4)
-                    var.ui.tabClientes.setRowCount(index+1) #creamos la fila y luego cargamos datos
-                    var.ui.tabClientes.setItem(index,0,QtWidgets.QTableWidgetItem(dni))
-                    var.ui.tabClientes.setItem(index,1,QtWidgets.QTableWidgetItem(apellidos))
-                    var.ui.tabClientes.setItem(index,2,QtWidgets.QTableWidgetItem(nombre))
-                    var.ui.tabClientes.setItem(index,3,QtWidgets.QTableWidgetItem(alta))
-                    var.ui.tabClientes.setItem(index,4,QtWidgets.QTableWidgetItem(pago))
+                    var.ui.tabClientes.setRowCount(index + 1)  # creamos la fila y luego cargamos datos
+                    var.ui.tabClientes.setItem(index, 0, QtWidgets.QTableWidgetItem(dni))
+                    var.ui.tabClientes.setItem(index, 1, QtWidgets.QTableWidgetItem(apellidos))
+                    var.ui.tabClientes.setItem(index, 2, QtWidgets.QTableWidgetItem(nombre))
+                    var.ui.tabClientes.setItem(index, 3, QtWidgets.QTableWidgetItem(alta))
+                    var.ui.tabClientes.setItem(index, 4, QtWidgets.QTableWidgetItem(pago))
                     index += 1
 
         except Exception as error:
@@ -115,7 +119,6 @@ class Conexion():
         except Exception as error:
             print('Error baja cliente en conexion ', error)
 
-
     def cargarProv(self):
         try:
             var.ui.cmbProv.clear()
@@ -131,7 +134,7 @@ class Conexion():
 
     def selMuni(self):
         try:
-            #busco el código de la provincia
+            # busco el código de la provincia
             id = 0
             var.ui.cmbMuni.clear()
             prov = var.ui.cmbProv.currentText()
@@ -141,7 +144,7 @@ class Conexion():
             if query.exec_():
                 while query.next():
                     id = query.value(0)
-            #cargo los municipios con ese código
+            # cargo los municipios con ese código
             query1 = QtSql.QSqlQuery()
             query1.prepare('SELECT municipio FROM municipios WHERE provincia_id = :id')
             query1.bindValue(':id', int(id))
@@ -218,7 +221,8 @@ class Conexion():
             fecha = fecha.strftime('%Y.%m.%d.%H.%M.%S')
             var.copia = (str(fecha) + '_dataExport.xls')
             option = QtWidgets.QFileDialog.Options()
-            directorio, filename = var.dlgabrir.getSaveFileName(None, 'Exportar datos', var.copia, '.xls', options=option)
+            directorio, filename = var.dlgabrir.getSaveFileName(None, 'Exportar datos', var.copia, '.xls',
+                                                                options=option)
             wb = xlwt.Workbook()
             sheet1 = wb.add_sheet('Hoja 1')
 
@@ -245,10 +249,10 @@ class Conexion():
         except Exception as error:
             print('Error en conexión para exportar excel ', error)
 
-
     '''
     Módulos gestión base datos productos
     '''
+
     def altaProd(newProd):
         try:
             query = QtSql.QSqlQuery()
@@ -285,7 +289,7 @@ class Conexion():
                     var.ui.tabProductos.setItem(index, 0, QtWidgets.QTableWidgetItem(str(codigo)))
                     var.ui.tabProductos.setItem(index, 1, QtWidgets.QTableWidgetItem(nombre))
                     var.ui.tabProductos.setItem(index, 2, QtWidgets.QTableWidgetItem(precio))
-                    var.ui.tabProductos.item(index,2).setTextAlignment(QtCore.Qt.AlignRight)
+                    var.ui.tabProductos.item(index, 2).setTextAlignment(QtCore.Qt.AlignRight)
                     var.ui.tabProductos.item(index, 0).setTextAlignment(QtCore.Qt.AlignCenter)
                     index += 1
         except Exception as error:
@@ -356,10 +360,10 @@ class Conexion():
         except Exception as error:
             print("Problemas al modificar producto")
 
-
     '''
     Módulos gestión facturas
     '''
+
     def buscaClifac(dni):
         try:
             registro = []
@@ -410,7 +414,7 @@ class Conexion():
                     fechafac = query.value(1)
                     var.btnfacdel = QtWidgets.QPushButton()
                     iconoPapelera = QtGui.QPixmap("img/papelera.png")
-                    var.btnfacdel.setFixedSize(22,22)
+                    var.btnfacdel.setFixedSize(22, 22)
                     var.btnfacdel.setIcon(QtGui.QIcon(iconoPapelera))
 
                     var.ui.tabFacturas.setRowCount(index + 1)
@@ -418,7 +422,7 @@ class Conexion():
                     var.ui.tabFacturas.setItem(index, 1, QtWidgets.QTableWidgetItem(fechafac))
                     cell_widget = QtWidgets.QWidget()
                     lay_out = QtWidgets.QHBoxLayout(cell_widget)
-                    lay_out.setContentsMargins(0,0,0,0)
+                    lay_out.setContentsMargins(0, 0, 0, 0)
                     lay_out.addWidget(var.btnfacdel)
                     var.btnfacdel.clicked.connect(Conexion.bajaFac)
                     var.ui.tabFacturas.setCellWidget(index, 2, cell_widget)
@@ -443,27 +447,42 @@ class Conexion():
     def bajaFac(self):
         try:
             numfac = var.ui.lblNumfac.text()
-            query = QtSql.QSqlQuery()
+            query = QtSql.QSqlQuery(numfac)
             query.prepare("DELETE FROM facturas WHERE codfac = :numfac")
             query.bindValue(":numfac", int(numfac))
 
             if query.exec_():
+                Conexion.cargarTabFacturas(self)
                 msg = QtWidgets.QMessageBox()
                 msg.setWindowTitle("Aviso")
                 msg.setIcon(QtWidgets.QMessageBox.Information)
                 msg.setText("Factura dada de baja")
                 msg.exec()
-                Conexion.cargarTabFacturas(self)
-                Conexion.delVenFac()
+                Conexion.delVenFac(numfac)
 
         except Exception as error:
             print("Problemas al dar de baja factura ", error)
+
+    def delVenFac(numfac):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare('delete from ventas where codfacf= :numfac')
+            query.bindValue(':numfac', int(numfac))
+            if query.exec_():
+                pass
+            var.ui.tabVentas.clearContents()
+            invoice.Facturas.cargaLineaVenta(0)
+            var.ui.lblIVA.setText("")
+            var.ui.lblSubTotal.setText("")
+            var.ui.lblTotal.setText("")
+        except Exception as error:
+            print("Erro al eliminar lineas venta en delvenFac", error)
 
     def cargarCmbProducto(self):
         try:
             var.cmbProducto.clear()
             query = QtSql.QSqlQuery()
-            var.cmbProducto.addItem('') #para que la primera línea del código esté en blanco
+            var.cmbProducto.addItem('')  # para que la primera línea del código esté en blanco
             query.prepare("SELECT nombre FROM productos ORDER BY nombre")
             if query.exec_():
                 while query.next():
@@ -490,7 +509,8 @@ class Conexion():
     def cargarVenta(venta):
         try:
             query = QtSql.QSqlQuery()
-            query.prepare("INSERT INTO ventas (codfacf, codprodf, precio, cantidad) VALUES (:codfacf, :codprodf, :precio, :cantidad)")
+            query.prepare(
+                "INSERT INTO ventas (codfacf, codprodf, precio, cantidad) VALUES (:codfacf, :codprodf, :precio, :cantidad)")
             query.bindValue(":codfacf", int(venta[0]))
             query.bindValue(":codprodf", int(venta[1]))
             query.bindValue(":precio", float(venta[2]))
@@ -538,9 +558,9 @@ class Conexion():
                     var.ui.tabVentas.setRowCount(index + 1)
                     var.ui.tabVentas.setItem(index, 0, QtWidgets.QTableWidgetItem(str(codven)))
                     var.ui.tabVentas.setItem(index, 1, QtWidgets.QTableWidgetItem(str(nombre)))
-                    var.ui.tabVentas.setItem(index, 2, QtWidgets.QTableWidgetItem(str(precio)+' €'))
+                    var.ui.tabVentas.setItem(index, 2, QtWidgets.QTableWidgetItem(str(precio) + ' €'))
                     var.ui.tabVentas.setItem(index, 3, QtWidgets.QTableWidgetItem(str(cantidad)))
-                    var.ui.tabVentas.setItem(index, 4, QtWidgets.QTableWidgetItem(str(total)+' €'))
+                    var.ui.tabVentas.setItem(index, 4, QtWidgets.QTableWidgetItem(str(total) + ' €'))
                     var.ui.tabVentas.item(index, 0).setTextAlignment(QtCore.Qt.AlignCenter)
                     var.ui.tabVentas.item(index, 2).setTextAlignment(QtCore.Qt.AlignCenter)
                     var.ui.tabVentas.item(index, 3).setTextAlignment(QtCore.Qt.AlignCenter)
@@ -549,9 +569,9 @@ class Conexion():
 
             iva = suma * 0.21
             total = suma + iva
-            var.ui.lblSubTotal.setText(str(round(suma,2))+' €')
-            var.ui.lblIVA.setText(str(round(iva,2))+' €')
-            var.ui.lblTotal.setText(str(round(total,2))+ ' €')
+            var.ui.lblSubTotal.setText(str(round(suma, 2)) + ' €')
+            var.ui.lblIVA.setText(str(round(iva, 2)) + ' €')
+            var.ui.lblTotal.setText(str(round(total, 2)) + ' €')
 
             invoice.Facturas.cargaLineaVenta(index)
             var.ui.tabVentas.scrollToBottom()
@@ -588,8 +608,5 @@ class Conexion():
 
         except Exception as error:
             print("Error en baja venta", error)
-
-   # def delVenFac(numfac):
-
 
 
