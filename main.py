@@ -53,6 +53,8 @@ class Main(QtWidgets.QMainWindow):
         super(Main, self).__init__()
         var.ui = Ui_MainWindow()
         var.ui.setupUi(self)
+        conexion.Conexion.create_DB(var.filedb)
+
         '''
         Eventos de botón
         '''

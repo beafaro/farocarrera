@@ -2,8 +2,8 @@ import xlwt as xlwt
 from PyQt5 import QtSql
 from PyQt5.uic.properties import QtGui
 
+import sqlite3, var, os, shutil
 import invoice
-import var
 from window import *
 from datetime import datetime
 import locale
@@ -12,6 +12,49 @@ locale.setlocale(locale.LC_ALL, '')
 
 
 class Conexion():
+    def create_DB(filename):
+        try:
+            con = sqlite3.connect(database=filename)
+            cur = con.cursor()
+            cur.execute("CREATE TABLE IF NOT EXISTS clientes (dni TEXT NOT NULL, alta INTEGER, apellidos TEXT NOT NULL, nombre TEXT, direccion TEXT, provincia TEXT, municipio TEXT, sexo TEXT, pago TEXT, envio INTEGER, PRIMARY KEY(dni))")
+            con.commit()
+
+            cur.execute("CREATE TABLE IF NOT EXISTS facturas (codfac INTEGER NOT NULL, dni TEXT NOT NULL, fechafac TEXT NOT NULL, PRIMARY KEY (codfac AUTOINCREMENT))")
+            con.commit()
+
+            cur.execute("CREATE TABLE IF NOT EXISTS municipios (provincia_id INTEGER NOT NULL, municipio TEXT NOT NULL, id INTEGER NOT NULL, PRIMARY KEY(id AUTOINCREMENT))")
+            con.commit()
+
+            cur.execute("CREATE TABLE IF NOT EXISTS productos (codigo INTEGER NOT NULL, nombre TEXT NOT NULL, precio INTEGER NOT NULL, PRIMARY KEY(codigo AUTOINCREMENT))")
+            con.commit()
+
+            cur.execute("CREATE TABLE provincias (id INTEGER NOT NULL, provincia TEXT NOT NULL,	PRIMARY KEY(id AUTOINCREMENT))")
+            con.commit()
+
+            cur.execute("CREATE TABLE ventas (codven INTEGER NOT NULL, codfacf INTEGER NOT NULL, codprodf INTEGER, precio REAL, cantidad REAL NOT NULL, FOREIGN KEY(codfacf)"
+                        " REFERENCES facturas(codfac) on delete cascade, FOREIGN KEY(codprodf) REFERENCES productos(codigo), PRIMARY KEY(codven AUTOINCREMENT))")
+            con.commit()
+            con.close()
+
+            ''' creacion de directorios '''
+            if not os.path.exists('.\\informes'):
+                os.mkdir('.\\informes')
+            if not os.path.exists('.\\img'):
+                os.mkdir('.\\img')
+                #shutil.move('log-empresa.jpg','.\\img\log-empresa.jpg')
+            if not os.path.exists('.\\copias'):
+                os.mkdir('.\\copias')
+
+
+        except Exception as error:
+            msg = QtWidgets.QMessageBox()
+            msg.setWindowTitle("Aviso")
+            msg.setIcon(QtWidgets.QMessageBox.Information)
+            msg.setText(error)
+            msg.exec()
+
+
+
     def db_connect(filedb):
         try:
             db = QtSql.QSqlDatabase.addDatabase("QSQLITE")
@@ -26,9 +69,11 @@ class Conexion():
         except Exception as error:
             print("Problemas en conexión ", error)
 
+
     '''
     Módulos gestión base datos cliente
     '''
+
 
     def altaCli(newCli):
         try:
@@ -61,6 +106,7 @@ class Conexion():
         except Exception as error:
             print("Problemas en alta cliente ", error)
 
+
     def cargarTabCli(self):
         try:
             index = 0
@@ -84,6 +130,7 @@ class Conexion():
         except Exception as error:
             print("Problemas mostrar tabla clientes ", error)
 
+
     def oneCli(dni):
         try:
             record = []
@@ -97,6 +144,7 @@ class Conexion():
             return record
         except Exception as error:
             print('Problemas cargar datos cliente', error)
+
 
     def bajaCli(dni):
         try:
@@ -119,6 +167,7 @@ class Conexion():
         except Exception as error:
             print('Error baja cliente en conexion ', error)
 
+
     def cargarProv(self):
         try:
             var.ui.cmbProv.clear()
@@ -131,6 +180,7 @@ class Conexion():
 
         except Exception as error:
             print("Error al cargar combo provincias ", error)
+
 
     def selMuni(self):
         try:
@@ -155,6 +205,7 @@ class Conexion():
 
         except Exception as error:
             print("Error al cargar combo municipios ", error)
+
 
     def modifCli(modCliente):
         try:
@@ -187,6 +238,7 @@ class Conexion():
         except Exception as error:
             print("Problemas al modificar cliente")
 
+
     def altaCli2(newcli):
         try:
             query = QtSql.QSqlQuery()
@@ -214,6 +266,7 @@ class Conexion():
                 msg.exec()
         except Exception as error:
             print('Problemas alta cliente', error)
+
 
     def exportExcel(self):
         try:
@@ -249,9 +302,11 @@ class Conexion():
         except Exception as error:
             print('Error en conexión para exportar excel ', error)
 
+
     '''
     Módulos gestión base datos productos
     '''
+
 
     def altaProd(newProd):
         try:
@@ -275,6 +330,7 @@ class Conexion():
         except Exception as error:
             print("Problemas en alta producto ", error)
 
+
     def cargarTabProd(self):
         try:
             index = 0
@@ -295,6 +351,7 @@ class Conexion():
         except Exception as error:
             print("Problemas mostrar tabla productos ", error)
 
+
     def oneCodigo(codigo):
         try:
             record = []
@@ -308,6 +365,7 @@ class Conexion():
             return record
         except Exception as error:
             print('Problemas cargar datos producto', error)
+
 
     def bajaProd(codigo):
         try:
@@ -329,6 +387,7 @@ class Conexion():
                 msg.exec()
         except Exception as error:
             print('Error baja producto en conexion ', error)
+
 
     def modifProd(modProducto):
         try:
@@ -360,9 +419,11 @@ class Conexion():
         except Exception as error:
             print("Problemas al modificar producto")
 
+
     '''
     Módulos gestión facturas
     '''
+
 
     def buscaClifac(dni):
         try:
@@ -378,6 +439,7 @@ class Conexion():
             return registro
         except Exception as error:
             print("Error en conexión buscar cliente", error)
+
 
     def altaFac(registro):
         try:
@@ -401,6 +463,7 @@ class Conexion():
 
         except Exception as error:
             print("Error en conexión alta fac", error)
+
 
     def cargarTabFacturas(self):
         try:
@@ -432,6 +495,7 @@ class Conexion():
         except Exception as error:
             print("Problemas al cargar listado de facturas ", error)
 
+
     def buscaDNIFac(numfac):
         try:
             query = QtSql.QSqlQuery()
@@ -443,6 +507,7 @@ class Conexion():
                 return dni
         except Exception as error:
             print("Problemas al buscar cliente ", error)
+
 
     def bajaFac(self):
         try:
@@ -463,6 +528,7 @@ class Conexion():
         except Exception as error:
             print("Problemas al dar de baja factura ", error)
 
+
     def delVenFac(numfac):
         try:
             query = QtSql.QSqlQuery()
@@ -478,6 +544,7 @@ class Conexion():
         except Exception as error:
             print("Erro al eliminar lineas venta en delvenFac", error)
 
+
     def cargarCmbProducto(self):
         try:
             var.cmbProducto.clear()
@@ -489,6 +556,7 @@ class Conexion():
                     var.cmbProducto.addItem(str(query.value(0)))
         except Exception as error:
             print("Error al cargar combo de productos ", error)
+
 
     def obtenerCodPrecio(articulo):
         try:
@@ -505,6 +573,7 @@ class Conexion():
 
         except Exception as error:
             print("Error al obtener código y precio del artículo en Conexion ", error)
+
 
     def cargarVenta(venta):
         try:
@@ -526,6 +595,7 @@ class Conexion():
         except Exception as error:
             print("Error al cargar venta en conexión", error)
 
+
     def buscaCodFac(self):
         try:
             query = QtSql.QSqlQuery()
@@ -537,6 +607,7 @@ class Conexion():
 
         except Exception as error:
             print("Error al obtener código factura en conexión", error)
+
 
     def cargarLineasVenta(codfac):
         try:
@@ -579,6 +650,7 @@ class Conexion():
         except Exception as error:
             print("Error al cargar líneas de factura", error)
 
+
     def buscaArt(codpro):
         try:
             query = QtSql.QSqlQuery()
@@ -589,6 +661,7 @@ class Conexion():
                     return (query.value(0))
         except Exception as error:
             print('Error en la búsqueda de articulo')
+
 
     def borraVenta(self):
         try:
@@ -608,5 +681,3 @@ class Conexion():
 
         except Exception as error:
             print("Error en baja venta", error)
-
-
