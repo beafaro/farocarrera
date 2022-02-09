@@ -28,10 +28,10 @@ class Conexion():
             cur.execute("CREATE TABLE IF NOT EXISTS productos (codigo INTEGER NOT NULL, nombre TEXT NOT NULL, precio INTEGER NOT NULL, PRIMARY KEY(codigo AUTOINCREMENT))")
             con.commit()
 
-            cur.execute("CREATE TABLE provincias (id INTEGER NOT NULL, provincia TEXT NOT NULL,	PRIMARY KEY(id AUTOINCREMENT))")
+            cur.execute("CREATE TABLE IF NOT EXISTS provincias (id INTEGER NOT NULL, provincia TEXT NOT NULL,	PRIMARY KEY(id AUTOINCREMENT))")
             con.commit()
 
-            cur.execute("CREATE TABLE ventas (codven INTEGER NOT NULL, codfacf INTEGER NOT NULL, codprodf INTEGER, precio REAL, cantidad REAL NOT NULL, FOREIGN KEY(codfacf)"
+            cur.execute("CREATE TABLE IF NOT EXISTS ventas (codven INTEGER NOT NULL, codfacf INTEGER NOT NULL, codprodf INTEGER, precio REAL, cantidad REAL NOT NULL, FOREIGN KEY(codfacf)"
                         " REFERENCES facturas(codfac) on delete cascade, FOREIGN KEY(codprodf) REFERENCES productos(codigo), PRIMARY KEY(codven AUTOINCREMENT))")
             con.commit()
             con.close()

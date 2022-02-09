@@ -1191,4 +1191,3 @@ class Ui_MainWindow(object):
         self.actionImprimir.setText(_translate("MainWindow", "Imprimir"))
         self.actionImportar_datos.setText(_translate("MainWindow", "Importar datos"))
         self.actionExportar_datos.setText(_translate("MainWindow", "Exportar datos"))
-
