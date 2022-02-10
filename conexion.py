@@ -2,7 +2,7 @@ import xlwt as xlwt
 from PyQt5 import QtSql
 from PyQt5.uic.properties import QtGui
 
-import sqlite3, var, os, shutil
+import sqlite3, var, os, shutil, csv
 import invoice
 from window import *
 from datetime import datetime
@@ -16,24 +16,37 @@ class Conexion():
         try:
             con = sqlite3.connect(database=filename)
             cur = con.cursor()
-            cur.execute("CREATE TABLE IF NOT EXISTS clientes (dni TEXT NOT NULL, alta INTEGER, apellidos TEXT NOT NULL, nombre TEXT, direccion TEXT, provincia TEXT, municipio TEXT, sexo TEXT, pago TEXT, envio INTEGER, PRIMARY KEY(dni))")
+            cur.execute("CREATE TABLE IF NOT EXISTS clientes (dni TEXT NOT NULL, alta INTEGER, apellidos TEXT NOT NULL, nombre TEXT, direccion TEXT, provincia TEXT, municipio TEXT,"
+                        " sexo TEXT, pago TEXT, envio INTEGER, PRIMARY KEY(dni))")
             con.commit()
 
             cur.execute("CREATE TABLE IF NOT EXISTS facturas (codfac INTEGER NOT NULL, dni TEXT NOT NULL, fechafac TEXT NOT NULL, PRIMARY KEY (codfac AUTOINCREMENT))")
             con.commit()
 
-            cur.execute("CREATE TABLE IF NOT EXISTS municipios (provincia_id INTEGER NOT NULL, municipio TEXT NOT NULL, id INTEGER NOT NULL, PRIMARY KEY(id AUTOINCREMENT))")
+            cur.execute("CREATE TABLE IF NOT EXISTS municipios (provincia_id INTEGER NOT NULL, municipio TEXT NOT NULL, id INTEGER NOT NULL, PRIMARY KEY(id))")
             con.commit()
 
             cur.execute("CREATE TABLE IF NOT EXISTS productos (codigo INTEGER NOT NULL, nombre TEXT NOT NULL, precio INTEGER NOT NULL, PRIMARY KEY(codigo AUTOINCREMENT))")
             con.commit()
 
-            cur.execute("CREATE TABLE IF NOT EXISTS provincias (id INTEGER NOT NULL, provincia TEXT NOT NULL,	PRIMARY KEY(id AUTOINCREMENT))")
+            cur.execute("CREATE TABLE IF NOT EXISTS provincias (id INTEGER NOT NULL, provincia TEXT NOT NULL, PRIMARY KEY(id))")
             con.commit()
 
             cur.execute("CREATE TABLE IF NOT EXISTS ventas (codven INTEGER NOT NULL, codfacf INTEGER NOT NULL, codprodf INTEGER, precio REAL, cantidad REAL NOT NULL, FOREIGN KEY(codfacf)"
                         " REFERENCES facturas(codfac) on delete cascade, FOREIGN KEY(codprodf) REFERENCES productos(codigo), PRIMARY KEY(codven AUTOINCREMENT))")
             con.commit()
+
+            cur.execute("select count() from provincias")
+            numero = cur.fetchone()[0]
+            print(numero)
+            con.commit()
+            if int(numero) == 0:
+                with open("provincias.csv", "r", encoding="utf-8") as fin:
+                    dr = csv.DictReader(fin)
+                    to_db= [(i["id"], i["provincia"]) for i in dr]
+                    cur.executemany("insert into provincias (id, provincia) VALUES (?,?);", to_db)
+                    con.commit()
+
             con.close()
 
             ''' creacion de directorios '''
@@ -44,7 +57,6 @@ class Conexion():
                 #shutil.move('log-empresa.jpg','.\\img\log-empresa.jpg')
             if not os.path.exists('.\\copias'):
                 os.mkdir('.\\copias')
-
 
         except Exception as error:
             msg = QtWidgets.QMessageBox()
