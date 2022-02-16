@@ -6,10 +6,13 @@ from reportlab.pdfgen import canvas
 
 import conexion
 
-
 class Informes():
-
     def listadoClientes(self):
+        """
+
+        Módulo con el que damos formato al informe .pdf que vamos a generar del listado de todos los clientes que tengamos en la base de datos.
+
+        """
         try:
             var.cv = canvas.Canvas("informes/listadoClientes.pdf")
             var.cv.setTitle("Listado Clientes")
@@ -68,6 +71,11 @@ class Informes():
             print("Error en informes clientes, ", error)
 
     def cabecera(self):
+        """
+
+        Módulo con el que formateamos la cabecera del informe, en donde ponemos el logo y la información de la empresa.
+
+        """
         try:
             logo = ".\\img\logo_empresa.jpg"
             var.cv.line(40,800,530,800)
@@ -85,6 +93,11 @@ class Informes():
             print("Error en cabecera informe", error)
 
     def pie(texto):
+        """
+
+        Módulo con el que formateamos el pie del informe.
+
+        """
         try:
             var.cv.line(50,50,530,50)
             fecha = datetime.today()
@@ -97,6 +110,11 @@ class Informes():
             print("Error creación de pie de informe clientes", error)
 
     def listadoProductos(self):
+        """
+
+        Módulo con el que damos formato al informe .pdf que vamos a generar del listado de todos los productos que tengamos en la base de datos.
+
+        """
         try:
             var.cv = canvas.Canvas("informes/listadoProductos.pdf")
             var.cv.setTitle("Listado Productos")
@@ -155,6 +173,11 @@ class Informes():
             print("Error en informes productos, ", error)
 
     def listadoFacturas(self):
+        """
+
+        Módulo con el que damos formato al informe .pdf que vamos a generar del listado de todos las facturas que tengamos en la base de datos.
+
+        """
         try:
             var.cv = canvas.Canvas('informes/factura.pdf')
             var.cv.setTitle('Listado Facturas')

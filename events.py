@@ -19,6 +19,11 @@ from window import *
 
 class Eventos():
     def Salir(self):
+        """
+
+        Módulo que permite salir lanzando un mensaje de aviso.
+
+        """
         try:
             var.dlgaviso.show()
             if var.dlgaviso.exec():
@@ -29,12 +34,22 @@ class Eventos():
             print("Error en módulo salir", error)
 
     def abrircal(self):
+        """
+
+        Módulo que abre la ventana calendario para elegir un día de alta del cliente o factura.
+
+        """
         try:
             var.dlgcalendar.show()
         except Exception as error:
             print("Error al abrir el calendario", error)
 
     def resizeTablaCli(self):
+        """
+
+        Módulo que redimensiona las columnas de la tabla clientes.
+
+        """
         try:
             header = var.ui.tabClientes.horizontalHeader()
             for i in range(5):
@@ -45,12 +60,22 @@ class Eventos():
             print("Error al redimensionar tabla clientes", error)
 
     def Abrir(self):
+        """
+
+        Módulo que abre un cuadro de diálogo.
+
+        """
         try:
             var.dlgabrir.show()
         except Exception as error:
             print("Error al abrir cuadro de diálogo", error)
 
     def crearBackup(self):
+        """
+
+        Módulo que crea un backup guardada en un zip. Le pone la fecha en la que se crea y le pone la extension "_backup.zip".
+
+        """
         try:
             fecha = datetime.today()
             fecha = fecha.strftime("%Y.%m.%d.%H.%M.%S")
@@ -75,6 +100,11 @@ class Eventos():
 
 
     def restaurarBackup(self):
+        """
+
+        Módulo que permite restaurar un backup que le proporcionemos.
+
+        """
         try:
             option = QtWidgets.QFileDialog.Options()
             filename = var.dlgabrir.getOpenFileName(None, "Restaurar backup",'', "*.zip;;ALL Files", options= option)
@@ -101,6 +131,11 @@ class Eventos():
             print("Error al restaurar Backup ", error)
 
     def imprimir(self):
+        """
+
+        Módulo que abre la ventana de Impresora para poder imprimir el archivo que se genera.
+
+        """
         try:
             printDialog = QtPrintSupport.QPrintDialog()
             if printDialog.exec_():
@@ -109,32 +144,42 @@ class Eventos():
             print("Error al Abrir ventana Impresora")
 
     def importarDatos(self):
-            try:
-                newcli = []
-                contador = 0
-                option = QtWidgets.QFileDialog.Options()
-                ruta_excel = var.dlgabrir.getOpenFileName(None, 'Importar Excel', '', '*.xls;;ALL Files', options=option)
+        """
 
-                if var.dlgabrir.Accepted and ruta_excel != '':
-                    fichero = ruta_excel[0]
-                workbook = xlrd.open_workbook(fichero)
-                hoja = workbook.sheet_by_index(0)
-                while contador < hoja.nrows:
-                    for i in range(6):
-                        # if i==1:
-                        #     newcli.append((str)(date.today()))
-                        # if i==5:
-                        #     newcli.append('')
-                        newcli.append(hoja.cell_value(contador + 1, i))
-                    # newcli.append('Efectivo')
-                    conexion.Conexion.altaCli2(newcli)
-                    conexion.Conexion.cargarTabCli(newcli)
-                    newcli.clear()
-                    contador = contador + 1
-            except Exception as error:
-                print('Error al importar ', error)
+        Módulo que importa datos de un documento que proporcionemos. Extrae los datos del documento y da de alta esos cliente y los carga en la tabla y en la base de datos.
+
+        """
+        try:
+            newcli = []
+            contador = 0
+            option = QtWidgets.QFileDialog.Options()
+            ruta_excel = var.dlgabrir.getOpenFileName(None, 'Importar Excel', '', '*.xls;;ALL Files', options=option)
+
+            if var.dlgabrir.Accepted and ruta_excel != '':
+                fichero = ruta_excel[0]
+            workbook = xlrd.open_workbook(fichero)
+            hoja = workbook.sheet_by_index(0)
+            while contador < hoja.nrows:
+                for i in range(6):
+                    # if i==1:
+                    #     newcli.append((str)(date.today()))
+                    # if i==5:
+                    #     newcli.append('')
+                    newcli.append(hoja.cell_value(contador + 1, i))
+                # newcli.append('Efectivo')
+                conexion.Conexion.altaCli2(newcli)
+                conexion.Conexion.cargarTabCli(newcli)
+                newcli.clear()
+                contador = contador + 1
+        except Exception as error:
+            print('Error al importar ', error)
 
     def exportarDatos(self):
+        """
+
+        Módulo que hace la llamada a la función "exportExcel" de Conexion para exportar datos.
+
+        """
         try:
             conexion.Conexion.exportExcel(self)
             try:
@@ -152,6 +197,11 @@ class Eventos():
 
     '''Eventos produtos'''
     def resizeTablaProd(self):
+        """
+
+        Módulo que redimensiona las columnas de la tabla productos.
+
+        """
         try:
             header = var.ui.tabProductos.horizontalHeader()
             for i in range(3):
@@ -161,6 +211,11 @@ class Eventos():
 
     '''Eventos facturas'''
     def resizeTablaFac(self):
+        """
+
+        Módulo que redimensiona las columnas de la tabla facturas.
+
+        """
         try:
             header = var.ui.tabFacturas.horizontalHeader()
             for i in range(3):
@@ -170,6 +225,11 @@ class Eventos():
             print("Error al redimensionar tabla productos", error)
 
     def resizeTablaVen(self):
+        """
+
+        Módulo que redimensiona las columnas de la tabla ventas.
+
+        """
         try:
             header = var.ui.tabVentas.horizontalHeader()
             for i in range(5):

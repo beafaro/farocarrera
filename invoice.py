@@ -10,6 +10,11 @@ locale.setlocale(locale.LC_ALL, '')
 
 class Facturas():
     def buscaCli(self):
+        """
+
+        Módulo que permite buscar un cliente dado el DNI.
+
+        """
         try:
             dni = var.ui.txtDNIfac.text().upper()
             var.ui.txtDNIfac.setText(dni)
@@ -27,6 +32,11 @@ class Facturas():
             print("Error al buscar cliente en Facturas", error)
 
     def facturar(self):
+        """
+
+        Módulo que permite facturar al cliente en el apartado de Facturas.
+
+        """
         try:
             registro = []
             dni = var.ui.txtDNIfac.text().upper()

@@ -1,0 +1,327 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>conexion module &#8212; farocarrera 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-conexion">
+<span id="conexion-module"></span><h1>conexion module<a class="headerlink" href="#module-conexion" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="conexion.Conexion">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">conexion.</span></span><span class="sig-name descname"><span class="pre">Conexion</span></span><a class="reference internal" href="../_modules/conexion.html#Conexion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="conexion.Conexion.altaCli">
+<span class="sig-name descname"><span class="pre">altaCli</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.altaCli"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.altaCli" title="Permalink to this definition">¶</a></dt>
+<dd><p>Módulo que recibe datos de un cliente y los carga en la base de datos.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="conexion.Conexion.altaCli2">
+<span class="sig-name descname"><span class="pre">altaCli2</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.altaCli2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.altaCli2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="conexion.Conexion.altaFac">
+<span class="sig-name descname"><span class="pre">altaFac</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.altaFac"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.altaFac" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dado el cliente a facturar se da de alta una factura en la base de datos a nombre de ese cliente(DNI).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="conexion.Conexion.altaProd">
+<span class="sig-name descname"><span class="pre">altaProd</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.altaProd"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.altaProd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Módulo que recibe datos del producto y los cagra en la base de datos.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="conexion.Conexion.bajaCli">
+<span class="sig-name descname"><span class="pre">bajaCli</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.bajaCli"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.bajaCli" title="Permalink to this definition">¶</a></dt>
+<dd><p>Módulo que recibe DNI cliente y lo elimina de la base de datos.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="conexion.Conexion.bajaFac">
+<span class="sig-name descname"><span class="pre">bajaFac</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.bajaFac"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.bajaFac" title="Permalink to this definition">¶</a></dt>
+<dd><p>Módulo que dado el número de factura la da de baja, además llama al módulo borra ventas para que elimine todas las ventas asociadas a esa factura de la tabla ventas de la base de datos.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="conexion.Conexion.bajaProd">
+<span class="sig-name descname"><span class="pre">bajaProd</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.bajaProd"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.bajaProd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Módulo que recibe el código de un producto y lo elimina de la base de datos.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="conexion.Conexion.borraVenta">
+<span class="sig-name descname"><span class="pre">borraVenta</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.borraVenta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.borraVenta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Módulo que elimina una venta de una factura.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="conexion.Conexion.buscaArt">
+<span class="sig-name descname"><span class="pre">buscaArt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.buscaArt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.buscaArt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Módulo que busca el nombre de un articulo para usarlo en las ventas a partir del código.
+:return: Devuelve el nombre del artículo.
+:rtype: basestring</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="conexion.Conexion.buscaClifac">
+<span class="sig-name descname"><span class="pre">buscaClifac</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.buscaClifac"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.buscaClifac" title="Permalink to this definition">¶</a></dt>
+<dd><p>Busca los datos del cliente a facturar a partir de su DNI.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Datos del cliente a facturar</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>object- registro</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="conexion.Conexion.buscaCodFac">
+<span class="sig-name descname"><span class="pre">buscaCodFac</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.buscaCodFac"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.buscaCodFac" title="Permalink to this definition">¶</a></dt>
+<dd><p>Módulo que selecciona el código de la factua con número más alta o la útlima en dar de alta.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Devuelve número de factura</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>entero</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="conexion.Conexion.buscaDNIFac">
+<span class="sig-name descname"><span class="pre">buscaDNIFac</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.buscaDNIFac"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.buscaDNIFac" title="Permalink to this definition">¶</a></dt>
+<dd><p>Módulo que busca el dni de la tabla facturas en la base de datos.
+:return: Devuelve un dni
+:rtype: basestring</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="conexion.Conexion.cargarCmbProducto">
+<span class="sig-name descname"><span class="pre">cargarCmbProducto</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.cargarCmbProducto"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.cargarCmbProducto" title="Permalink to this definition">¶</a></dt>
+<dd><p>Módulo que toma los nombres de los productos existentes de la base de datos y los carga en el panel de facturación de la tabla ventas.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="conexion.Conexion.cargarLineasVenta">
+<span class="sig-name descname"><span class="pre">cargarLineasVenta</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.cargarLineasVenta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.cargarLineasVenta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Módulo que carga todas las ventas asociadas a una factura de la tabla ventas del panel de facturación,
+además realiza los cálculos necesarios para el subtotal, el total y el IVA de la factura.
+A este módulo se le llama cada vez que realiza una venta.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="conexion.Conexion.cargarProv">
+<span class="sig-name descname"><span class="pre">cargarProv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.cargarProv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.cargarProv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Módulo que carga provincias</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="conexion.Conexion.cargarTabCli">
+<span class="sig-name descname"><span class="pre">cargarTabCli</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.cargarTabCli"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.cargarTabCli" title="Permalink to this definition">¶</a></dt>
+<dd><p>Módulo que toma datos de los clientes y los carga en la tabla de la interfaz gráfica.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="conexion.Conexion.cargarTabFacturas">
+<span class="sig-name descname"><span class="pre">cargarTabFacturas</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.cargarTabFacturas"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.cargarTabFacturas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Módulo que se ejecuta siempre cada vez que se da de alta alta, baja o modificar una factura recargando en el panelde gestión de facturación la tabla facuturas.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="conexion.Conexion.cargarTabProd">
+<span class="sig-name descname"><span class="pre">cargarTabProd</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.cargarTabProd"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.cargarTabProd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Módulo que recarga la tabla de productos del panel de productos siempre que se de de alta, baja o modifcar un producto.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="conexion.Conexion.cargarVenta">
+<span class="sig-name descname"><span class="pre">cargarVenta</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.cargarVenta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.cargarVenta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Carga el regustro de una venta realiza en la tabla ventas de la base de datos.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="conexion.Conexion.create_DB">
+<span class="sig-name descname"><span class="pre">create_DB</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.create_DB"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.create_DB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recibe nombre de la base de datos
+Módulo que se ejecuta al principio del programa.
+Crea las tablas y carga municipios y provincias.
+Crea los directorios necesarios.
+:rtype: Object</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="conexion.Conexion.db_connect">
+<span class="sig-name descname"><span class="pre">db_connect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.db_connect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.db_connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Realiza la conexión con la base de datos al ejecutar el programa.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Boolean, True si es correcto, False si hay un error</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="conexion.Conexion.delVenFac">
+<span class="sig-name descname"><span class="pre">delVenFac</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.delVenFac"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.delVenFac" title="Permalink to this definition">¶</a></dt>
+<dd><p>Módulo que se llama cuando se da de baja un factura en la base de datos para que elimine todas las ventas asociadas a esa factura.</p>
+<p>:param numfac valor de la factura
+:type numfac: int</p>
+<p>Recibe el número a borrar. A partir de ese código, primero selecciona todos los códigos de venta asociados a esa factura y los guarda en una lista.
+A continuación, a medida que recorre esa lista leyendo los códigos de venta los da de baja de la tabla ventas de la base de datos.
+Finalmente, recarga la tabla de ventas del panel de facturación y limpia datos.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="conexion.Conexion.exportExcel">
+<span class="sig-name descname"><span class="pre">exportExcel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.exportExcel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.exportExcel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="conexion.Conexion.modifCli">
+<span class="sig-name descname"><span class="pre">modifCli</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.modifCli"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.modifCli" title="Permalink to this definition">¶</a></dt>
+<dd><p>Módulo que recibe los datos del cliente y los modifica en la base de datos.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="conexion.Conexion.modifProd">
+<span class="sig-name descname"><span class="pre">modifProd</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.modifProd"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.modifProd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Módulo que recibe el regustro de datos de un producto y los modifica en la base de datos.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="conexion.Conexion.obtenerCodPrecio">
+<span class="sig-name descname"><span class="pre">obtenerCodPrecio</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.obtenerCodPrecio"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.obtenerCodPrecio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Módulo que dado el nombre del producto obtenemos su precio para realizar los cálculos necasarios en la venta.
+:return: Devuelve el precio
+:rtype: object - array</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="conexion.Conexion.oneCli">
+<span class="sig-name descname"><span class="pre">oneCli</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.oneCli"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.oneCli" title="Permalink to this definition">¶</a></dt>
+<dd><p>Módulo que seleccina un cliente según su DNI y lo devuelve a la función CargaCli del ficheros clientes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Devuelve lista</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>lista</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="conexion.Conexion.oneCodigo">
+<span class="sig-name descname"><span class="pre">oneCodigo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.oneCodigo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.oneCodigo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="conexion.Conexion.selMuni">
+<span class="sig-name descname"><span class="pre">selMuni</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.selMuni"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.selMuni" title="Permalink to this definition">¶</a></dt>
+<dd><p>Módulo que selecciona los municipios dad un provincia y los carga en el combo provincias dada una provincia</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">farocarrera</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Beatriz.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/src/conexion.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

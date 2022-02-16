@@ -11,6 +11,12 @@ from PyQt5.QtWidgets import QMessageBox
 
 class Clientes():
     def validarDNI():
+        """
+
+        Módulo que valida si el DNI que introducimos es correcto o falso.
+        Si es correcto muestra un ckeck en verde. Si es falso muestra una cruz y el fondo del campo en rojo.
+
+        """
         try:
             global dniValido
             dniValido = False
@@ -72,6 +78,11 @@ class Clientes():
     #         print("Error en módulo seleccionar provincia, ", error)
 
     def cargarFecha(qDate):
+        """
+
+        Módulo que carga la fecha de alta del cliente en la caja de texto correspondiente.
+
+        """
         try:
             data = (str(qDate.day()).zfill(2) + "/" + str(qDate.month()).zfill(2) + "/" +str(qDate.year()))
             if var.ui.TabPrograma.currentIndex() == 0:
@@ -83,6 +94,11 @@ class Clientes():
             print("Error cargar fecha de txtFecha", error)
 
     def letraCapital():
+        """
+
+        Módulo que pone la primera letra en mayúsculas de los campos de apellidos, nombre y dirección.
+
+        """
         try:
             apellidos = var.ui.txtApel.text()
             var.ui.txtApel.setText(apellidos.title())
@@ -96,11 +112,16 @@ class Clientes():
             print("Error al poner la primera letra en mayúscula", error)
 
     def guardaCli(self):
+        """
+
+        Módulo que guarda todos los datos del cliente en la base de datos llamando a la función "altaCli" de Conexion.
+
+        """
         try:
             # preparamos el registro
             newCli = [] #para la base de datos
             cliente = [var.ui.txtDNI, var.ui.txtFechaAltaCli, var.ui.txtApel, var.ui.txtNome, var.ui.txtDir]
-            tabCli = []     #para la tablewidget
+            tabCli = [] #para la tablewidget
             client = [var.ui.txtDNI, var.ui.txtApel, var.ui.txtNome, var.ui.txtFechaAltaCli, var.ui.txtDir]
 
             # código para cargar en la tabla el cliente y la forma de pago
@@ -151,6 +172,11 @@ class Clientes():
             print("Error en guardar clientes", error)
 
     def limpiaFormCli(self):
+        """
+
+        Módulo que limpia el formulario que pide o muestra los datos de un cliente.
+
+        """
         try:
             cajas = [var.ui.txtDNI, var.ui.txtApel, var.ui.txtNome, var.ui.txtFechaAltaCli, var.ui.txtDir]
             for i in cajas:
@@ -169,7 +195,11 @@ class Clientes():
             print("Error al limpiar formulario de clientes", error)
 
     def cargaCli(self):
-        # carga datos de cliente al seleccionar en tabla
+        """
+
+        Módulo que carga los datos de un cliente al seleccionarlo en la tabla de clientes.
+
+        """
         try:
             Clientes.limpiaFormCli(self)
             fila = var.ui.tabClientes.selectedItems() #seleccionamos fila
@@ -202,6 +232,11 @@ class Clientes():
             print("Error en cargar datos de un cliente", error)
 
     def bajaCli(self):
+        """
+
+        Módulo que da de baja a un cliente. Utiliza de Conexion las funciones "bajaCli" y "cargarTabCli" para eliminar el cliente de la base de datos y actualizar la tabla de clientes.
+
+        """
         try:
             dni = var.ui.txtDNI.text()
             conexion.Conexion.bajaCli(dni)
@@ -211,6 +246,11 @@ class Clientes():
             print('Error en baja cliente ', error)
 
     def modifCli(self):
+        """
+
+        Módulo que modifica un cliente. Recoge todos los datos de un cliente seleccionado y se llama a la función "modifCli" de Conexion para guardar los cambios.
+
+        """
         try:
             modCliente = []
             cliente = [var.ui.txtDNI, var.ui.txtFechaAltaCli, var.ui.txtApel, var.ui.txtNome, var.ui.txtDir]
@@ -243,6 +283,11 @@ class Clientes():
             print("Error al modificar cliente", error)
 
     def recogerValorSpinbox(self):
+        """
+
+        Módulo que recoge el valor marcado en el spinbox de clientes.
+
+        """
         try:
             valores = []
             valor = var.ui.spinEnvio.value()  # recoger valor spinbox
