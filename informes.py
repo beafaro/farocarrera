@@ -192,6 +192,24 @@ class Informes():
             codfac = var.ui.lblNumfac.text()
             var.cv.drawString(260, 694, textotitulo + ': ' + (str(codfac)))
             var.cv.line(30, 685, 550, 685)
+
+            var.cv.setFont('Helvetica-Bold', size=9)
+            var.cv.drawString(270, 785, "DATOS CLIENTE")
+            query1 = QtSql.QSqlQuery()
+            query1.prepare("select direccion, municipio, provincia from clientes where dni= :dni")
+            query1.bindValue(":dni", str(var.ui.txtDNIfac.text()))
+            if query1.exec_():
+                dir= []
+                while query1.next():
+                    dir.append((query1.value(0)))
+                    dir.append((query1.value(1)))
+                    dir.append((query1.value(2)))
+
+            var.cv.drawString(260, 765, "CIF:" + var.ui.txtDNIfac.text())
+            var.cv.drawString(260, 750, "Cliente:" + var.ui.lblNomfac.text())
+            var.cv.drawString(260,735, "Dirección: " + str(dir[0]))
+            var.cv.drawString(260,720, "Localidad: " + str(dir[1]))
+            var.cv.drawString(375,720, "Provincia: " + str(dir[2]))
             items = ['Venta', 'Articulo', 'Precio', 'Cantidad', 'Total']
             var.cv.drawString(65, 673, items[0])
             var.cv.drawString(165, 673, items[1])

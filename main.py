@@ -66,7 +66,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnLimpiaCli.clicked.connect(clients.Clientes.limpiaFormCli)
         var.ui.btnBajaCli.clicked.connect(clients.Clientes.bajaCli)
         var.ui.btnModifCli.clicked.connect(clients.Clientes.modifCli)
-        var.ui.btnVisualiza.clicked.connect(informes.Informes.listadoClientes)
+        var.ui.btnVisualizaCli.clicked.connect(informes.Informes.listadoClientes)
 
         #Eventos botón de Productos
         var.ui.btnGuardaProd.clicked.connect(products.Productos.guardaProd)
