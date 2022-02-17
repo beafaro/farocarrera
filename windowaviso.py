@@ -13,6 +13,13 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_windowaviso(object):
     def setupUi(self, windowaviso):
+        """
+
+        Codigo obtenido del fichero xml generado por QtDesigner correspondiente a la interfaz gráfica de avisos.
+        :param windowaviso:  interfaz gráfica
+        :type windowaviso: object
+
+        """
         windowaviso.setObjectName("windowaviso")
         windowaviso.resize(360, 200)
         windowaviso.setModal(True)

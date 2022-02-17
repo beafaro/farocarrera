@@ -13,6 +13,13 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
+        """
+
+        Código obtenido del fichero XML generado en QtDesigner. Contiene la interfaz gráfica del programa.
+        :param MainWindow: ventana
+        :type MainWindow: object
+
+        """
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1024, 800)
         self.centralwidget = QtWidgets.QWidget(MainWindow)

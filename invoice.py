@@ -3,16 +3,14 @@ Funciones gestion facturas
 '''
 from PyQt5 import QtWidgets, QtCore
 
-import conexion
-import var
-import locale
+import conexion, var, locale
 locale.setlocale(locale.LC_ALL, '')
 
 class Facturas():
     def buscaCli(self):
         """
 
-        Módulo que permite buscar un cliente dado el DNI.
+        Módulo que se ejecuta con el botón búsqueda de cliente. Devuelve datos del cliente para el panel facturación.
 
         """
         try:
@@ -34,7 +32,7 @@ class Facturas():
     def facturar(self):
         """
 
-        Módulo que permite facturar al cliente en el apartado de Facturas.
+        Módulo que a partir del DNI da de alta una factura con su número y fecha. Recarga la tabla facturas y muestra en el label el número de la factura generada.
 
         """
         try:
@@ -55,6 +53,11 @@ class Facturas():
             print("Error al facturar cliente en Facturas", error)
 
     def cargaFac(self):
+        """
+
+        Módulo que al elegir una factura de la tabla facturas carga sus datos en el panel de facturación. Los datos son el DNI del cliente, fecha de factura y nombre del cliente.
+
+        """
         try:
             fila = var.ui.tabFacturas.selectedItems()
             datos = [var.ui.lblNumfac, var.ui.txtFechafac]
@@ -75,7 +78,11 @@ class Facturas():
             print("Error en cargar facturas", error)
 
     def cargaCliFac(self):
-        # carga datos de cliente en Facturación al seleccionar en tabla Clientes
+        """
+
+        Módulo que carga datos del cliente en facturación al seleccionar en tabla Clientes.
+
+        """
         try:
             fila = var.ui.tabClientes.selectedItems() #seleccionamos fila en tab clientes
             datos = [var.ui.txtDNIfac, var.ui.lblNomfac]
@@ -83,12 +90,19 @@ class Facturas():
                 row = [dato.text() for dato in fila]
             for i, dato in enumerate(datos):
                 dato.setText(row[i]) #cargamos los datos en las cajas de texto
-
+                #carga apellidos pero no nombre
 
         except Exception as error:
             print("Error en cargar datos de un cliente en Facturación", error)
 
     def cargaLineaVenta(index):
+        """
+
+        Carga una línea de venta en la fila de la tabla indicada por index correspondiente a una factura dada.
+        :param index: la última línea de la tabla que carga las ventas de una factura
+        :type index: int
+
+        """
         try:
             var.cmbProducto = QtWidgets.QComboBox()
             var.cmbProducto.currentIndexChanged.connect(Facturas.procesoVenta)
@@ -107,6 +121,11 @@ class Facturas():
             print("Error al cargar linea venta", error)
 
     def procesoVenta(self):
+        """
+
+        Módulo que carga el precio de un artículo al seleccionarlo en el combo de artículos.
+
+        """
         try:
             row = var.ui.tabVentas.currentRow()
             articulo= var.cmbProducto.currentText()
@@ -122,6 +141,11 @@ class Facturas():
             print("Error en proceso venta", error)
 
     def totalLineaVenta(self=None):
+        """
+
+        Módulo que al anotar la cantidad de producto indica el total del precio de la venta realizada. Al mismo tiempo recarga la tabla de línea de venta incluyendo las anteriores y la realizada.
+
+        """
         try:
             venta = []
             row = var.ui.tabVentas.currentRow()

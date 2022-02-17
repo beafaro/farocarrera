@@ -41,37 +41,46 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="invoice.Facturas.buscaCli">
 <span class="sig-name descname"><span class="pre">buscaCli</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/invoice.html#Facturas.buscaCli"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#invoice.Facturas.buscaCli" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Módulo que se ejecuta con el botón búsqueda de cliente. Devuelve datos del cliente para el panel facturación.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="invoice.Facturas.cargaCliFac">
 <span class="sig-name descname"><span class="pre">cargaCliFac</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/invoice.html#Facturas.cargaCliFac"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#invoice.Facturas.cargaCliFac" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Módulo que carga datos del cliente en facturación al seleccionar en tabla Clientes.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="invoice.Facturas.cargaFac">
 <span class="sig-name descname"><span class="pre">cargaFac</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/invoice.html#Facturas.cargaFac"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#invoice.Facturas.cargaFac" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Módulo que al elegir una factura de la tabla facturas carga sus datos en el panel de facturación. Los datos son el DNI del cliente, fecha de factura y nombre del cliente.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="invoice.Facturas.cargaLineaVenta">
 <span class="sig-name descname"><span class="pre">cargaLineaVenta</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/invoice.html#Facturas.cargaLineaVenta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#invoice.Facturas.cargaLineaVenta" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Carga una línea de venta en la fila de la tabla indicada por index correspondiente a una factura dada.
+:param index: la última línea de la tabla que carga las ventas de una factura
+:type index: int</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="invoice.Facturas.facturar">
 <span class="sig-name descname"><span class="pre">facturar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/invoice.html#Facturas.facturar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#invoice.Facturas.facturar" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Módulo que a partir del DNI da de alta una factura con su número y fecha. Recarga la tabla facturas y muestra en el label el número de la factura generada.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="invoice.Facturas.procesoVenta">
 <span class="sig-name descname"><span class="pre">procesoVenta</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/invoice.html#Facturas.procesoVenta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#invoice.Facturas.procesoVenta" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Módulo que carga el precio de un artículo al seleccionarlo en el combo de artículos.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="invoice.Facturas.totalLineaVenta">
 <span class="sig-name descname"><span class="pre">totalLineaVenta</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/invoice.html#Facturas.totalLineaVenta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#invoice.Facturas.totalLineaVenta" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Módulo que al anotar la cantidad de producto indica el total del precio de la venta realizada. Al mismo tiempo recarga la tabla de línea de venta incluyendo las anteriores y la realizada.</p>
+</dd></dl>
 
 </dd></dl>
 
