@@ -10,7 +10,7 @@ from PyQt5.QtWidgets import QMessageBox
 
 
 class Clientes():
-    def validarDNI():
+    def validarDNI(dni):
         """
 
         Módulo que valida si el DNI que introducimos es correcto o falso.
@@ -37,6 +37,7 @@ class Clientes():
                     var.ui.lblValidoDNI.setText("V")
                     var.ui.txtDNI.setStyleSheet("background-color: white;")
                     dniValido= True
+                    return True
                 else:
                     var.ui.lblValidoDNI.setStyleSheet("QLabel {color: red;}")
                     var.ui.lblValidoDNI.setText("X")
