@@ -18,8 +18,8 @@ class MyTestCase(unittest.TestCase):
         self.assertTrue(value, msg)
 
     def test_factura(self):
-        valor = 17.0
-        codfac = 17
+        valor = 0.0
+        codfac = 15
         try:
             msg='Cálculos incorrectos'
             var.subfac = 0.00
