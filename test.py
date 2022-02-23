@@ -1,9 +1,5 @@
-import unittest
-
+import unittest, clients, conexion, var
 from PyQt5 import QtSql
-
-import clients, conexion, var
-
 
 class MyTestCase(unittest.TestCase):
     def test_conexion(self):
@@ -18,31 +14,24 @@ class MyTestCase(unittest.TestCase):
         self.assertTrue(value, msg)
 
     def test_factura(self):
-        valor = 0.0
-        codfac = 15
         try:
             msg='Cálculos incorrectos'
-            var.subfac = 0.00
+            total = 19.3
+            codfac = 18
+            valor = 23.35
             query = QtSql.QSqlQuery()
-            query1 = QtSql.QSqlQuery()
-            query.prepare('select codven, codprodf, cantidad from ventas where codfacf= :codfac')
+            query.prepare('select precio, cantidad from ventas where codfacf= :codfacf')
             query.bindValue(':codfacf', int(codfac))
             if query.exec_():
                 while query.next():
-                    codprodf = query.value(1)
-                    cantidad = query.value(2)
-                    query1.prepare('select producto, precio from productos where codigo= :codprodf')
-                    query1.bindValue('codprodf', int(codprodf))
-                    if query1.exec_():
-                        while query1.next():
-                            precio = query1.value(1)
-                            subtotal = round(float(cantidad) * float(precio), 2)
-                    var.subfac= round(float(subtotal) + float(var.subfac), 2)
-            var.iva = round(float(var.subfac) * 0.21, 2)
-            var.fac = round(float(var.iva) + float(var.subfac), 2)
+                    precio = query.value(0)
+                    cantidad = query.value(1)
+                    total= total + round(float(cantidad) * float(precio), 2)
+
+            total = round(total + total*0.21, 2)
         except Exception as error:
-            print('Error listado de la tabla de vnetas: %s ' %str(error))
-        self.assertEqual(round(float(valor),2), round(float(var.fac),2), msg)
+            print('Error listado de la tabla de ventas: %s ' %str(error))
+        self.assertEqual(round(float(valor),2), round(float(total),2), msg)
 
 
 if __name__ == '__main__':
