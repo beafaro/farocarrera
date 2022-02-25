@@ -7,6 +7,46 @@ from reportlab.pdfgen import canvas
 import conexion
 
 class Informes():
+    def cabecera(self):
+        """
+
+        Módulo con el que formateamos la cabecera del informe, en donde ponemos el logo y la información de la empresa.
+
+        """
+        try:
+            logo = ".\\img\logo_empresa.jpg"
+            var.cv.line(40, 800, 530, 800)
+            var.cv.setFont("Helvetica-Bold", 14)
+            var.cv.drawString(50, 785, "Import-Export Vigo")
+            var.cv.setFont("Helvetica", 10)
+            var.cv.drawString(50, 765, "CIF: A00000000H")
+            var.cv.drawString(50, 750, "Dirección: Avenida Galicia, 101")
+            var.cv.drawString(50, 735, "Vigo - 36216 - Spain")
+            var.cv.drawString(50, 720, "e-mail: micorreo@mail.com")
+            var.cv.drawImage(logo, 450, 715)
+            var.cv.line(40, 800, 500, 800)
+            var.cv.line(40, 705, 530, 705)
+        except Exception as error:
+            print("Error en cabecera informe", error)
+
+    def pie(texto):
+        """
+
+        Módulo con el que formateamos el pie del informe.
+
+        """
+        try:
+            var.cv.line(40, 50, 530, 50)
+            fecha = datetime.today()
+            fecha = fecha.strftime("%d.%m.%Y %H.%M.%S")
+            var.cv.setFont("Helvetica", size=6)
+            var.cv.drawString(70, 40, str(fecha))
+            var.cv.drawString(255, 40, str(texto))
+            var.cv.drawString(500, 40, str("Página %s " % var.cv.getPageNumber()))
+        except Exception as error:
+            print("Error creación de pie de informe clientes", error)
+
+
     def listadoClientes(self):
         """
 
@@ -24,13 +64,14 @@ class Informes():
             Informes.cabecera(self)
             Informes.pie(textoTitulo)
 
-            var.cv.drawString(255,690, textoTitulo)
+            var.cv.drawString(260, 694, textoTitulo)
             var.cv.line(40,685,530,685)
+            var.cv.setFont("Helvetica", 10)
             items = ["DNI", "Nombre", "Formas de pago"]
-            var.cv.drawString(65,675,items[0])
-            var.cv.drawString(210,675,items[1])
-            var.cv.drawString(400,675,items[2])
-            var.cv.line(40,670,530,670)
+            var.cv.drawString(50,673,items[0])
+            var.cv.drawString(190,673,items[1])
+            var.cv.drawString(362,673,items[2])
+            var.cv.line(40,668,530,668)
 
             query = QtSql.QSqlQuery()
             query.prepare("SELECT dni, apellidos, nombre, pago FROM clientes order by apellidos,nombre")
@@ -47,11 +88,12 @@ class Informes():
                         Informes.pie(textoTitulo)
                         var.cv.drawString(255, 690, textoTitulo)
                         var.cv.line(40, 685, 530, 685)
+                        var.cv.setFont("Helvetica", 10)
                         items = ["DNI", "Nombre", "Formas de pago"]
-                        var.cv.drawString(65, 675, items[0])
-                        var.cv.drawString(210, 675, items[1])
-                        var.cv.drawString(400, 675, items[2])
-                        var.cv.line(40, 670, 530, 670)
+                        var.cv.drawString(50, 673, items[0])
+                        var.cv.drawString(190, 673, items[1])
+                        var.cv.drawString(362, 673, items[2])
+                        var.cv.line(40, 668, 530, 668)
                         i = 50
                         j = 655
 
@@ -70,44 +112,6 @@ class Informes():
         except Exception as error:
             print("Error en informes clientes, ", error)
 
-    def cabecera(self):
-        """
-
-        Módulo con el que formateamos la cabecera del informe, en donde ponemos el logo y la información de la empresa.
-
-        """
-        try:
-            logo = ".\\img\logo_empresa.jpg"
-            var.cv.line(40,800,530,800)
-            var.cv.setFont("Helvetica-Bold", 14)
-            var.cv.drawString(50,785, "Import-Export Vigo")
-            var.cv.setFont("Helvetica", 10)
-            var.cv.drawString(50,770, "CIF: A00000000H")
-            var.cv.drawString(50,755, "Dirección: Avenida Galicia, 101")
-            var.cv.drawString(50,740, "Vigo - 36216 - Spain")
-            var.cv.drawString(50,725, "e-mail: micorreo@mail.com")
-            var.cv.drawImage(logo,425,710)
-            var.cv.line(40,800,500,800)
-            var.cv.line(40, 705, 530, 705)
-        except Exception as error:
-            print("Error en cabecera informe", error)
-
-    def pie(texto):
-        """
-
-        Módulo con el que formateamos el pie del informe.
-
-        """
-        try:
-            var.cv.line(50,50,530,50)
-            fecha = datetime.today()
-            fecha = fecha.strftime("%d.%m.%Y %H.%M.%S")
-            var.cv.setFont("Helvetica", size=6)
-            var.cv.drawString(70,40, str(fecha))
-            var.cv.drawString(255,40,str(texto))
-            var.cv.drawString(500,40,str("Página %s " %var.cv.getPageNumber()))
-        except Exception as error:
-            print("Error creación de pie de informe clientes", error)
 
     def listadoProductos(self):
         """
@@ -126,13 +130,14 @@ class Informes():
             Informes.cabecera(self)
             Informes.pie(textoTitulo)
 
-            var.cv.drawString(255,690, textoTitulo)
+            var.cv.drawString(260, 694, textoTitulo)
             var.cv.line(40,685,530,685)
+            var.cv.setFont("Helvetica", 10)
             items = ["Código", "Artículo", "Precio-unidad"]
-            var.cv.drawString(65,675,items[0])
-            var.cv.drawString(210,675,items[1])
-            var.cv.drawString(400,675,items[2])
-            var.cv.line(40,670,530,670)
+            var.cv.drawString(65, 673,items[0])
+            var.cv.drawString(210, 673,items[1])
+            var.cv.drawString(400, 673,items[2])
+            var.cv.line(40,668,530,668)
 
             query = QtSql.QSqlQuery()
             query.prepare("SELECT codigo, nombre, precio FROM productos order by nombre")
@@ -150,10 +155,10 @@ class Informes():
                         var.cv.drawString(255, 690, textoTitulo)
                         var.cv.line(40, 685, 530, 685)
                         items = ["Código", "Artículo", "Precio-unidad"]
-                        var.cv.drawString(65, 675, items[0])
-                        var.cv.drawString(210, 675, items[1])
-                        var.cv.drawString(400, 675, items[2])
-                        var.cv.line(40, 670, 530, 670)
+                        var.cv.drawString(65, 673, items[0])
+                        var.cv.drawString(210, 673, items[1])
+                        var.cv.drawString(400, 673, items[2])
+                        var.cv.line(40, 668, 530, 668)
                         i = 50
                         j = 655
 
@@ -191,10 +196,11 @@ class Informes():
 
             codfac = var.ui.lblNumfac.text()
             var.cv.drawString(260, 694, textotitulo + ': ' + (str(codfac)))
-            var.cv.line(30, 685, 550, 685)
+            var.cv.line(40, 685, 530, 685)
 
-            var.cv.setFont('Helvetica-Bold', size=9)
-            var.cv.drawString(270, 785, "DATOS CLIENTE")
+
+            var.cv.setFont('Helvetica-Bold', 12)
+            var.cv.drawString(230, 785, "DATOS CLIENTE")
             query1 = QtSql.QSqlQuery()
             query1.prepare("select direccion, municipio, provincia from clientes where dni= :dni")
             query1.bindValue(":dni", str(var.ui.txtDNIfac.text()))
@@ -205,17 +211,21 @@ class Informes():
                     dir.append((query1.value(1)))
                     dir.append((query1.value(2)))
 
-            var.cv.drawString(260, 765, "CIF:" + var.ui.txtDNIfac.text())
-            var.cv.drawString(260, 750, "Cliente:" + var.ui.lblNomfac.text())
-            var.cv.drawString(260,735, "Dirección: " + str(dir[0]))
-            var.cv.drawString(260,720, "Localidad: " + str(dir[1]))
-            var.cv.drawString(375,720, "Provincia: " + str(dir[2]))
-            items = ['Venta', 'Articulo', 'Precio', 'Cantidad', 'Total']
+            var.cv.setFont("Helvetica", 10)
+            var.cv.drawString(230, 765, "CIF: " + var.ui.txtDNIfac.text())
+            var.cv.drawString(230, 750, "Cliente: " + var.ui.lblNomfac.text())
+            var.cv.drawString(230, 735, "Dirección: " + str(dir[0]))
+            var.cv.drawString(230, 720, "Localidad: " + str(dir[1]))
+            var.cv.drawString(360, 720, "Provincia: " + str(dir[2]))
+
+            var.cv.setFont("Helvetica", 10)
+            items = ['Venta', 'Artículo', 'Precio', 'Cantidad', 'Total']
             var.cv.drawString(65, 673, items[0])
-            var.cv.drawString(165, 673, items[1])
+            var.cv.drawString(150, 673, items[1])
             var.cv.drawString(270, 673, items[2])
             var.cv.drawString(380, 673, items[3])
             var.cv.drawString(490, 673, items[4])
+            var.cv.line(40, 670, 530, 670)
 
             suma = 0.0
             query = QtSql.QSqlQuery()

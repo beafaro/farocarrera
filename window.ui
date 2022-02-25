@@ -915,7 +915,7 @@ color: rgb(255, 0, 0);</string>
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>img/visualizar.png</normaloff>img/visualizar.png</iconset>
+         <normaloff>../../.designer/backup/img/visualizar.png</normaloff>../../.designer/backup/img/visualizar.png</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -2376,11 +2376,11 @@ color: rgb(255, 0, 0);</string>
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="rbtGroupSex"/>
   <buttongroup name="chkGroupPago">
    <property name="exclusive">
     <bool>false</bool>
    </property>
   </buttongroup>
+  <buttongroup name="rbtGroupSex"/>
  </buttongroups>
 </ui>
