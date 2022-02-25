@@ -134,9 +134,9 @@ class Informes():
             var.cv.line(40,685,530,685)
             var.cv.setFont("Helvetica", 10)
             items = ["Código", "Artículo", "Precio-unidad"]
-            var.cv.drawString(65, 673,items[0])
-            var.cv.drawString(210, 673,items[1])
-            var.cv.drawString(400, 673,items[2])
+            var.cv.drawString(50,673,items[0])
+            var.cv.drawString(190,673,items[1])
+            var.cv.drawString(362,673,items[2])
             var.cv.line(40,668,530,668)
 
             query = QtSql.QSqlQuery()
@@ -155,9 +155,9 @@ class Informes():
                         var.cv.drawString(255, 690, textoTitulo)
                         var.cv.line(40, 685, 530, 685)
                         items = ["Código", "Artículo", "Precio-unidad"]
-                        var.cv.drawString(65, 673, items[0])
-                        var.cv.drawString(210, 673, items[1])
-                        var.cv.drawString(400, 673, items[2])
+                        var.cv.drawString(50,673,items[0])
+                        var.cv.drawString(190,673,items[1])
+                        var.cv.drawString(362,673,items[2])
                         var.cv.line(40, 668, 530, 668)
                         i = 50
                         j = 655
