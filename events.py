@@ -240,7 +240,7 @@ class Eventos():
         except Exception as error:
             print("Error al redimensionar tabla clientes", error)
 
-'''
+
     def modoEnvio(self):
         try:
             reg = var.ui.spinEnvio.value()
@@ -255,7 +255,7 @@ class Eventos():
         except Exception as error:
             print("Error en spinbox envio", error)
             
-
+'''
     def limpiaDatosFac(self):
         try:
             reg = var.ui.spinEnvio.value()

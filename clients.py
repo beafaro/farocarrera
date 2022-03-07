@@ -4,6 +4,7 @@ Funciones gestion clientes
 from PyQt5 import QtSql
 
 import conexion
+import events
 import var
 from window import *
 from PyQt5.QtWidgets import QMessageBox
@@ -204,7 +205,7 @@ class Clientes():
         try:
             Clientes.limpiaFormCli(self)
             fila = var.ui.tabClientes.selectedItems() #seleccionamos fila
-            datos = [var.ui.txtDNI, var.ui.txtApel, var.ui.txtNome, var.ui.txtFechaAltaCli]
+            datos = [var.ui.txtDNI, var.ui.txtApel, var.ui.txtNome, var.ui.txtFechaAltaCli, var.ui.lblEnvio]
             if fila:
                 row = [dato.text() for dato in fila]
 
@@ -219,6 +220,8 @@ class Clientes():
                 var.ui.chkTarjeta.setChecked(True)
             if "Cargo" in row[4]:
                 var.ui.chkCargoCuenta.setChecked(True)
+
+            events.Eventos.modoEnvio(self)
 
             registro = conexion.Conexion.oneCli(row[0])
             var.ui.txtDir.setText(str(registro[0]))
