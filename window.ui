@@ -164,106 +164,6 @@ align: center;
       <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>51</x>
-         <y>131</y>
-         <width>521</width>
-         <height>26</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
-        <property name="sizeConstraint">
-         <enum>QLayout::SetNoConstraint</enum>
-        </property>
-        <item>
-         <widget class="QLabel" name="lblPro">
-          <property name="font">
-           <font>
-            <family>Verdana</family>
-            <pointsize>10</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-            <stylestrategy>PreferDefault</stylestrategy>
-           </font>
-          </property>
-          <property name="text">
-           <string>Provincia:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="cmbProv">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>10</pointsize>
-            <weight>50</weight>
-            <bold>false</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Minimum</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QLabel" name="lblMuni">
-          <property name="font">
-           <font>
-            <family>Verdana</family>
-            <pointsize>10</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-            <stylestrategy>PreferDefault</stylestrategy>
-           </font>
-          </property>
-          <property name="text">
-           <string>Municipio:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="cmbMuni">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>10</pointsize>
-            <weight>50</weight>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="sizeAdjustPolicy">
-           <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="layoutWidget">
-       <property name="geometry">
-        <rect>
          <x>50</x>
          <y>190</y>
          <width>565</width>
@@ -686,7 +586,7 @@ align: center;
            </font>
           </property>
           <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>
@@ -725,19 +625,223 @@ align: center;
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="layoutWidget">
+      <widget class="QPushButton" name="btnBuscaClifac_2">
        <property name="geometry">
         <rect>
-         <x>51</x>
-         <y>161</y>
-         <width>361</width>
+         <x>350</x>
+         <y>40</y>
+         <width>24</width>
+         <height>24</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>24</width>
+         <height>24</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>24</width>
+         <height>24</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="img/lupa.qrc">
+         <normaloff>:/newPrefix/buscar.jpg</normaloff>:/newPrefix/buscar.jpg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>24</width>
+         <height>24</height>
+        </size>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnReportCli">
+       <property name="geometry">
+        <rect>
+         <x>790</x>
+         <y>230</y>
+         <width>30</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>16</width>
+         <height>16</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="img/imprimir.qrc">
+         <normaloff>:/newPrefix/imprimir.png</normaloff>:/newPrefix/imprimir.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>30</width>
+         <height>30</height>
+        </size>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnVisualizaCli">
+       <property name="geometry">
+        <rect>
+         <x>740</x>
+         <y>230</y>
+         <width>30</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="img/ver.qrc">
+         <normaloff>:/newPrefix/visualizar.png</normaloff>:/newPrefix/visualizar.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>30</width>
+         <height>30</height>
+        </size>
+       </property>
+      </widget>
+      <widget class="QWidget" name="">
+       <property name="geometry">
+        <rect>
+         <x>52</x>
+         <y>132</y>
+         <width>571</width>
+         <height>24</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QLabel" name="lblPro">
+          <property name="font">
+           <font>
+            <family>Verdana</family>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+            <stylestrategy>PreferDefault</stylestrategy>
+           </font>
+          </property>
+          <property name="text">
+           <string>Provincia:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="cmbProv">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>120</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>150</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Minimum</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="lblMuni">
+          <property name="font">
+           <font>
+            <family>Verdana</family>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+            <stylestrategy>PreferDefault</stylestrategy>
+           </font>
+          </property>
+          <property name="text">
+           <string>Municipio:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="cmbMuni">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>120</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="sizeAdjustPolicy">
+           <enum>QComboBox::AdjustToContents</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="">
+       <property name="geometry">
+        <rect>
+         <x>53</x>
+         <y>163</y>
+         <width>221</width>
          <height>22</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_4">
-        <property name="sizeConstraint">
-         <enum>QLayout::SetNoConstraint</enum>
-        </property>
         <item>
          <widget class="QLabel" name="lblSexo">
           <property name="font">
@@ -794,19 +898,32 @@ align: center;
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="layoutWidget">
+      <widget class="QWidget" name="">
        <property name="geometry">
         <rect>
-         <x>460</x>
-         <y>160</y>
-         <width>275</width>
+         <x>278</x>
+         <y>162</y>
+         <width>551</width>
          <height>26</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_9">
-        <property name="sizeConstraint">
-         <enum>QLayout::SetNoConstraint</enum>
-        </property>
+        <item>
+         <spacer name="horizontalSpacer_5">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Minimum</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>48</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
         <item>
          <widget class="QLabel" name="lblFormaEnvio">
           <property name="font">
@@ -832,6 +949,18 @@ align: center;
         </item>
         <item>
          <widget class="QLabel" name="lblEnvio">
+          <property name="minimumSize">
+           <size>
+            <width>330</width>
+            <height>16</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>330</width>
+            <height>16</height>
+           </size>
+          </property>
           <property name="font">
            <font>
             <family>Verdana</family>
@@ -854,75 +983,6 @@ color: rgb(255, 0, 0);</string>
          </widget>
         </item>
        </layout>
-      </widget>
-      <widget class="QPushButton" name="btnBuscaClifac_2">
-       <property name="geometry">
-        <rect>
-         <x>350</x>
-         <y>40</y>
-         <width>28</width>
-         <height>24</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset resource="img/lupa.qrc">
-         <normaloff>:/newPrefix/buscar.jpg</normaloff>:/newPrefix/buscar.jpg</iconset>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="btnReportCli">
-       <property name="geometry">
-        <rect>
-         <x>790</x>
-         <y>230</y>
-         <width>30</width>
-         <height>30</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>16</width>
-         <height>16</height>
-        </size>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset resource="img/imprimir.qrc">
-         <normaloff>:/newPrefix/imprimir.png</normaloff>:/newPrefix/imprimir.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>30</width>
-         <height>30</height>
-        </size>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="btnVisualizaCli">
-       <property name="geometry">
-        <rect>
-         <x>740</x>
-         <y>230</y>
-         <width>30</width>
-         <height>30</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset resource="img/ver.qrc">
-         <normaloff>:/newPrefix/visualizar.png</normaloff>:/newPrefix/visualizar.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>30</width>
-         <height>30</height>
-        </size>
-       </property>
       </widget>
      </widget>
      <widget class="QTableWidget" name="tabClientes">
@@ -1258,48 +1318,10 @@ color: rgb(255, 0, 0);</string>
       <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>31</x>
-         <y>70</y>
-         <width>261</width>
-         <height>18</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="horizontalLayout_17">
-        <item>
-         <widget class="QLabel" name="label_4">
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>22</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>CLIENTE:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="lblNomfac">
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(251, 255, 201);</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="scaledContents">
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="layoutWidget">
-       <property name="geometry">
-        <rect>
          <x>280</x>
          <y>30</y>
          <width>231</width>
-         <height>18</height>
+         <height>24</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_18">
@@ -1312,14 +1334,26 @@ color: rgb(255, 0, 0);</string>
         </item>
         <item>
          <widget class="QLabel" name="lblNumfac">
+          <property name="minimumSize">
+           <size>
+            <width>100</width>
+            <height>22</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
             <width>100</width>
             <height>100</height>
            </size>
           </property>
+          <property name="font">
+           <font>
+            <family>Verdana</family>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
           <property name="styleSheet">
-           <string notr="true">background-color: rgb(251, 255, 201);</string>
+           <string notr="true">background-color: rgb(230, 243, 255);</string>
           </property>
           <property name="text">
            <string/>
@@ -1397,6 +1431,62 @@ color: rgb(255, 0, 0);</string>
          <height>30</height>
         </size>
        </property>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>32</x>
+         <y>71</y>
+         <width>313</width>
+         <height>24</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_17">
+        <item>
+         <widget class="QLabel" name="label_4">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>CLIENTE:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="lblNomfac">
+          <property name="minimumSize">
+           <size>
+            <width>240</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>240</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Verdana</family>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(230, 243, 255);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </widget>
      </widget>
      <widget class="Line" name="line_5">
@@ -1490,9 +1580,21 @@ color: rgb(255, 0, 0);</string>
        <rect>
         <x>480</x>
         <y>170</y>
-        <width>131</width>
-        <height>16</height>
+        <width>130</width>
+        <height>22</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>130</width>
+        <height>22</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>130</width>
+        <height>22</height>
+       </size>
       </property>
       <property name="font">
        <font>
@@ -1503,7 +1605,7 @@ color: rgb(255, 0, 0);</string>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(251, 255, 201);</string>
+       <string notr="true">background-color: rgb(230, 243, 255);</string>
       </property>
       <property name="text">
        <string>VENTAS</string>
@@ -1570,9 +1672,21 @@ color: rgb(255, 0, 0);</string>
        <rect>
         <x>30</x>
         <y>170</y>
-        <width>71</width>
-        <height>20</height>
+        <width>70</width>
+        <height>22</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>70</width>
+        <height>22</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>70</width>
+        <height>22</height>
+       </size>
       </property>
       <property name="font">
        <font>
@@ -1583,7 +1697,7 @@ color: rgb(255, 0, 0);</string>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(251, 255, 201);</string>
+       <string notr="true">background-color: rgb(230, 243, 255);</string>
       </property>
       <property name="text">
        <string>Nº</string>
@@ -1597,9 +1711,21 @@ color: rgb(255, 0, 0);</string>
        <rect>
         <x>90</x>
         <y>170</y>
-        <width>121</width>
-        <height>21</height>
+        <width>120</width>
+        <height>22</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>120</width>
+        <height>22</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>120</width>
+        <height>22</height>
+       </size>
       </property>
       <property name="font">
        <font>
@@ -1610,7 +1736,7 @@ color: rgb(255, 0, 0);</string>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(251, 255, 201);</string>
+       <string notr="true">background-color: rgb(230, 243, 255);</string>
       </property>
       <property name="text">
        <string>Fecha</string>
@@ -1649,7 +1775,7 @@ color: rgb(255, 0, 0);</string>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(251, 255, 201);</string>
+       <string notr="true">background-color: rgb(230, 243, 255);</string>
       </property>
       <property name="text">
        <string/>
@@ -1805,7 +1931,7 @@ color: rgb(255, 0, 0);</string>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(251, 255, 201);</string>
+       <string notr="true">background-color: rgb(230, 243, 255);</string>
       </property>
       <property name="text">
        <string>SUBTOTAL</string>
@@ -1844,7 +1970,7 @@ color: rgb(255, 0, 0);</string>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(251, 255, 201);</string>
+       <string notr="true">background-color: rgb(230, 243, 255);</string>
       </property>
       <property name="text">
        <string>IVA</string>
@@ -1883,7 +2009,7 @@ color: rgb(255, 0, 0);</string>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(251, 255, 201);</string>
+       <string notr="true">background-color: rgb(230, 243, 255);</string>
       </property>
       <property name="text">
        <string>TOTAL</string>
@@ -1905,6 +2031,11 @@ color: rgb(255, 0, 0);</string>
         <width>861</width>
         <height>221</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
       </property>
       <property name="title">
        <string>Datos productos</string>
@@ -1954,84 +2085,68 @@ color: rgb(255, 0, 0);</string>
          <x>30</x>
          <y>90</y>
          <width>401</width>
-         <height>24</height>
+         <height>26</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_10">
         <item>
          <widget class="QLabel" name="label">
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>Nombre: </string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="txtNomProd"/>
+         <widget class="QLineEdit" name="txtNomProd">
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
       <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>561</x>
+         <x>540</x>
          <y>90</y>
          <width>271</width>
-         <height>24</height>
+         <height>26</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_11">
         <item>
          <widget class="QLabel" name="label_3">
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>Precio-unidad: </string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="txtPrecio"/>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="layoutWidget">
-       <property name="geometry">
-        <rect>
-         <x>230</x>
-         <y>50</y>
-         <width>76</width>
-         <height>26</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="horizontalLayout_14">
-        <item>
-         <spacer name="horizontalSpacer_5">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
+         <widget class="QLineEdit" name="txtPrecio">
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
           </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btnLimpiaProd">
-          <property name="maximumSize">
-           <size>
-            <width>16777211</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="icon">
-           <iconset resource="img/limpiar.qrc">
-            <normaloff>:/newPrefix/limpiaForm.png</normaloff>:/newPrefix/limpiaForm.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>16</width>
-            <height>16</height>
-           </size>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>
@@ -2043,19 +2158,43 @@ color: rgb(255, 0, 0);</string>
          <x>33</x>
          <y>50</y>
          <width>191</width>
-         <height>24</height>
+         <height>26</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_12">
         <item>
          <widget class="QLabel" name="lblCodigo">
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>Código: </string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="txtCodigo"/>
+         <widget class="QLineEdit" name="txtCodigo">
+          <property name="font">
+           <font>
+            <family>Verdana</family>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(230, 243, 255);</string>
+          </property>
+          <property name="inputMethodHints">
+           <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly|Qt::ImhPreferUppercase</set>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -2122,7 +2261,7 @@ color: rgb(255, 0, 0);</string>
       <widget class="QPushButton" name="btnVisualizaProd">
        <property name="geometry">
         <rect>
-         <x>650</x>
+         <x>700</x>
          <y>170</y>
          <width>30</width>
          <height>30</height>
@@ -2139,6 +2278,38 @@ color: rgb(255, 0, 0);</string>
         <size>
          <width>30</width>
          <height>30</height>
+        </size>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnLimpiaProd">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>51</y>
+         <width>22</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>22</width>
+         <height>22</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>22</width>
+         <height>22</height>
+        </size>
+       </property>
+       <property name="icon">
+        <iconset resource="img/limpiar.qrc">
+         <normaloff>:/newPrefix/limpiaForm.png</normaloff>:/newPrefix/limpiaForm.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>20</width>
+         <height>20</height>
         </size>
        </property>
       </widget>
@@ -2376,11 +2547,11 @@ color: rgb(255, 0, 0);</string>
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="rbtGroupSex"/>
   <buttongroup name="chkGroupPago">
    <property name="exclusive">
     <bool>false</bool>
    </property>
   </buttongroup>
+  <buttongroup name="rbtGroupSex"/>
  </buttongroups>
 </ui>
